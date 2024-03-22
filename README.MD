@@ -7,3 +7,8 @@ npx tailwindcss init  (crea el archivo "tailwind.config.js")
 
 React-native-Swiper:
 npm i --save react-native-swiper@next
+
+Rutas de Navegacion entre componentes:
+npm install @react-navigation/native
+npm install @react-navigation/native-stack
+

@@ -1,118 +1,110 @@
-import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import Swiper from 'react-native-swiper';
+//import Login from './Login';
+//import SignUp from './SignUp';
 
-export default function Slider() {
+export default function Slider() { 
 
     return (
         <Swiper >
-            <View style={styles.imageContainer}>
+            <View style={styles.container}>
                 <Image
                     source={require('../assets/fries.jpg')}
-                    style={styles.image}
+                    style={styles.sliderImg}
                 />
 
                 <View style={styles.overlay}>
-                    <Text style={styles.text}>Tenes hambre?</Text>
+                    <Text style={styles.sliderText}>Tenes hambre?</Text>
                 </View>
-
             </View>
 
-            <View style={styles.imageContainer}>
+            <View style={styles.container}>
                 <Image
                     source={require('../assets/soda.jpg')}
-                    style={styles.image}
+                    style={styles.sliderImg}
                 />
                 <View style={styles.overlay}>
-                    <Text style={styles.text}>Tenes sed?</Text>
+                    <Text style={styles.sliderText}>Tenes sed?</Text>
                 </View>
             </View>
 
-            <View style={styles.imageContainer}>
+            <View style={styles.container}>
                 <Image
                     source={require('../assets/burger.jpg')}
-                    style={styles.image}
+                    style={styles.sliderImg}
                 />
 
-                <View style={styles.overlay}>                    
-                    <Text style={styles.text}>Tenes</Text>
+                <View style={styles.overlay}>
+                    <Text style={styles.sliderText}>Tenes</Text>
                     <Image
-                    source={require('../assets/GulaBlanco.png')}
-                    style={styles.imageLogo}
-                />
-                </View>                
-
-                <View style={styles.overlayBtn}>
-                    <TouchableOpacity style={styles.btnContainers}>
-                        <Text style={styles.btnText}>Ingresa</Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity style={styles.btnContainers}>
-                        <Text style={styles.btnText}>Registrate Gratis</Text>
-                    </TouchableOpacity>
+                        source={require('../assets/GulaBlanco.png')}
+                        style={styles.logoBlanco}
+                    />
                 </View>
 
+                <View style={styles.overlayBtn}>
+                    <TouchableOpacity style={styles.btnSlider}>
+                        <Text >Ingresa</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity style={styles.btnSlider}>
+                        <Text>Registrate Gratis</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         </Swiper>
     );
 };
 
-const styles = StyleSheet.create({    
-    imageContainer: {
+const styles = StyleSheet.create({
+
+    container: {
         flex: 1
     },
 
-    image: {
+    sliderImg: {
         flex: 1,
         resizeMode: 'cover',
         width: '100%',
-        height: '100%',        
-    },
+        height: '100%'
+            },
 
+    sliderText: {
+        fontWeight: 'bold',
+        textAlign: 'center',
+        fontSize: 48,
+        color: 'white'
+    },
+    
     overlay: {
-        ...StyleSheet.absoluteFillObject, 
-        justifyContent: 'center', 
-        alignItems: 'center', 
-        backgroundColor: 'rgba(0, 0, 0, 0.3)'       
+        ...StyleSheet.absoluteFillObject,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'rgba(0, 0, 0, 0.3)'
     },
 
-    imageLogo: {
+    logoBlanco: {
         width: 265,
-        height: 150,
-        marginTop: 20,        
+        height: 150
     },
 
     overlayBtn: {
-        ...StyleSheet.absoluteFillObject, 
-        justifyContent: 'center', 
-        alignItems: 'center', 
-        backgroundColor: 'rgba(0, 0, 0, 0.3)',
+        ...StyleSheet.absoluteFillObject,
+        justifyContent: 'center',
+        alignItems: 'center',        
         flexDirection: 'row',
-        gap: 40,
-        marginTop: 700       
-    },
-
-    text: {        
-        color: 'white',
-        fontSize: 40, 
-        fontWeight: 'bold',
-        textAlign: 'center',        
+        gap: 50,
+        marginTop: 650
     },
     
-    bottons: {
-        flexDirection: "row",
-        justifyContent: "space-around",
-        
-    },
-
-    btnContainers: {
-        width: 150,
-        height: 50,
-        backgroundColor: '#E5E7E9',
-        alignItems: 'center',
-        borderRadius: 5,
-        justifyContent: 'center'
-    },
+    btnSlider: {
+        justifyContent: 'center',
+        alignItems: 'center',        
+        borderRadius: 10,
+        backgroundColor: '#F5F5F5',
+        width: 144,
+        height: 56
+    }
 });
 
 
