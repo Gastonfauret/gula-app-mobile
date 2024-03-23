@@ -1,63 +1,61 @@
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import Swiper from 'react-native-swiper';
-//import Login from './Login';
-//import SignUp from './SignUp';
 
-export default function Slider() { 
-
+export default function Slider({ navigation }) {
     return (
-        <Swiper >
-            <View style={styles.container}>
-                <Image
-                    source={require('../assets/fries.jpg')}
-                    style={styles.sliderImg}
-                />
-
-                <View style={styles.overlay}>
-                    <Text style={styles.sliderText}>Tenes hambre?</Text>
-                </View>
-            </View>
-
-            <View style={styles.container}>
-                <Image
-                    source={require('../assets/soda.jpg')}
-                    style={styles.sliderImg}
-                />
-                <View style={styles.overlay}>
-                    <Text style={styles.sliderText}>Tenes sed?</Text>
-                </View>
-            </View>
-
-            <View style={styles.container}>
-                <Image
-                    source={require('../assets/burger.jpg')}
-                    style={styles.sliderImg}
-                />
-
-                <View style={styles.overlay}>
-                    <Text style={styles.sliderText}>Tenes</Text>
+        
+            <Swiper >
+                <View style={styles.container}>
                     <Image
-                        source={require('../assets/GulaBlanco.png')}
-                        style={styles.logoBlanco}
+                        source={require('../assets/fries.jpg')}
+                        style={styles.sliderImg}
                     />
+
+                    <View style={styles.overlay}>
+                        <Text style={styles.sliderText}>Tenes hambre?</Text>
+                    </View>
                 </View>
 
-                <View style={styles.overlayBtn}>
-                    <TouchableOpacity style={styles.btnSlider}>
-                        <Text >Ingresa</Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity style={styles.btnSlider}>
-                        <Text>Registrate Gratis</Text>
-                    </TouchableOpacity>
+                <View style={styles.container}>
+                    <Image
+                        source={require('../assets/soda.jpg')}
+                        style={styles.sliderImg}
+                    />
+                    <View style={styles.overlay}>
+                        <Text style={styles.sliderText}>Tenes sed?</Text>
+                    </View>
                 </View>
-            </View>
-        </Swiper>
+
+                <View style={styles.container}>
+                    <Image
+                        source={require('../assets/burger.jpg')}
+                        style={styles.sliderImg}
+                    />
+
+                    <View style={styles.overlay}>
+                        <Text style={styles.sliderText}>Tenes</Text>
+                        <Image
+                            source={require('../assets/GulaBlanco.png')}
+                            style={styles.logoBlanco}
+                        />
+                    </View>
+
+                    <View style={styles.overlayBtn}>
+                        <TouchableOpacity style={styles.btnSlider} onPress={() => navigation.navigate('Login')}>
+                            <Text >Ingresa</Text>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity style={styles.btnSlider} onPress={() => navigation.navigate('SignUp')}>
+                            <Text>Registrate Gratis</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </Swiper>
+        
     );
 };
 
 const styles = StyleSheet.create({
-
     container: {
         flex: 1
     },
@@ -67,7 +65,7 @@ const styles = StyleSheet.create({
         resizeMode: 'cover',
         width: '100%',
         height: '100%'
-            },
+    },
 
     sliderText: {
         fontWeight: 'bold',
@@ -75,12 +73,12 @@ const styles = StyleSheet.create({
         fontSize: 48,
         color: 'white'
     },
-    
+
     overlay: {
         ...StyleSheet.absoluteFillObject,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'rgba(0, 0, 0, 0.3)'
+        backgroundColor: 'rgba(0, 0, 0, 0.6)'
     },
 
     logoBlanco: {
@@ -91,16 +89,16 @@ const styles = StyleSheet.create({
     overlayBtn: {
         ...StyleSheet.absoluteFillObject,
         justifyContent: 'center',
-        alignItems: 'center',        
+        alignItems: 'center',
         flexDirection: 'row',
         gap: 50,
         marginTop: 650
     },
-    
+
     btnSlider: {
         justifyContent: 'center',
-        alignItems: 'center',        
-        borderRadius: 10,
+        alignItems: 'center',
+        borderRadius: 5,
         backgroundColor: '#F5F5F5',
         width: 144,
         height: 56
