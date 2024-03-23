@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { View, TextInput, Text, Image, TouchableOpacity, KeyboardAvoidingView, ScrollView, Platform, Keyboard } from 'react-native';
+import { View, TextInput, Text, Image, TouchableOpacity, KeyboardAvoidingView, ScrollView, Platform, Keyboard, StyleSheet } from 'react-native';
 
-export default function SignUp() {
+export default function SignUp({navigation}) {
     const [keyboardVisible, setKeyboardVisible] = useState(false);
     const handleKeyboardDidShow = () => setKeyboardVisible(true);
     const handleKeyboardDidHide = () => setKeyboardVisible(false);
@@ -50,39 +50,39 @@ export default function SignUp() {
                 keyboardShouldPersistTaps="handled"
                 showsVerticalScrollIndicator={false}
             >
-                <View className=' flex-1 justify-center items-center px-10 py-20 bg-red-600 '
+                <View style={styles.container}
                 >
-                    <View className=' flex-1 items-center justify-center bg-red-600 w-0 m--10'>
-                        <Image source={require('../assets/GulaBlanco.png')} className=' w-56 h-32 mb-5' />
+                    <View style={styles.subContainer}>
+                        <Image source={require('../assets/GulaBlanco.png')} style={styles.logoGula} />
                     </View>
 
                     <TextInput
-                        className=' w-80 h-12 mb-6 border-0 rounded-md px-3 bg-white'
+                        style={styles.textInputs}
                         placeholder="Nombre"
                         value={name}
-                        onChangeText={setName}                        
+                        onChangeText={setName}
                     />
                     <TextInput
-                        className=' w-80 h-12 mb-6 border-0 rounded-md px-3 bg-white'
+                        style={styles.textInputs}
                         placeholder="Apellido"
                         value={lastName}
-                        onChangeText={setlastName}                        
+                        onChangeText={setlastName}
                     />
                     <TextInput
-                        className=' w-80 h-12 mb-6 border-0 rounded-md px-3 bg-white'
+                        style={styles.textInputs}
                         placeholder="Documento"
                         value={id}
-                        onChangeText={setId}                        
+                        onChangeText={setId}
                     />
                     <TextInput
-                        className=' w-80 h-12 mb-6 border-0 rounded-md px-3 bg-white'
+                        style={styles.textInputs}
                         placeholder="Direccion"
                         value={address}
-                        onChangeText={setAddress}                        
+                        onChangeText={setAddress}
                     />
 
                     <TextInput
-                        className=' w-80 h-12 mb-6 border-0 rounded-md px-3 bg-white'
+                        style={styles.textInputs}
                         placeholder="Correo electrónico"
                         value={email}
                         onChangeText={setEmail}
@@ -90,15 +90,19 @@ export default function SignUp() {
                         autoCapitalize="none"
                     />
                     <TextInput
-                        className=' w-80 h-12 mb-6 border-0 rounded-md px-3 bg-white'
+                        style={styles.textInputs}
                         placeholder="Contraseña"
                         value={password}
                         onChangeText={setPassword}
                         secureTextEntry
                     />
 
-                    <TouchableOpacity className=' bg-gray-300 rounded-md ' >
-                        <Text className=' w-80 h-12 text-center align-middle font-bold text-gray-600 py-3' onPress={handleLogin}>Registrate</Text>
+                    <TouchableOpacity style={styles.btnLogin} >
+                        <Text style={styles.btnText} onPress={handleLogin}>Registrate</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity>
+                        <Text style={styles.volverText} onPress={() => navigation.navigate('Slider')}>Volver</Text>
                     </TouchableOpacity>
 
                 </View>
@@ -107,6 +111,60 @@ export default function SignUp() {
     );
 };
 
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingHorizontal: 36,
+        //paddingVertical: 90,        
+        backgroundColor: '#FF2D00'
+    },
+
+    subContainer: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',        
+        width: 0,
+        //margin: -10
+    },
+
+    logoGula: {
+        width: 224,
+        height: 128,
+        marginBottom: -50,
+        marginTop: 10
+    },
+
+    textInputs: {
+        width: 320,
+        height: 48,
+        marginBottom: 20,        
+        borderRadius: 5,
+        paddingHorizontal: 12,
+        backgroundColor: 'white'
+    },
+
+    btnLogin: {
+        backgroundColor: '#BDC3C7',
+        borderRadius: 5
+    },
+
+    btnText: {
+        width: 320,
+        height: 48,
+        textAlign: 'center',
+        alignItems: 'center',
+        fontWeight: 'bold',
+        color: '#717D7E',
+        paddingVertical: 12
+    },
+
+    volverText: {
+        marginTop: '30%',
+        marginBottom: '5%',        
+    }
+})
 
 
 

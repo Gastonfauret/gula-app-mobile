@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { View, TextInput, Text, Image, TouchableOpacity, KeyboardAvoidingView, ScrollView, Platform, Keyboard } from 'react-native';
+import { View, TextInput, Text, Image, TouchableOpacity, KeyboardAvoidingView, ScrollView, Platform, Keyboard, StyleSheet } from 'react-native';
 
-export default function Login() {
+export default function Login({navigation}) {
     const [keyboardVisible, setKeyboardVisible] = useState(false);
     const handleKeyboardDidShow = () => setKeyboardVisible(true);
     const handleKeyboardDidHide = () => setKeyboardVisible(false);
@@ -46,13 +46,13 @@ export default function Login() {
                 keyboardShouldPersistTaps="handled"
                 showsVerticalScrollIndicator={false}
             >
-                <View className=' flex-1 justify-center items-center px-10 py-60 bg-red-600 '
+                <View style={styles.container}
                 >
-                    <View className=' flex-1 items-center justify-center bg-red-600 w-0 m--10'>
-                        <Image source={require('../assets/GulaBlanco.png')} className=' w-56 h-32 mb-5' />
+                    <View style={styles.subContainer}>
+                        <Image source={require('../assets/GulaBlanco.png')} style={styles.logoGula} />
                     </View>
                     <TextInput
-                        className=' w-80 h-12 mb-6 border-0 rounded-md px-3 bg-white'
+                        style={styles.textInputs}
                         placeholder="Correo electrónico"
                         value={email}
                         onChangeText={setEmail}
@@ -60,15 +60,19 @@ export default function Login() {
                         autoCapitalize="none"
                     />
                     <TextInput
-                        className=' w-80 h-12 mb-6 border-0 rounded-md px-3 bg-white'
+                        style={styles.textInputs}
                         placeholder="Contraseña"
                         value={password}
                         onChangeText={setPassword}
                         secureTextEntry
                     />
 
-                    <TouchableOpacity className=' bg-gray-300 rounded-md ' >
-                        <Text className=' w-80 h-12 text-center align-middle font-bold text-gray-600 py-3' onPress={handleLogin}>Inicia Sesion</Text>
+                    <TouchableOpacity style={styles.btnLogin}>
+                        <Text style={styles.btnText} onPress={handleLogin}>Inicia Sesion</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity>
+                        <Text style={styles.volverText} onPress={() => navigation.navigate('Slider')}>Volver</Text>
                     </TouchableOpacity>
 
                 </View>
@@ -77,6 +81,63 @@ export default function Login() {
     );
 };
 
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingLeft: 36,
+        paddingRight: 36,
+        
+        backgroundColor: 'red'
+    },
+
+    subContainer: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundcolor: 'red',
+        width: 0,
+        margin: -10
+    },
+
+    logoGula: {
+        width: 224,
+        height: 128,
+        marginBottom: -160
+    },
+
+    textInputs: {
+        width: 320,
+        height: 48,
+        marginBottom: 24,        
+        borderRadius: 5,
+        paddingLeft: 12,
+        paddingRight: 12,
+        backgroundColor: 'white'
+    },
+
+    btnLogin: {
+        backgroundColor: '#BDC3C7',
+        borderRadius: 5
+    },
+
+    btnText: {
+        width: 320,
+        height: 48,
+        textAlign: 'center',
+        alignItems: 'center',
+        fontWeight: 'bold',
+        color: '#717D7E',
+        paddingTop: 12,
+        paddingBottom: 12
+    },
+
+    volverText: {
+        marginTop: '80%',
+        marginBottom: '10%'
+    }
+})
 
 
 
