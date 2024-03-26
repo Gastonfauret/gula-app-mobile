@@ -1,9 +1,12 @@
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import Swiper from 'react-native-swiper';
+import { useNavigation } from '@react-navigation/native';
 
-export default function Slider({ navigation }) {
-    return (
-        
+export default function Slider() {   
+
+    const navigation = useNavigation();
+
+    return (        
             <Swiper >
                 <View style={styles.container}>
                     <Image

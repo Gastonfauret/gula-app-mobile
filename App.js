@@ -15,37 +15,36 @@ export default function App() {
     const cargarComponente = async () => {
       await new Promise(resolve => setTimeout(resolve, 3000));
       setComponenteCargado(true);
-    };    
+    };
     cargarComponente();
   }, []);
 
   return (
-    <View style={styles.container}>
-      {componenteCargado ? (
-        <NavigationContainer>          
+    <NavigationContainer style={styles.container} >
+      {
+        componenteCargado ? (
           <Stack.Navigator initialRouteName="Slider">
-            <Stack.Screen name="Slider" component={Slider} />
-            <Stack.Screen name="Login" component={Login} />
-            <Stack.Screen name="SignUp" component={SignUp} />
+            <Stack.Screen name="Slider" options={{ headerShown: false }} component={Slider} />
+            <Stack.Screen name="Login" options={{ headerShown: false }} component={Login} />
+            <Stack.Screen name="SignUp" options={{ headerShown: false }} component={SignUp} />
           </Stack.Navigator>
-        </NavigationContainer>
-      ) : (
-        <View style={styles.container}>
-          <Image source={require('./assets/Gula Loading.gif')} style={styles.logoBlanco} />
-        </View>
-      )}
-    </View>
-  );
-}
+        ) : (
+          <View style={styles.container}>
+            <Image source={require('./assets/Gula Loading.gif')} style={styles.logoBlanco} />
+          </View>
+        )
+      }
+    </NavigationContainer>
+  );}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  logoBlanco: {
-    width: 265,
-    height: 151
-  }
-});
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    logoBlanco: {
+      width: 265,
+      height: 151
+    }
+  });
