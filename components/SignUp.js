@@ -21,7 +21,7 @@ export default function SignUp({navigation}) {
             keyboardDidShowListener.remove();
             keyboardDidHideListener.remove();
         };
-    }, []);
+    }, []);    
 
     const handleLogin = () => {
         // Aquí puedes implementar la lógica para el inicio de sesión, como enviar los datos a un servidor
@@ -117,7 +117,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         paddingHorizontal: 36,
-        //paddingVertical: 90,        
         backgroundColor: '#FF2D00'
     },
 
@@ -125,8 +124,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',        
-        width: 0,
-        //margin: -10
+        width: 0,        
     },
 
     logoGula: {
