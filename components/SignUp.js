@@ -24,6 +24,8 @@ export default function SignUp({navigation}) {
     }, []);    
 
     const handleLogin = () => {
+
+        
         // Aquí puedes implementar la lógica para el inicio de sesión, como enviar los datos a un servidor
 
         // Por ejemplo:

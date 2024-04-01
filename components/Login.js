@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, TextInput, Text, Image, TouchableOpacity, KeyboardAvoidingView, ScrollView, Platform, Keyboard, StyleSheet } from 'react-native';
 
-export default function Login({navigation}) {
+export default function Login({ navigation }) {
     const [keyboardVisible, setKeyboardVisible] = useState(false);
     const handleKeyboardDidShow = () => setKeyboardVisible(true);
     const handleKeyboardDidHide = () => setKeyboardVisible(false);
@@ -20,6 +20,12 @@ export default function Login({navigation}) {
     }, []);
 
     const handleLogin = () => {
+        if (email != 'calo@gula.com' || password != 'calo1234') {
+            alert('Email y/o contraseña incorrecta')
+            return;
+        } else (
+            navigation.navigate('Home')
+        )
         // Aquí puedes implementar la lógica para el inicio de sesión, como enviar los datos a un servidor
 
         // Por ejemplo:
@@ -59,13 +65,14 @@ export default function Login({navigation}) {
                         keyboardType="email-address"
                         autoCapitalize="none"
                     />
+                    
                     <TextInput
                         style={styles.textInputs}
                         placeholder="Contraseña"
                         value={password}
                         onChangeText={setPassword}
                         secureTextEntry
-                    />
+                    />                    
 
                     <TouchableOpacity style={styles.btnLogin}>
                         <Text style={styles.btnText} onPress={handleLogin}>Inicia Sesion</Text>
@@ -88,7 +95,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         paddingLeft: 36,
         paddingRight: 36,
-        
         backgroundColor: 'red'
     },
 
@@ -110,16 +116,17 @@ const styles = StyleSheet.create({
     textInputs: {
         width: 320,
         height: 48,
-        marginBottom: 24,        
         borderRadius: 5,
         paddingLeft: 12,
         paddingRight: 12,
-        backgroundColor: 'white'
+        backgroundColor: 'white',
+        marginVertical: '3%'
     },
 
     btnLogin: {
         backgroundColor: '#BDC3C7',
-        borderRadius: 5
+        borderRadius: 5,
+        marginVertical: '3%'
     },
 
     btnText: {
@@ -131,6 +138,15 @@ const styles = StyleSheet.create({
         color: '#717D7E',
         paddingTop: 12,
         paddingBottom: 12
+    },
+
+    errorText: {
+        marginVertical: '3%',
+        width: '93%',
+        fontSize: 12,
+        fontWeight: 'bold',
+        color: '#17202A',
+
     },
 
     volverText: {
