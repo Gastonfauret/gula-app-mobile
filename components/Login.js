@@ -44,7 +44,7 @@ export default function Login({ navigation }) {
 
     return (
         <KeyboardAvoidingView
-            behavior={Platform.OS === 'ios' ? 'padding' : null}
+            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
             style={{ flex: 1 }}
         >
             <ScrollView
@@ -81,7 +81,6 @@ export default function Login({ navigation }) {
                     <TouchableOpacity>
                         <Text style={styles.volverText} onPress={() => navigation.navigate('Slider')}>Volver</Text>
                     </TouchableOpacity>
-
                 </View>
             </ScrollView>
         </KeyboardAvoidingView >
@@ -93,25 +92,24 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        paddingLeft: 36,
-        paddingRight: 36,
-        backgroundColor: 'red'
+        paddingHorizontal: 36,
+        paddingVertical:  20,
+        backgroundColor: 'red'        
     },
 
     subContainer: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundcolor: 'red',
-        width: 0,
-        margin: -10
+        backgroundcolor: 'red',        
     },
 
     logoGula: {
         width: 224,
         height: 128,
-        marginBottom: -160
+        marginBottom: '-50%'     
     },
+    
 
     textInputs: {
         width: 320,
@@ -138,20 +136,11 @@ const styles = StyleSheet.create({
         color: '#717D7E',
         paddingTop: 12,
         paddingBottom: 12
-    },
-
-    errorText: {
-        marginVertical: '3%',
-        width: '93%',
-        fontSize: 12,
-        fontWeight: 'bold',
-        color: '#17202A',
-
-    },
+    },   
 
     volverText: {
-        marginTop: '80%',
-        marginBottom: '10%'
+        marginTop: '1%',  
+        marginBottom: '70%'     
     }
 })
 
