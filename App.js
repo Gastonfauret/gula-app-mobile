@@ -20,7 +20,7 @@ export default function App() {
     cargarComponente();
   }, []);
 
-  return (
+  return (    
     <NavigationContainer style={styles.container} >
       {componenteCargado ? (
         <Stack.Navigator initialRouteName="Slider">
