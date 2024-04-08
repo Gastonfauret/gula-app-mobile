@@ -2,7 +2,7 @@ import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import Swiper from 'react-native-swiper';
 import { useNavigation } from '@react-navigation/native';
 
-export default function Slider() {
+export default function MainSlider() {
 
     const navigation = useNavigation();
 

@@ -1,13 +1,17 @@
-import React, { useState, useEffect, lazy, Suspense } from 'react';
+import React, { useState, useEffect, lazy, Suspense, Text } from 'react';
 import { View, Image, StyleSheet } from 'react-native';
-import Slider from './components/Slider';
+//import MainSlider from './components/MainSlider.js';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
-import Home from './components/Home';
+import Home from './components/Home/Home';
+import Loading from './components/Loading';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import MainSlider from './components/MainSlider';
 
 const Stack = createStackNavigator();
+
+//const lazySlider = lazy(() => import('./components/MainSlider.js'));
 
 export default function App() {
   const [componenteCargado, setComponenteCargado] = useState(false);
@@ -20,22 +24,26 @@ export default function App() {
     cargarComponente();
   }, []);
 
-  return (    
-    <NavigationContainer style={styles.container} >
-      {componenteCargado ? (
-        <Stack.Navigator initialRouteName="Slider">
-          <Stack.Screen name="Slider" options={{ headerShown: false }} component={Slider} />
-          <Stack.Screen name="Login" options={{ headerShown: false }} component={Login} />
-          <Stack.Screen name="SignUp" options={{ headerShown: false }} component={SignUp} />
-          <Stack.Screen name="Home" options={{ headerShown: false }} component={Home} />
-        </Stack.Navigator>
-      ) : (
-        <View style={styles.container}>
-          <Image source={require('./assets/Gula Loading.gif')} style={styles.logoBlanco} />
-        </View>
-      )
-      }
+
+  return (
+    //<Suspense fallback={<Loading />}>
+    <NavigationContainer style={styles.container} >      
+        {componenteCargado ? (
+          <Stack.Navigator initialRouteName="MainSlider">
+            <Stack.Screen name="MainSlider" options={{ headerShown: false }} component={MainSlider} />
+            <Stack.Screen name="Login" options={{ headerShown: false }} component={Login} />
+            <Stack.Screen name="SignUp" options={{ headerShown: false }} component={SignUp} />
+            <Stack.Screen name="Home" options={{ headerShown: false }} component={Home} />
+          </Stack.Navigator>
+        ) : (
+          <View style={styles.container}>
+            <Image source={require('./assets/Gula Loading.gif')} style={styles.logoBlanco} />
+          </View>
+        )
+        }
+      
     </NavigationContainer>
+    //</Suspense>
   );
 }
 

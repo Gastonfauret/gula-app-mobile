@@ -20,12 +20,12 @@ export default function Login({ navigation }) {
     }, []);
 
     const handleLogin = () => {
-        if (email != 'calo@gula.com' || password != 'calo1234') {
-            alert('Email y/o contraseña incorrecta')
-            return;
-        } else (
+        // if (email != 'calo@gula.com' || password != 'calo1234') {
+        //     alert('Email y/o contraseña incorrecta')
+        //     return;
+        // } else (
             navigation.navigate('Home')
-        )
+        //)
         // Aquí puedes implementar la lógica para el inicio de sesión, como enviar los datos a un servidor
 
         // Por ejemplo:
