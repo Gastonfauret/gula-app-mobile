@@ -60,7 +60,9 @@ export default function MainSlider() {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
+        alignContent: 'center',
+        justifyContent: 'center'
     },
 
     sliderImg: {
@@ -93,9 +95,9 @@ const styles = StyleSheet.create({
         ...StyleSheet.absoluteFillObject,
         justifyContent: 'center',
         alignItems: 'center',
-        flexDirection: 'row',
-        gap: 50,
-        marginTop: 650
+        flexDirection: 'colum',
+        gap: 20,
+        marginTop: 400
     },
 
     btnSlider: {
@@ -103,8 +105,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         borderRadius: 5,
         backgroundColor: '#F5F5F5',
-        width: 144,
-        height: 56
+        width: 300,
+        height: 50,
+        borderRadius: 30
     },
 
     textContainer: {
