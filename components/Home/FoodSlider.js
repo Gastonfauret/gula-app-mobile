@@ -42,8 +42,7 @@ export default function HomeFoodSlider() {
                 </View>
                 <View style={styles.menuItemCenter} >
                     <Icon3 name="food-croissant" size={30} color="#17202A" />
-                </View>
-                
+                </View>                
             </ScrollView>
         </View>
     )

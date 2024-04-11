@@ -8,6 +8,10 @@ import Loading from './components/Loading';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import MainSlider from './components/MainSlider';
+import SelectingFood from './components/Home/SelectingFood';
+import Orders from './components/Home/Orders';
+import Profile from './components/Home/Profile';
+
 
 const Stack = createStackNavigator();
 
@@ -34,6 +38,9 @@ export default function App() {
             <Stack.Screen name="Login" options={{ headerShown: false }} component={Login} />
             <Stack.Screen name="SignUp" options={{ headerShown: false }} component={SignUp} />
             <Stack.Screen name="Home" options={{ headerShown: false }} component={Home} />
+            <Stack.Screen name="SelectingFood" options={{ headerShown: false }} component={SelectingFood} />
+            <Stack.Screen name="Orders" options={{ headerShown: false }} component={Orders} />
+            <Stack.Screen name="Profile" options={{ headerShown: false }} component={Profile} />
           </Stack.Navigator>
         ) : (
           <View style={styles.container}>

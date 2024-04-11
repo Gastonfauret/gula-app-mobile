@@ -1,23 +1,41 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icon2 from 'react-native-vector-icons/FontAwesome5';
+import { useNavigation } from '@react-navigation/native';
 
 export default function FloatingMenu() {
+
+    const navigation = useNavigation();
+
     return (
         <View style={styles.menuContainer}>
             <View style={styles.menuItemLeft} >
-                <Icon name="home" size={30} color="#E74C3C" />
+                <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+                    <Icon name="home" size={30} color="#E74C3C" />
+                </TouchableOpacity>
             </View>
+
+
             <View style={styles.menuItemCenter} >
-                <Icon2 name="hamburger" size={30} color="#E74C3C" />
+                <TouchableOpacity onPress={() => navigation.navigate('SelectingFood')}>
+                    <Icon2 name="hamburger" size={30} color="#E74C3C" />
+                </TouchableOpacity>
             </View>
+
+
             <View style={styles.menuItemCenter} >
-                <Icon name="list-alt" size={30} color="#E74C3C" />
+                <TouchableOpacity onPress={() => navigation.navigate('Orders')}>
+                    <Icon name="list-alt" size={30} color="#E74C3C" />
+                </TouchableOpacity>
             </View>
+
             <View style={styles.menuItemRight} >
-                <Icon name="user" size={30} color="#E74C3C" />
+                <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+                    <Icon name="user" size={30} color="#E74C3C" />
+                </TouchableOpacity>
             </View>
+
         </View>
     )
 }
@@ -27,11 +45,11 @@ const styles = StyleSheet.create({
         width: '96%',
         height: '12%',
         alignItems: 'center',
-        justifyContent: 'center',        
+        justifyContent: 'center',
         marginTop: '1%',
         flexDirection: 'row',
         gap: 4
-    },    
+    },
 
     menuContainer: {
         position: 'absolute',
@@ -46,7 +64,7 @@ const styles = StyleSheet.create({
 
     menuItemCenter: {
         width: 60,
-        height: 60,        
+        height: 60,
         borderWidth: 3,
         borderColor: '#707B7C',
         alignItems: 'center',
@@ -56,7 +74,7 @@ const styles = StyleSheet.create({
 
     menuItemLeft: {
         width: '25%',
-        height: 50,        
+        height: 50,
         borderBottomLeftRadius: 10,
         borderTopLeftRadius: 10,
         borderWidth: 1,

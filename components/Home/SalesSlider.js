@@ -1,18 +1,21 @@
 import React from 'react'
-import { Text, View, StyleSheet, Image } from 'react-native'
+import { Text, View, StyleSheet, Image, ScrollView } from 'react-native'
 
 export default function SalesSlider() {
   return (
     <View style={styles.container}>
-      <View style={styles.imageContainer}>
-        <Image source={require('../../assets/Logo CD.png')} style={styles.logoCD} />
-      </View>
-      <View style={styles.textContainer}>
-        <Text style={styles.textCD}>Todos los Sabados de Abril</Text>
-        <Text style={styles.textCD}>10% Descuento.</Text>
-        <Text style={styles.textCD}>$2000 Tope de Reintegro</Text>
-      </View>
-    </View>
+      <ScrollView horizontal showsHorizontalScrollIndicator={false}>        
+          <View style={styles.imageContainer}>
+            <Image source={require('../../assets/Logo CD.png')} style={styles.logoCD} />
+          </View>
+
+          <View style={styles.textContainer}>
+            <Text style={styles.textCD}>Todos los Sabados de Abril</Text>
+            <Text style={styles.textCD}>10% Descuento.</Text>
+            <Text style={styles.textCD}>$2000 Tope de Reintegro</Text>
+          </View>       
+      </ScrollView>
+    </View >
   )
 }
 
@@ -24,9 +27,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#2ECC71',
     borderRadius: 5,
-    marginTop: '2%',
-    flexDirection: 'row',    
-  }, 
+    marginTop: '2%'    
+  },  
 
   logoCD: {
     height: '100%',
