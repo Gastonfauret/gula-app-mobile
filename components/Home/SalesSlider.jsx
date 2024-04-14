@@ -19,9 +19,9 @@ export default function SalesSlider() {
             resizeMode="cover"
           />
           <View style={styles.textContainer}>
-            <Text style={styles.subtitle}>Descripción corta 1</Text>
-            <Text style={styles.subtitle}>Descripción corta 2</Text>
-            <Text style={styles.subtitle}>Descripción corta 3</Text>
+            <Text style={styles.subtitleCD}>Jueves y viernes de Abril</Text>
+            <Text style={styles.subtitleCD}>20% de Descuento</Text>
+            <Text style={styles.subtitleCD}>$2000 Tope de Reintegro</Text>
           </View>
         </View>
 
@@ -32,22 +32,22 @@ export default function SalesSlider() {
             resizeMode="cover"
           />
           <View style={styles.textContainer}>
-            <Text style={styles.subtitle}>Descripción corta 1</Text>
-            <Text style={styles.subtitle}>Descripción corta 2</Text>
-            <Text style={styles.subtitle}>Descripción corta 3</Text>
+            <Text style={styles.subtitleMD}>Sabados y Domingos</Text>
+            <Text style={styles.subtitleMD}>10% de Descuento</Text>
+            <Text style={styles.subtitleMD}>En Combos seleccionados</Text>
           </View>
         </View>
 
         <View style={styles.slidePP}>
           <Image
             source={require('../../assets/Logo PP.png')}
-            style={styles.image}
+            style={styles.imagePP}
             resizeMode="cover"
           />
           <View style={styles.textContainer}>
-            <Text style={styles.subtitle}>Descripción corta 1</Text>
-            <Text style={styles.subtitle}>Descripción corta 2</Text>
-            <Text style={styles.subtitle}>Descripción corta 3</Text>
+            <Text style={styles.subtitlePP}>Miercoles y Jueves</Text>
+            <Text style={styles.subtitlePP}>15% de Reintegro</Text>
+            <Text style={styles.subtitlePP}>$1500 Tope Reintegro</Text>
           </View>
         </View>
       </Swiper>
@@ -75,7 +75,9 @@ const styles = StyleSheet.create({
     height: '100%',
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#82E0AA'    
+    backgroundColor: '#279D2E',
+    paddingHorizontal: '16%',
+    gap: '1%'
   },
 
   slideMD: {
@@ -83,7 +85,8 @@ const styles = StyleSheet.create({
     height: '100%',
     flexDirection: 'row',
     alignItems: 'center',  
-    backgroundColor: '#A9CCE3'  
+    backgroundColor: '#008859',
+    paddingHorizontal: '9%' 
   },
 
   slidePP: {
@@ -91,22 +94,41 @@ const styles = StyleSheet.create({
     height: '100%',
     flexDirection: 'row',
     alignItems: 'center',    
-    backgroundColor: '#BB8FCE',
-    paddingHorizontal: 'auto'
+    backgroundColor: '#5a50f9',
+    paddingHorizontal: '10%'
   },
   
   image: {
-    width: '50%',
-    height: '100%',
+    // width: '50%',
+    // height: '100%',
+  },
+
+  imagePP: {
+    //width: '50%',
+    //height: '100%'    
   },
 
   textContainer: {
     flex: 1,
     justifyContent: 'center',
     paddingLeft: 10,
+  },  
+
+  subtitleCD: {
+    fontSize: 12,
+    textAlign: 'center',
+    color: 'white'     
   },
 
-  subtitle: {
-    fontSize: 14,
+  subtitleMD: {
+    fontSize: 11,
+    textAlign: 'center',
+    color: 'white'    
+  },
+
+  subtitlePP: {
+    fontSize: 12,
+    textAlign: 'center',
+    color: 'white'  
   },
 });
