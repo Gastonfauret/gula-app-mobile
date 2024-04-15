@@ -60,8 +60,7 @@ export default function SalesSlider() {
 const styles = StyleSheet.create({
   container: {
     width: '96%',
-    height: '12%',
-    //backgroundColor: 'green',
+    height: '12%',    
     marginTop: '3%',
     borderRadius: 5
   },
@@ -76,8 +75,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#279D2E',
-    paddingHorizontal: '16%',
-    gap: '1%'
+    paddingHorizontal: '9%',    
   },
 
   slideMD: {
@@ -98,16 +96,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: '10%'
   },
   
-  image: {
-    // width: '50%',
-    // height: '100%',
-  },
-
-  imagePP: {
-    //width: '50%',
-    //height: '100%'    
-  },
-
   textContainer: {
     flex: 1,
     justifyContent: 'center',
