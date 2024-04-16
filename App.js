@@ -1,17 +1,9 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { View, Image, StyleSheet, ActivityIndicator } from 'react-native';
-//import MainSlider from './components/MainSlider.js';
-import Login from './components/Login';
-import SignUp from './components/SignUp';
-import Home from './components/Home/Home';
-import Loading from './components/Loading';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import MainSlider from './components/MainSlider';
-import SelectingFood from './components/Home/SelectingFood';
-import Orders from './components/Home/Orders';
-import Profile from './components/Home/Profile';
-
+import Login from './components/Login.js';
+import SignUp from './components/SignUp.js';
 
 const Stack = createStackNavigator();
 
@@ -21,7 +13,7 @@ const LazyRegister = lazy(() => import('./components/SignUp.js'));
 const LazyHome = lazy(() => import('./components/Home/Home'));
 const LazySelectingFood = lazy(() => import('./components/Home/SelectingFood'));
 const LazyOrders = lazy(() => import('./components/Home/Orders'));
-const LazyProfile = lazy(() => import('./components/Home/Profile'));
+const LazyProfile = lazy(() => import('./components/Profile/Profile.jsx'));
 
 function LoadingScreen() {
   return (
@@ -35,22 +27,6 @@ function MainSliderStack() {
   return (
     <Suspense fallback={<LoadingScreen />}>
       <LazySlider />
-    </Suspense>
-  );
-}
-
-function LoginStack() {
-  return (
-    <Suspense fallback={<LoadingScreen />}>
-      <LazyLogin />
-    </Suspense>
-  );
-}
-
-function RegisterStack() {
-  return (
-    <Suspense fallback={<LoadingScreen />}>
-      <LazyRegister />
     </Suspense>
   );
 }
@@ -100,28 +76,25 @@ export default function App() {
   }, []);
 
 
-  return (
-    <Suspense fallback={<Loading />}>
+  return (    
     <NavigationContainer style={styles.container} >      
         {componenteCargado ? (
           <Stack.Navigator initialRouteName="MainSlider">
             <Stack.Screen name="MainSlider" options={{ headerShown: false }} component={MainSliderStack} />
-            <Stack.Screen name="Login" options={{ headerShown: false }} component={LoginStack} />
-            <Stack.Screen name="SignUp" options={{ headerShown: false }} component={RegisterStack} />
+            <Stack.Screen name="Login" options={{ headerShown: false }} component={Login} />
+            <Stack.Screen name="SignUp" options={{ headerShown: false }} component={SignUp} />
             <Stack.Screen name="Home" options={{ headerShown: false }} component={HomeStack} />
             <Stack.Screen name="SelectingFood" options={{ headerShown: false }} component={SelectingFoodStack} />
             <Stack.Screen name="Orders" options={{ headerShown: false }} component={OrdersStack} />
             <Stack.Screen name="Profile" options={{ headerShown: false }} component={ProfileStack} />
           </Stack.Navigator>
         ) : (
-          <View style={styles.container}>
+          <View style={styles.container}>            
             <Image source={require('./assets/Gula Loading.gif')} style={styles.logoBlanco} />
           </View>
         )
-        }
-      
-    </NavigationContainer>
-    </Suspense>
+        }      
+    </NavigationContainer>    
   );
 }
 
