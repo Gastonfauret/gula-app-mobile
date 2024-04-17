@@ -10,7 +10,7 @@ export default function MainSlider() {
         <Swiper >
             <View style={styles.container}>
                 <Image
-                    source={require('../assets/fries.jpg')}
+                    source={require('../assets/Webp Img/fries.webp')}
                     style={styles.sliderImg}
                 />
 
@@ -21,7 +21,7 @@ export default function MainSlider() {
 
             <View style={styles.container}>
                 <Image
-                    source={require('../assets/soda.jpg')}
+                    source={require('../assets/Webp Img/soda.webp')}
                     style={styles.sliderImg}
                 />
                 <View style={styles.overlay}>
@@ -31,7 +31,7 @@ export default function MainSlider() {
 
             <View style={styles.container}>
                 <Image
-                    source={require('../assets/burger.jpg')}
+                    source={require('../assets/Webp Img/burger.webp')}
                     style={styles.sliderImg}
                 />
 
