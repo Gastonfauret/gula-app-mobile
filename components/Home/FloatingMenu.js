@@ -60,6 +60,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         paddingHorizontal: 10,
         gap: 1,
+        zIndex: 999        
     },
 
     menuItemCenter: {
@@ -70,6 +71,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 50
+        
     },
 
     menuItemLeft: {
@@ -80,13 +82,14 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#707B7C',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        backgroundColor: 'white'
     },
 
     menuItemCenter: {
         width: '25%',
         height: 50,
-        //backgroundColor: '#EAEDED',
+        backgroundColor: 'white',
         borderWidth: 1,
         borderColor: '#707B7C',
         alignItems: 'center',
@@ -96,15 +99,13 @@ const styles = StyleSheet.create({
     menuItemRight: {
         width: '25%',
         height: 50,
-        //backgroundColor: '#EAEDED',
+        backgroundColor: 'white',
         borderTopRightRadius: 10,
         borderBottomRightRadius: 10,
         borderWidth: 1,
         borderColor: '#707B7C',
         alignItems: 'center',
         justifyContent: 'center'
-
     },
-
 })
 

@@ -10,7 +10,7 @@ import Header from './Header';
 import SalePlaces from './SalePlaces';
 import Camorra from './Camorra';
 import FoodPlaces from './FoodPlaces';
-
+import SalesByPlaces from './SalesByPlaces';
 
 export default function Home() {
 
@@ -20,12 +20,13 @@ export default function Home() {
         <View style={styles.container}>
 
             <Header />
+            <FloatingMenu />
             <Slider />
             <FoodSlider />
-            <SalePlaces/>
-            <FloatingMenu />
+            <SalePlaces/>            
             <Camorra/>
             <FoodPlaces/>
+            <SalesByPlaces/>
 
             {/* <TouchableOpacity>
                 <Text style={styles.volverText} onPress={() => navigation.navigate('Slider')}>Volver</Text>
@@ -49,8 +50,7 @@ const styles = StyleSheet.create({
         marginTop: '10%',
         borderRadius: 5,
         borderWidth: 1,
-        borderColor: '#D5DBDB',
-        //backgroundColor: 'red'
+        borderColor: '#D5DBDB'
     },
 
     volverText: {
