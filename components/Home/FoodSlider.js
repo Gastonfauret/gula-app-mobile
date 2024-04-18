@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, View, StyleSheet, ScrollView } from 'react-native'
+import {View, StyleSheet, ScrollView } from 'react-native'
 import Icon2 from 'react-native-vector-icons/FontAwesome5';
 import Icon3 from 'react-native-vector-icons/MaterialCommunityIcons';
 

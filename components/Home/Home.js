@@ -7,6 +7,9 @@ import Slider from './SalesSlider';
 import FoodSlider from './FoodSlider';
 import FloatingMenu from './FloatingMenu';
 import Header from './Header';
+import SalePlaces from './SalePlaces';
+import Camorra from './Camorra';
+import FoodPlaces from './FoodPlaces';
 
 
 export default function Home() {
@@ -19,7 +22,10 @@ export default function Home() {
             <Header />
             <Slider />
             <FoodSlider />
+            <SalePlaces/>
             <FloatingMenu />
+            <Camorra/>
+            <FoodPlaces/>
 
             {/* <TouchableOpacity>
                 <Text style={styles.volverText} onPress={() => navigation.navigate('Slider')}>Volver</Text>
