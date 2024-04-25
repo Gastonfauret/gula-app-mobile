@@ -10,27 +10,26 @@ export default function FloatingMenu() {
 
     return (
         <View style={styles.menuContainer}>
-            <View style={styles.menuItemLeft} >
+            <View style={styles.menuItem} >
                 <TouchableOpacity onPress={() => navigation.navigate('Home')}>
                     <Icon name="home" size={30} color="#E74C3C" />
                 </TouchableOpacity>
             </View>
 
-
-            <View style={styles.menuItemCenter} >
+            <View style={styles.menuItem} >
                 <TouchableOpacity onPress={() => navigation.navigate('SelectingFood')}>
                     <Icon2 name="hamburger" size={30} color="#E74C3C" />
                 </TouchableOpacity>
             </View>
 
 
-            <View style={styles.menuItemCenter} >
+            <View style={styles.menuItem} >
                 <TouchableOpacity onPress={() => navigation.navigate('Orders')}>
                     <Icon name="list-alt" size={30} color="#E74C3C" />
                 </TouchableOpacity>
             </View>
 
-            <View style={styles.menuItemRight} >
+            <View style={styles.menuItem} >
                 <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
                     <Icon name="user" size={30} color="#E74C3C" />
                 </TouchableOpacity>
@@ -41,71 +40,25 @@ export default function FloatingMenu() {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        width: '96%',
-        height: '12%',
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginTop: '1%',
-        flexDirection: 'row',
-        gap: 4
-    },
-
     menuContainer: {
         position: 'absolute',
-        bottom: 40,
+        bottom: 0,
         left: 0,
         right: 0,
         flexDirection: 'row',
-        justifyContent: 'center',
-        paddingHorizontal: 10,
+        justifyContent: 'center',        
         gap: 1,
-        zIndex: 999        
+        zIndex: 999,
+        backgroundColor: 'white'       
     },
 
-    menuItemCenter: {
-        width: 60,
-        height: 60,
-        borderWidth: 3,
-        borderColor: '#707B7C',
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderRadius: 50
-        
-    },
-
-    menuItemLeft: {
+    menuItem: {
         width: '25%',
         height: 50,
-        borderBottomLeftRadius: 10,
-        borderTopLeftRadius: 10,
         borderWidth: 1,
         borderColor: '#707B7C',
         alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: 'white'
-    },
-
-    menuItemCenter: {
-        width: '25%',
-        height: 50,
-        backgroundColor: 'white',
-        borderWidth: 1,
-        borderColor: '#707B7C',
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-
-    menuItemRight: {
-        width: '25%',
-        height: 50,
-        backgroundColor: 'white',
-        borderTopRightRadius: 10,
-        borderBottomRightRadius: 10,
-        borderWidth: 1,
-        borderColor: '#707B7C',
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
+        justifyContent: 'center',        
+    }    
 })
 
