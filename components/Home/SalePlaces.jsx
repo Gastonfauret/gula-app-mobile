@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     akpizzas: {
         width: '31%',
         height: '90%',
-        backgroundColor: '#E5E7E9',
+        backgroundColor: '#A6ACAF',
         marginHorizontal: '1%',
         borderRadius: 5,
         alignItems: 'center',
@@ -95,14 +95,15 @@ const styles = StyleSheet.create({
     },
 
     akpizzasLogo: {
-        width: '65%',
-        height: '65%',
+        width: '77%',
+        height: '77%',
         resizeMode: 'contain',
-        marginVertical: '-10%'       
+        marginVertical: '-13%'       
     },
 
     akpizzasText:{
         fontSize: 11,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color: 'white'
     }
 })
