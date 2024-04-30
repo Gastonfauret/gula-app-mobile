@@ -55,14 +55,12 @@ export default function SalesSlider() {
   );
 };
 
-
-//const { width, height } = Dimensions.get('window');
 const styles = StyleSheet.create({
   container: {
     width: '96%',
     height: '12%',    
-    marginTop: '3%',
-    borderRadius: 5
+    marginTop: '3%' ,
+    borderRadius: 5  
   },
 
   wrapper: {
@@ -75,7 +73,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#279D2E',
-    paddingHorizontal: '9%',    
+    paddingHorizontal: '9%',   
+    borderRadius: 5 
   },
 
   slideMD: {
@@ -84,7 +83,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',  
     backgroundColor: '#008859',
-    paddingHorizontal: '9%' 
+    paddingHorizontal: '9%',
+    borderRadius: 5
   },
 
   slidePP: {
@@ -93,7 +93,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',    
     backgroundColor: '#5a50f9',
-    paddingHorizontal: '10%'
+    paddingHorizontal: '10%',
+    borderRadius: 5
   },
   
   textContainer: {

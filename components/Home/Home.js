@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
 import { View, StyleSheet, FlatList } from 'react-native'
-//import { useNavigation } from '@react-navigation/native';
-//import Logorojo from '../assets/Logo Gula Rojo.png'
 
 import Slider from './SalesSlider';
 import FoodSlider from './FoodSlider';
@@ -11,42 +9,36 @@ import SalePlaces from './SalePlaces';
 import Camorra from './Camorra';
 import FoodPlaces from './FoodPlaces';
 import WeeklyMenus from './WeeklyMenus';
+import SalesSlider from './SalesSlider';
 
-export default function Home() {
+export default function Home() {    
 
-    //const navigation = useNavigation();    
-
-    // const [data, setData] = useState([
-    //     { component: <Header key="Header" /> },
-    //     { component: <FloatingMenu key="FloatingMenu" /> },
-    //     { component: <Slider key="Slider" /> },
-    //     { component: <FoodSlider key="FoodSlider" /> },
-    //     { component: <SalePlaces key="SalePlaces" /> },
-    //     { component: <Camorra key="Camorra" /> },
-    //     { component: <FoodPlaces key="FoodPlaces" /> },
-    //     { component: <WeeklyMenus key="WeeklyMenus" /> }
-    // ])
+    const [data, setData] = useState([
+        <Header/>,
+        <SalesSlider/>,        
+        <FoodSlider  />,
+        <SalePlaces  />,
+        <Camorra  />,
+        <FoodPlaces  />,
+        <WeeklyMenus  />,
+        <FloatingMenu />,
+    ])
 
     return (
         <View style={styles.container}>
-            {/* <FlatList
-                data={data}
-                renderItem={({ item }) =>  item.component}
-                keyExtractor={(item, index) => index.toString()}               
-            /> */}
+        {/* //     <FlatList
+        //         data={data}
+        //         renderItem={({ item, index }) =>  item}                              
+        //     /> */}
 
             <Header />
             <FloatingMenu />
             <Slider />
             <FoodSlider />
-            {/* <SalePlaces />
+            <SalePlaces />
             <Camorra />
-            <FoodPlaces /> */}
-            <WeeklyMenus />
-
-            {/* <TouchableOpacity>
-                <Text style={styles.volverText} onPress={() => navigation.navigate('Slider')}>Volver</Text>
-            </TouchableOpacity> */}
+            <FoodPlaces />
+            <WeeklyMenus />          
         </View>
     )
 }
@@ -56,21 +48,5 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'start',
-    },
-
-    // subcontainer: {
-    //     justifyContent: 'center',
-    //     alignItems: 'center',
-    //     width: '96%',
-    //     height: '10%',
-    //     marginTop: '10%',
-    //     borderRadius: 5,
-    //     borderWidth: 1,
-    //     borderColor: '#D5DBDB'
-    // },
-
-    // volverText: {
-    //     marginTop: '80%',
-    //     marginBottom: '10%'
-    // }
+    }   
 })

@@ -55,8 +55,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         marginTop: '1%',
-        flexDirection: 'row',
-        
+        flexDirection: 'row'       
     },
 
     menuItemCenter: {

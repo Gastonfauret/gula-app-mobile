@@ -1,4 +1,4 @@
-import React, { useState }  from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icon2 from 'react-native-vector-icons/FontAwesome5';
@@ -10,36 +10,46 @@ export default function FloatingMenu() {
 
     const [pendingOrders, setPendingOrders] = useState(1);
 
+    const [activeButton, setActiveButton] = useState('Home');
+
     // Función para simular la confirmación de un pedido
     const confirmOrder = () => {
         setPendingOrders(prevCount => prevCount - 1);
     };
 
+    useEffect(() => {
+        navigation.navigate(activeButton);
+    }, [activeButton, navigation]);
+
+    const setActive = (buttonName) => {
+        setActiveButton(buttonName);
+    };
 
     return (
         <View style={styles.menuContainer}>
+
             <View style={styles.menuItem} >
-                <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-                    <Icon name="home" size={30} color="#E74C3C" />
+                <TouchableOpacity onPress={() => setActive('Home')}>
+                    <Icon name="home" style={[styles.icon, activeButton === 'Home' && styles.activeIcon]} />
                 </TouchableOpacity>
             </View>
 
             <View style={styles.menuItem} >
-                <TouchableOpacity onPress={() => navigation.navigate('SelectingFood')}>
-                    <Icon2 name="hamburger" size={30} color="#E74C3C" />
+                <TouchableOpacity onPress={() => setActive('SelectingFood')}>
+                    <Icon2 name="hamburger" style={[styles.icon, activeButton === 'SelectingFood' && styles.activeIcon]} />
                 </TouchableOpacity>
             </View>
 
 
             <View style={styles.menuItem} >
-                <TouchableOpacity onPress={() => navigation.navigate('Orders')}>
-                    <Icon name="list-alt" size={30} color="#E74C3C" />
+                <TouchableOpacity onPress={() => setActive('Orders')}>
+                    <Icon name="list-alt" style={[styles.icon, activeButton === 'Orders' && styles.activeIcon]} />
                 </TouchableOpacity>
             </View>
 
             <View style={styles.menuItem} >
-                <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
-                    <Icon name="user" size={30} color="#E74C3C" />
+                <TouchableOpacity onPress={() => setActive('Profile')}>
+                    <Icon name="user" style={[styles.icon, activeButton === 'Profile' && styles.activeIcon]} />
                 </TouchableOpacity>
                 <View style={styles.nroOrder}>
                     <Text style={styles.nroOrderText}>{pendingOrders}</Text>
@@ -72,6 +82,15 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
 
+    icon: {
+        color: "#BDC3C7",
+        fontSize: 30
+    },
+
+    activeIcon: {
+        color: "red",
+    },
+
     nroOrder: {
         position: 'absolute',
         width: '100%',
@@ -87,4 +106,3 @@ const styles = StyleSheet.create({
         fontSize: 15,
     }
 })
-
