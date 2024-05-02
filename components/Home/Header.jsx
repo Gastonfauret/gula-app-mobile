@@ -14,11 +14,12 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         width: '96%',
-        height: '10%',
+        height: '9%',
         marginTop: '10%',
         borderRadius: 5,
         borderWidth: 1,
-        borderColor: '#D5DBDB',        
+        borderColor: '#D5DBDB', 
+        marginHorizontal: '2%'      
     },
 
     logorojo: {

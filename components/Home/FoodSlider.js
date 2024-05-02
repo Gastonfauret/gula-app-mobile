@@ -51,11 +51,11 @@ export default function HomeFoodSlider() {
 const styles = StyleSheet.create({
     container: {
         width: '96%',
-        height: '12%',
+        height: '10%',
         alignItems: 'center',
-        justifyContent: 'center',
-        marginTop: '1%',
-        flexDirection: 'row'       
+        justifyContent: 'center',        
+        flexDirection: 'row',
+        marginTop: '-100%',              
     },
 
     menuItemCenter: {

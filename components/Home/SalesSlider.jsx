@@ -6,8 +6,7 @@ export default function SalesSlider() {
   return (
 
     <View style={styles.container}>
-      <Swiper
-        style={styles.wrapper}
+      <Swiper        
         autoplay={true}
         autoplayTimeout={5} // Cambia de slide cada 5 segundos
         showsPagination={false} // Oculta los puntos de indicación de los slides
@@ -57,29 +56,27 @@ export default function SalesSlider() {
 
 const styles = StyleSheet.create({
   container: {
-    width: '96%',
-    height: '12%',    
+    width: '100%',
+    height: '53%',      
     marginTop: '3%' ,
-    borderRadius: 5  
-  },
-
-  wrapper: {
-    height: '100%',
+    borderRadius: 5,    
+    paddingHorizontal: '2%'
   },
 
   slideCD: {
     width: '100%',
-    height: '100%',
+    height: '12%',
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#279D2E',
-    paddingHorizontal: '9%',   
+    paddingHorizontal: '9%',
+    marginHorizontal: '',   
     borderRadius: 5 
   },
 
   slideMD: {
     width: '100%',
-    height: '100%',
+    height: '12%',
     flexDirection: 'row',
     alignItems: 'center',  
     backgroundColor: '#008859',
@@ -89,7 +86,7 @@ const styles = StyleSheet.create({
 
   slidePP: {
     width: '100%',
-    height: '100%',
+    height: '12%',
     flexDirection: 'row',
     alignItems: 'center',    
     backgroundColor: '#5a50f9',

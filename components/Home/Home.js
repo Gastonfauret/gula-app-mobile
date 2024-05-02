@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { View, StyleSheet, FlatList } from 'react-native'
+import { View, StyleSheet, FlatList, ScrollView } from 'react-native'
 
-import Slider from './SalesSlider';
+import SalesSlider from './SalesSlider';
 import FoodSlider from './FoodSlider';
 import FloatingMenu from './FloatingMenu';
 import Header from './Header';
@@ -9,36 +9,21 @@ import SalePlaces from './SalePlaces';
 import Camorra from './Camorra';
 import FoodPlaces from './FoodPlaces';
 import WeeklyMenus from './WeeklyMenus';
-import SalesSlider from './SalesSlider';
 
-export default function Home() {    
-
-    const [data, setData] = useState([
-        <Header/>,
-        <SalesSlider/>,        
-        <FoodSlider  />,
-        <SalePlaces  />,
-        <Camorra  />,
-        <FoodPlaces  />,
-        <WeeklyMenus  />,
-        <FloatingMenu />,
-    ])
+export default function Home() {
 
     return (
         <View style={styles.container}>
-        {/* //     <FlatList
-        //         data={data}
-        //         renderItem={({ item, index }) =>  item}                              
-        //     /> */}
-
-            <Header />
+            <ScrollView contentContainerStyle={styles.scrollViewContent}>
+                <Header />
+                <SalesSlider />
+                <FoodSlider />
+                <SalePlaces />
+                <Camorra />
+                <FoodPlaces />
+                <WeeklyMenus />
+            </ScrollView>
             <FloatingMenu />
-            <Slider />
-            <FoodSlider />
-            <SalePlaces />
-            <Camorra />
-            <FoodPlaces />
-            <WeeklyMenus />          
         </View>
     )
 }
@@ -47,6 +32,11 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'start',
-    }   
+        justifyContent: 'start'
+    },
+
+    scrollViewContent: {
+        flexGrow: 1, // Permite que el ScrollView se expanda dinámicamente
+        paddingBottom: 150, // Ajusta el espacio inferior para el menú flotante
+    }
 })

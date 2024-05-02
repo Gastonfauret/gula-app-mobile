@@ -6,7 +6,6 @@ export default function WeeklyMenus() {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Menús Semanales</Text>
-
             <View style={styles.placesContainer}>
                 <View style={styles.places}></View>
                 <View style={styles.places}></View>
@@ -24,7 +23,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         width: '100%',
         height: '35%',       
-        backgroundColor: 'red'
+        backgroundColor: 'red',        
     },
 
     title: {

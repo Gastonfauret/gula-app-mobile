@@ -62,7 +62,7 @@ export default function FloatingMenu() {
 
 const styles = StyleSheet.create({
     menuContainer: {
-        position: 'absolute',
+        position: 'absolute',        
         bottom: 0,
         left: 0,
         right: 0,
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         gap: 1,
         zIndex: 999,
-        backgroundColor: 'white'
+        backgroundColor: 'white',        
     },
 
     menuItem: {
