@@ -17,38 +17,38 @@ export default function FloatingMenu() {
         setPendingOrders(prevCount => prevCount - 1);
     };
 
-    useEffect(() => {
-        navigation.navigate(activeButton);
-    }, [activeButton, navigation]);
+    // useEffect(() => {
+    //     navigation.navigate(activeButton);
+    // }, [activeButton, navigation]);
 
-    const setActive = (buttonName) => {
-        setActiveButton(buttonName);
-    };
+    // const setActive = (buttonName) => {
+    //     setActiveButton(buttonName);
+    // };
 
     return (
         <View style={styles.menuContainer}>
 
             <View style={styles.menuItem} >
-                <TouchableOpacity onPress={() => setActive('Home')}>
+                <TouchableOpacity onPress={() => navigation.navigate('Home')}>
                     <Icon name="home" style={[styles.icon, activeButton === 'Home' && styles.activeIcon]} />
                 </TouchableOpacity>
             </View>
 
             <View style={styles.menuItem} >
-                <TouchableOpacity onPress={() => setActive('SelectingFood')}>
+                <TouchableOpacity onPress={() => navigation.navigate('SelectingFood')}>
                     <Icon2 name="hamburger" style={[styles.icon, activeButton === 'SelectingFood' && styles.activeIcon]} />
                 </TouchableOpacity>
             </View>
 
 
             <View style={styles.menuItem} >
-                <TouchableOpacity onPress={() => setActive('Orders')}>
+                <TouchableOpacity onPress={() => navigation.navigate('Orders')}>
                     <Icon name="list-alt" style={[styles.icon, activeButton === 'Orders' && styles.activeIcon]} />
                 </TouchableOpacity>
             </View>
 
             <View style={styles.menuItem} >
-                <TouchableOpacity onPress={() => setActive('Profile')}>
+                <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
                     <Icon name="user" style={[styles.icon, activeButton === 'Profile' && styles.activeIcon]} />
                 </TouchableOpacity>
                 <View style={styles.nroOrder}>

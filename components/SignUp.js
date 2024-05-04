@@ -1,31 +1,16 @@
 import React, { useState } from 'react';
-import { View, TextInput, Text, Image, TouchableOpacity, KeyboardAvoidingView, ScrollView, Platform, Keyboard, StyleSheet } from 'react-native';
+import { View, TextInput, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 
-export default function SignUp({navigation}) {
-    const [keyboardVisible, setKeyboardVisible] = useState(false);
-    const handleKeyboardDidShow = () => setKeyboardVisible(true);
-    const handleKeyboardDidHide = () => setKeyboardVisible(false);
+export default function SignUp({ navigation }) {
 
     const [name, setName] = useState('');
-    const [lastName, setlastName] = useState('');
-    const [id, setId] = useState('');
-    const [address, setAddress] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
-    React.useEffect(() => {
-        const keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', handleKeyboardDidShow);
-        const keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', handleKeyboardDidHide);
-
-        return () => {
-            keyboardDidShowListener.remove();
-            keyboardDidHideListener.remove();
-        };
-    }, []);    
+    const [city, setCity] = useState('');
+    const [birth, setBirth] = useState('');
 
     const handleLogin = () => {
 
-        
         // Aquí puedes implementar la lógica para el inicio de sesión, como enviar los datos a un servidor
 
         // Por ejemplo:
@@ -42,50 +27,24 @@ export default function SignUp({navigation}) {
         //   });
     };
 
-    return (
-        <KeyboardAvoidingView
-            behavior={Platform.OS === 'ios' ? 'padding' : null}
-            style={{ flex: 1 }}
-        >
-            <ScrollView
-                contentContainerStyle={{ flexGrow: 1 }}
-                keyboardShouldPersistTaps="handled"
-                showsVerticalScrollIndicator={false}
+    return (        
+            <View style={styles.container}
             >
-                <View style={styles.container}
-                >
-                    <View style={styles.subContainer}>
-                        <Image source={require('../assets/GulaBlanco.png')} style={styles.logoGula} />
-                    </View>
+                <View style={styles.subContainer}>
+                    <Image source={require('../assets/GulaBlanco.png')} style={styles.logoGula} />
+                </View>
 
+                <View style={styles.inputsContainer}>
                     <TextInput
                         style={styles.textInputs}
-                        placeholder="Nombre"
+                        placeholder="Nombre Completo"
                         value={name}
                         onChangeText={setName}
                     />
-                    <TextInput
-                        style={styles.textInputs}
-                        placeholder="Apellido"
-                        value={lastName}
-                        onChangeText={setlastName}
-                    />
-                    <TextInput
-                        style={styles.textInputs}
-                        placeholder="Documento"
-                        value={id}
-                        onChangeText={setId}
-                    />
-                    <TextInput
-                        style={styles.textInputs}
-                        placeholder="Direccion"
-                        value={address}
-                        onChangeText={setAddress}
-                    />
 
                     <TextInput
                         style={styles.textInputs}
-                        placeholder="Correo electrónico"
+                        placeholder="Email"
                         value={email}
                         onChangeText={setEmail}
                         keyboardType="email-address"
@@ -99,17 +58,40 @@ export default function SignUp({navigation}) {
                         secureTextEntry
                     />
 
+                    <TextInput
+                        style={styles.textInputs}
+                        placeholder="Confirmar contraseña"
+                        value={password}
+                        onChangeText={setPassword}
+                        secureTextEntry
+                    />
+
+                    <TextInput
+                        style={styles.textInputs}
+                        placeholder="Localidad"
+                        value={city}
+                        onChangeText={setCity}
+                    />
+
+                    <TextInput
+                        style={styles.textInputs}
+                        placeholder="dd/mm/aaaa"
+                        value={birth}
+                        onChangeText={setBirth}
+                    />
+
                     <TouchableOpacity style={styles.btnLogin} >
                         <Text style={styles.btnText} onPress={handleLogin}>Registrate</Text>
                     </TouchableOpacity>
+                </View>
 
+                <View style={styles.backBtnContainer}>
                     <TouchableOpacity>
                         <Text style={styles.volverText} onPress={() => navigation.navigate('Slider')}>Volver</Text>
                     </TouchableOpacity>
-
                 </View>
-            </ScrollView>
-        </KeyboardAvoidingView >
+
+            </View>       
     );
 };
 
@@ -118,30 +100,33 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        paddingHorizontal: 36,
-        backgroundColor: '#FF2D00'
+        backgroundColor: '#FF2D00',
+        gap: 10
     },
 
     subContainer: {
-        flex: 1,
         alignItems: 'center',
-        justifyContent: 'center',        
-        width: 0,        
+        width: '70%',
+        height: '20%',
+        justifyContent: 'center',
     },
 
     logoGula: {
         width: 224,
-        height: 128,
-        marginBottom: -50,
-        marginTop: 10
+        height: 128
+    },
+
+    inputsContainer: {
+        alignItems: 'center',
+        width: '100%',
+        gap: 20
     },
 
     textInputs: {
         width: 320,
         height: 48,
-        marginBottom: 20,        
-        borderRadius: 5,
-        paddingHorizontal: 12,
+        textAlign: 'center',
+        borderRadius: 1,
         backgroundColor: 'white'
     },
 
@@ -160,9 +145,15 @@ const styles = StyleSheet.create({
         paddingVertical: 12
     },
 
-    volverText: {
-        marginTop: '30%',
-        marginBottom: '5%',        
+    backBtnContainer: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        right: 0,
+        width: '100%',
+        height: '7%'
     }
 })
 

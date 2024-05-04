@@ -57,10 +57,10 @@ export default function SalesSlider() {
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    height: '53%',      
+    height: '8%',      
     marginTop: '3%' ,
     borderRadius: 5,    
-    paddingHorizontal: '2%'
+    paddingHorizontal: '2%',    
   },
 
   slideCD: {
@@ -69,8 +69,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#279D2E',
-    paddingHorizontal: '9%',
-    marginHorizontal: '',   
+    paddingHorizontal: '9%',    
     borderRadius: 5 
   },
 

@@ -37,6 +37,6 @@ const styles = StyleSheet.create({
 
     scrollViewContent: {
         flexGrow: 1, // Permite que el ScrollView se expanda dinámicamente
-        paddingBottom: 150, // Ajusta el espacio inferior para el menú flotante
+        //paddingBottom: 150, // Ajusta el espacio inferior para el menú flotante
     }
 })
