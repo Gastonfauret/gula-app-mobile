@@ -57,7 +57,7 @@ export default function SalesSlider() {
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    height: '8%',      
+    height: '4.8%',      
     marginTop: '3%' ,
     borderRadius: 5,    
     paddingHorizontal: '2%',    

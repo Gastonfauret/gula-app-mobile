@@ -2,14 +2,14 @@ import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { View, Image, StyleSheet, ActivityIndicator } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import Login from './components/Login.js';
-import SignUp from './components/SignUp.js';
+import Login from './components/Login.jsx';
+import SignUp from './components/SignUp.jsx';
 
 const Stack = createStackNavigator();
 
-const LazySlider = lazy(() => import('./components/MainSlider.js'));
-const LazyLogin = lazy(() => import('./components/Login.js'));
-const LazyRegister = lazy(() => import('./components/SignUp.js'));
+const LazySlider = lazy(() => import('./components/MainSlider.jsx'));
+const LazyLogin = lazy(() => import('./components/Login.jsx'));
+const LazyRegister = lazy(() => import('./components/SignUp.jsx'));
 const LazyHome = lazy(() => import('./components/Home/Home'));
 const LazySelectingFood = lazy(() => import('./components/Home/SelectingFood'));
 const LazyOrders = lazy(() => import('./components/Home/Orders'));

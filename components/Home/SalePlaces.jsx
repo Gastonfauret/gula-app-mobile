@@ -5,20 +5,14 @@ export default function SalePlaces() {
     return (
         <View style={styles.salePlacesContainer}>
             <View style={styles.jooks} >
-                <Text style={styles.jooksText2x1}>2x1 en Ipa</Text>
-                <Image source={require('../../assets/jooks.png')} style={styles.jooksLogo} />                
-                <Text style={styles.jooksText}>Viernes de Abril</Text>
+                <Image source={require('../../assets/Banner Jooks.png')} style={styles.bannerPlace} />
             </View>
 
             <View style={styles.paperia} >
-                <Text style={styles.paperiaText}>Papas c/Cheddar</Text>
-                <Image source={require('../../assets/paperia.png')} style={styles.paperiaLogo} /> 
-                <Text style={styles.paperiaText}>Todos los Sabados</Text>                
+                <Image source={require('../../assets/Banner Paperia.png')} style={styles.bannerPlace} />
             </View>
             <View style={styles.akpizzas} >
-                <Text style={styles.akpizzasText}>Pizzas p/ freezar</Text>
-                <Image source={require('../../assets/akpizzas.png')} style={styles.akpizzasLogo} />
-                <Text style={styles.akpizzasText}>Todos los Jueves</Text>                
+                <Image source={require('../../assets/Banner Aka Pizzas.png')} style={styles.bannerPlace} />
             </View>
         </View>
     )
@@ -28,82 +22,43 @@ export default function SalePlaces() {
 const styles = StyleSheet.create({
     salePlacesContainer: {
         width: '100%',
-        height: '15%',
+        height: '12%',
         alignItems: 'center',
         justifyContent: 'center',
-        flexDirection: 'row'
+        flexDirection: 'row',        
+        backgroundColor: '#E5E7E9'        
+    },
+
+    bannerPlace: {
+        resizeMode: 'contain',
+        width: '100%',
+        height: '86%', 
+        borderRadius: 10      
     },
 
     jooks: {
-        width: '31%',
-        height: '90%',
-        backgroundColor: 'black',
-        marginHorizontal: '1%',
-        borderRadius: 5,
+        width: '31.5%',
+        height: '100%',
+        marginHorizontal: '1%',        
         alignItems: 'center',
-        justifyContent: 'center'
-    },
-
-    jooksLogo: {
-        resizeMode: 'contain',
-        width: '60%'
-    },
-
-    jooksText2x1: {
-        color: 'white',
-        fontSize: 15,
-        fontWeight: 'bold'
-    },
-
-    jooksText: {
-        color: 'white',
-        fontSize: 8,
-        fontWeight: 'bold'
-    },
+        justifyContent: 'center'             
+    },  
 
     paperia: {
-        width: '31%',
-        height: '90%',
-        backgroundColor: '#F4D03F',
-        marginHorizontal: '1%',
-        borderRadius: 5,
+        width: '31.5%',
+        height: '100%',        
+        marginHorizontal: '1%',        
         alignItems: 'center',
-        justifyContent: 'center',
-        gap: 3
-    },
-
-    paperiaLogo:{
-        width: '50%',
-        height: '50%',
-        resizeMode: 'contain'
-    },
-
-    paperiaText: {
-        color: 'white',
-        fontSize: 10,
-        fontWeight: 'bold'
-    },
+        justifyContent: 'center',        
+    },  
 
     akpizzas: {
-        width: '31%',
-        height: '90%',
-        backgroundColor: '#A6ACAF',
+        width: '31.5%',
+        height: '100%',
         marginHorizontal: '1%',
         borderRadius: 5,
         alignItems: 'center',
         justifyContent: 'center',
+        //backgroundColor: 'black'
     },
-
-    akpizzasLogo: {
-        width: '77%',
-        height: '77%',
-        resizeMode: 'contain',
-        marginVertical: '-13%'       
-    },
-
-    akpizzasText:{
-        fontSize: 11,
-        fontWeight: 'bold',
-        color: 'white'
-    }
 })

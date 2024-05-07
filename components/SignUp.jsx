@@ -76,7 +76,7 @@ export default function SignUp({ navigation }) {
                     <TextInput
                         style={styles.textInputs}
                         placeholder="dd/mm/aaaa"
-                        value={birth}
+                        value={birth}                        
                         onChangeText={setBirth}
                     />
 

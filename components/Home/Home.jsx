@@ -30,10 +30,11 @@ export default function Home() {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        //flex: 1,
         alignItems: 'center',
-        justifyContent: 'start'
-    },
+        justifyContent: 'start',
+        //backgroundColor: 'pink',
+        },
 
     scrollViewContent: {
         flexGrow: 1, // Permite que el ScrollView se expanda dinámicamente
