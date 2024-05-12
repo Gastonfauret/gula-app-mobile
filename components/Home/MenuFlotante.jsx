@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Icon2 from 'react-native-vector-icons/FontAwesome5';
 import { useNavigation } from '@react-navigation/native';
 
-export default function FloatingMenu() {
+export default function MenuFlotante() {
 
     const navigation = useNavigation();
 

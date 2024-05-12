@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
 import { View, StyleSheet, FlatList, ScrollView } from 'react-native'
 
-import SalesSlider from './SalesSlider';
-import FoodSlider from './FoodSlider';
-import FloatingMenu from './FloatingMenu';
+import SalesSlider from './BannerTarjetas';
+import FoodSlider from './SliderComidas';
+import FloatingMenu from './MenuFlotante';
 import Header from './Header';
-import SalePlaces from './SalePlaces';
-import Camorra from './Camorra';
-import FoodPlaces from './FoodPlaces';
-import WeeklyMenus from './WeeklyMenus';
+import SalePlaces from './BannerOfertas';
+import Camorra from './BannerCamorra';
+import FoodPlaces from './SliderLugares';
+import WeeklyMenus from './MenusSemanales';
 
-export default function Home() {
+export default function PaginaHome() {
 
     return (
         <View style={styles.container}>
@@ -21,7 +21,7 @@ export default function Home() {
                 <SalePlaces />
                 <Camorra />
                 <FoodPlaces />
-                <WeeklyMenus />
+                {/* <WeeklyMenus /> */}
             </ScrollView>
             <FloatingMenu />
         </View>

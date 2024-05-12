@@ -2,7 +2,7 @@ import React from 'react'
 import { View, StyleSheet, Text, Image } from 'react-native'
 
 
-export default function WeeklyMenus() {
+export default function MenusSemanales() {
     return (
         <View style={styles.container}>
 
@@ -49,9 +49,9 @@ const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
         width: '100%',
-        height: 690,
-        backgroundColor: 'red',
-        marginBottom: '-165%'                     
+        height: 700,
+        backgroundColor: 'pink',
+        //marginBottom: '-500%'                           
     },
 
     title: {        

@@ -3,7 +3,7 @@ import {View, StyleSheet, ScrollView } from 'react-native'
 import Icon2 from 'react-native-vector-icons/FontAwesome5';
 import Icon3 from 'react-native-vector-icons/MaterialCommunityIcons';
 
-export default function HomeFoodSlider() {
+export default function SliderComidas() {
     return (
         <View style={styles.container}>
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>

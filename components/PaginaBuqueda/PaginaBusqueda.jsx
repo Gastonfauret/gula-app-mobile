@@ -1,10 +1,10 @@
 import React from 'react'
 import { View, StyleSheet, TextInput } from 'react-native';
-import FloatingMenu from './FloatingMenu';
-import Header from './Header';
+import FloatingMenu from '../Home/MenuFlotante';
+import Header from '../Home/Header';
 import { useState } from 'react';
 
-export default function SelectingFood() {
+export default function PaginaBusqueda() {
     const [searchQuery, setSearchQuery] = useState('');
 
     const handleSearch = () => {

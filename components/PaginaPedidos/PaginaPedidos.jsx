@@ -1,9 +1,9 @@
 import React from 'react'
 import {Text, StyleSheet, View } from 'react-native';
-import FloatingMenu from './FloatingMenu';
-import Header from './Header';
+import FloatingMenu from '../Home/MenuFlotante';
+import Header from '../Home/Header';
 
-export default function Orders() {
+export default function PaginaPedidos() {
     return (
         <>
         <View style={styles.container}>

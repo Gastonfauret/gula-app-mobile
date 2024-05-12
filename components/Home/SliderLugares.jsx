@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, StyleSheet, Text, ScrollView, Image } from 'react-native'
 
-export default function FoodPlaces() {
+export default function SliderLugares() {
     return (
         <View style={styles.container}>
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>

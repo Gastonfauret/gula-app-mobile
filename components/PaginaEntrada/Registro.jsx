@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { View, TextInput, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-export default function SignUp({ navigation }) {
+export default function Registro() {
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -9,7 +10,11 @@ export default function SignUp({ navigation }) {
     const [city, setCity] = useState('');
     const [birth, setBirth] = useState('');
 
+    const navigation = useNavigation();
+
     const handleLogin = () => {
+
+        navigation.navigate('Entrada')
 
         // Aquí puedes implementar la lógica para el inicio de sesión, como enviar los datos a un servidor
 
@@ -31,7 +36,7 @@ export default function SignUp({ navigation }) {
             <View style={styles.container}
             >
                 <View style={styles.subContainer}>
-                    <Image source={require('../assets/GulaBlanco.png')} style={styles.logoGula} />
+                    <Image source={require('../../assets/GulaBlanco.png')} style={styles.logoGula} />
                 </View>
 
                 <View style={styles.inputsContainer}>
@@ -76,7 +81,8 @@ export default function SignUp({ navigation }) {
                     <TextInput
                         style={styles.textInputs}
                         placeholder="dd/mm/aaaa"
-                        value={birth}                        
+                        value={birth}
+                        textContentType='date'                       
                         onChangeText={setBirth}
                     />
 
@@ -87,10 +93,9 @@ export default function SignUp({ navigation }) {
 
                 <View style={styles.backBtnContainer}>
                     <TouchableOpacity>
-                        <Text style={styles.volverText} onPress={() => navigation.navigate('Slider')}>Volver</Text>
+                        <Text style={styles.volverText} onPress={() => navigation.navigate('SliderEntrada')}>Volver</Text>
                     </TouchableOpacity>
                 </View>
-
             </View>       
     );
 };
@@ -101,25 +106,28 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#FF2D00',
-        gap: 10
+        paddingVertical: '15%',        
     },
 
     subContainer: {
         alignItems: 'center',
-        width: '70%',
-        height: '20%',
-        justifyContent: 'center',
+        width: '100%',
+        height: '30%',
+        justifyContent: 'center'     
     },
 
     logoGula: {
-        width: 224,
-        height: 128
+        resizeMode: 'center',
+        width: '60%',
+        height: '60%'       
     },
 
     inputsContainer: {
         alignItems: 'center',
         width: '100%',
-        gap: 20
+        height: '70%',
+        justifyContent: 'flex-start',
+        gap: 20        
     },
 
     textInputs: {
@@ -153,7 +161,7 @@ const styles = StyleSheet.create({
         left: 0,
         right: 0,
         width: '100%',
-        height: '7%'
+        height: '7%',       
     }
 })
 
