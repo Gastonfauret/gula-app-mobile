@@ -1,23 +1,12 @@
 import React, { useState } from 'react';
-import { View, TextInput, Text, Image, TouchableOpacity, KeyboardAvoidingView, ScrollView, Platform, Keyboard, StyleSheet } from 'react-native';
+import { View, TextInput, Text, Image, TouchableOpacity, KeyboardAvoidingView, ScrollView, Platform, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-export default function Login({ navigation }) {
-    const [keyboardVisible, setKeyboardVisible] = useState(false);
-    const handleKeyboardDidShow = () => setKeyboardVisible(true);
-    const handleKeyboardDidHide = () => setKeyboardVisible(false);
-
+export default function Ingreso() {   
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    React.useEffect(() => {
-        const keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', handleKeyboardDidShow);
-        const keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', handleKeyboardDidHide);
-
-        return () => {
-            keyboardDidShowListener.remove();
-            keyboardDidHideListener.remove();
-        };
-    }, []);
+    const navigation = useNavigation();   
 
     const handleLogin = () => {
         // if (email != 'calo@gula.com' || password != 'calo1234') {
@@ -43,19 +32,11 @@ export default function Login({ navigation }) {
     };
 
     return (
-        <KeyboardAvoidingView
-            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-            style={{ flex: 1 }}
-        >
-            <ScrollView
-                contentContainerStyle={{ flexGrow: 1 }}
-                keyboardShouldPersistTaps="handled"
-                showsVerticalScrollIndicator={false}
-            >
+        
                 <View style={styles.container}
                 >
                     <View style={styles.subContainer}>
-                        <Image source={require('../assets/GulaBlanco.png')} style={styles.logoGula} />
+                        <Image source={require('../../assets/GulaBlanco.png')} style={styles.logoGula} />
                     </View>
                     <TextInput
                         style={styles.textInputs}
@@ -79,11 +60,9 @@ export default function Login({ navigation }) {
                     </TouchableOpacity>
 
                     <TouchableOpacity>
-                        <Text style={styles.volverText} onPress={() => navigation.navigate('Slider')}>Volver</Text>
+                        <Text style={styles.volverText} onPress={() => navigation.navigate('SliderEntrada')}>Volver</Text>
                     </TouchableOpacity>
-                </View>
-            </ScrollView>
-        </KeyboardAvoidingView >
+                </View>        
     );
 };
 

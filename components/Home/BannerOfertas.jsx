@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, StyleSheet, Text, Image } from 'react-native'
 
-export default function SalePlaces() {
+export default function BannerOfertas() {
     return (
         <View style={styles.salePlacesContainer}>
             <View style={styles.jooks} >

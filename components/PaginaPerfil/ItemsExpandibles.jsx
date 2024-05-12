@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableWithoutFeedback, StyleSheet } from 'react-native';
 
-export default function ExpandableItem({ title, content }) {
+export default function ItemsExpandibles({ title, content }) {
     const [isExpanded, setIsExpanded] = useState(false);
 
     const toggleExpansion = () => {

@@ -2,7 +2,7 @@ import React from 'react'
 import Swiper from 'react-native-swiper';
 import { Text, View, StyleSheet, Image } from 'react-native'
 
-export default function SalesSlider() {
+export default function BannerTarjetas() {
   return (
 
     <View style={styles.container}>

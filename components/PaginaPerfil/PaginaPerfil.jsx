@@ -1,13 +1,13 @@
 import React from 'react'
 import { Text, View, StyleSheet, Image } from 'react-native';
-import FloatingMenu from '../Home/FloatingMenu';
+import FloatingMenu from '../Home/MenuFlotante';
 import Header from '../Home/Header';
-import ExpandableItem from './ExpandableItem';
-import ExpandableItemLogOut from './ExpandableItemLogOut';
-import MainSlider from '../MainSlider';
+import ExpandableItem from './ItemsExpandibles';
+import ExpandableItemLogOut from './ItemsExpandiblesSalir';
+import MainSlider from '../PaginaEntrada/SliderEntrada';
 
 
-export default function Profile() {
+export default function PaginaPerfil() {
     return (
         <>
             <View style={styles.container}>

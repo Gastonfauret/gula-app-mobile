@@ -2,7 +2,9 @@ import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import Swiper from 'react-native-swiper';
 import { useNavigation } from '@react-navigation/native';
 
-export default function MainSlider() {
+
+
+export default function SliderEntrada() {
 
     const navigation = useNavigation();
 
@@ -10,7 +12,7 @@ export default function MainSlider() {
         <Swiper >
             <View style={styles.container}>
                 <Image
-                    source={require('../assets/Webp Img/fries.webp')}
+                    source={require('../../assets/Webp Img/fries.webp')}
                     style={styles.sliderImg}
                 />
 
@@ -21,7 +23,7 @@ export default function MainSlider() {
 
             <View style={styles.container}>
                 <Image
-                    source={require('../assets/Webp Img/soda.webp')}
+                    source={require('../../assets/Webp Img/soda.webp')}
                     style={styles.sliderImg}
                 />
                 <View style={styles.overlay}>
@@ -31,27 +33,32 @@ export default function MainSlider() {
 
             <View style={styles.container}>
                 <Image
-                    source={require('../assets/Webp Img/burger.webp')}
+                    source={require('../../assets/Webp Img/burger.webp')}
                     style={styles.sliderImg}
                 />
 
-                <View style={styles.overlay}>
-                    <Text style={styles.sliderText}>Tenes</Text>
-                    <Image
-                        source={require('../assets/GulaBlanco.png')}
-                        style={styles.logoBlanco}
-                    />
+                <View style={styles.TercerSlide}>
+
+                    <View style={styles.textImgContainer}>
+                        <Text style={styles.sliderText}>Tenes</Text>
+                        <Image
+                            source={require('../../assets/GulaBlanco.png')}
+                            style={styles.logoBlanco}
+                        />
+                    </View>
+
+
+                    <View style={styles.bottonContainer}>
+                        <TouchableOpacity style={styles.btnSlider} onPress={() => navigation.navigate('Ingreso')}>
+                            <Text >Ingresa</Text>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity style={styles.btnSlider} onPress={() => navigation.navigate('Registro')}>
+                            <Text>Registrate Gratis</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
 
-                <View style={styles.overlayBtn}>
-                    <TouchableOpacity style={styles.btnSlider} onPress={() => navigation.navigate('Login')}>
-                        <Text >Ingresa</Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity style={styles.btnSlider} onPress={() => navigation.navigate('SignUp')}>
-                        <Text>Registrate Gratis</Text>
-                    </TouchableOpacity>
-                </View>
             </View>
         </Swiper>
 
@@ -86,27 +93,45 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(0, 0, 0, 0.6)'
     },
 
-    logoBlanco: {
-        width: 265,
-        height: 150
+    logoBlanco: {        
+        resizeMode: 'center',
+        width: '90%',
+        height: '40%'        
     },
 
-    overlayBtn: {
+    TercerSlide: {
         ...StyleSheet.absoluteFillObject,
         justifyContent: 'center',
         alignItems: 'center',
+        backgroundColor: 'rgba(0, 0, 0, 0.6)',
+        
+    },
+
+    textImgContainer: {
+        width: '100%',
+        height: '70%',
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingHorizontal: '4%',
+        paddingTop: '20%'
+    },
+
+    bottonContainer: { 
+        width: '100%',
+        height: '15%',           
+        justifyContent: 'center',
+        alignItems: 'center',
         flexDirection: 'colum',
-        gap: 20,
-        marginTop: 400
+        gap: 20,        
     },
 
     btnSlider: {
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 5,
-        backgroundColor: '#F5F5F5',
-        width: 300,
-        height: 50,
+        backgroundColor: '#D5DBDB',
+        width: '90%',
+        height: '40%',
         borderRadius: 30
     },
 

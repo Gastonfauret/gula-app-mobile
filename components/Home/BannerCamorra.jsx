@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, StyleSheet, Image } from 'react-native'
 
-export default function Camorra() {
+export default function BannerCamorra() {
     return (
         <View style={styles.camorraContainer}>             
             <Image source={require('../../assets/Banner Camorra.png')} style={styles.bannerCamorra} />           
