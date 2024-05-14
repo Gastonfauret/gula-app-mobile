@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     height: '4.8%',      
     marginTop: '3%' ,
     borderRadius: 5,    
-    paddingHorizontal: '2%',    
+    paddingHorizontal: '2%',     
   },
 
   slideCD: {

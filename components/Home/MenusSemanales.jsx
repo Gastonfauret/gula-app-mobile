@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, StyleSheet, Text, Image } from 'react-native'
+import { View, StyleSheet, Text, Image, ScrollView } from 'react-native'
 
 
 export default function MenusSemanales() {
@@ -7,88 +7,90 @@ export default function MenusSemanales() {
         <View style={styles.container}>
 
             <Text style={styles.title}>Menús Semanales</Text>
-
-            <View style={styles.placesContainer}>
-
-                <View style={styles.places}>
-                    <Text style={styles.textoLocales}>Martes</Text>
-                    <Image source={require('../../assets/Food/Merluza con Pure.jpg')} style={styles.foodPhotos} />
+            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                <View style={styles.subContainer}>
+                    <Image source={require('../../assets/Food/Merluza con Pure.jpg')} style={styles.fondoLocal} />
+                    <Text style={styles.textoLocales}>Martes {'\n'} Filete de Merluza con Pure {'\n'} Rotiseria Pablo</Text>
                 </View>
 
-                <View style={styles.places}>
-                    <Text style={styles.textoLocales}>Miercoles</Text>
-                    <Image source={require('../../assets/Food/Mila con Fritas.jpg')} style={styles.foodPhotos} />
+                <View style={styles.subContainer}>
+                    <Image source={require('../../assets/Food/Mila con Fritas.jpg')} style={styles.fondoLocal} />
+                    <Text style={styles.textoLocales}>Miercoles {'\n'}Milanesas Napolitana con Papas {'\n'}Lo de Chairo</Text>
                 </View>
-
-                <View style={styles.places}>
-                    <Text style={styles.textoLocales}>Jueves</Text>
-                    <Image source={require('../../assets/Food/Napo con Pure.jpg')} style={styles.foodPhotos} />
+                <View style={styles.subContainer}>
+                    <Image source={require('../../assets/Food/Pizza.jpg')} style={styles.fondoLocal} />
+                    <Text style={styles.textoLocales}>Jueves{'\n'}Pizza Napolitana{'\n'}Aka Pizzas</Text>
                 </View>
-
-                <View style={styles.places}>
-                    <Text style={styles.textoLocales}>Viernes</Text>
-                    <Image source={require('../../assets/Food/Pollo al Verdeo con Papas Esp.jpg')} style={styles.foodPhotos} />
+                <View style={styles.subContainer}>
+                    <Image source={require('../../assets/Food/Pollo al Verdeo con Papas Esp.jpg')} style={styles.fondoLocal} />
+                    <Text style={styles.textoLocales}>Viernes{'\n'}Hamburguesa Completa con Papas {'\n'}Cerveceria Jooks</Text>
                 </View>
-
-                <View style={styles.places}>
-                    <Text style={styles.textoLocales}>Sabado</Text>
-                    <Image source={require('../../assets/Food/Pizza.jpg')} style={styles.foodPhotos} />
+                <View style={styles.subContainer}>
+                    <Image source={require('../../assets/Food/Napo con Pure.jpg')} style={styles.fondoLocal} />
+                    <Text style={styles.textoLocales}>Sabado{'\n'}Papas con Cheddar{'\n'}La Paperia</Text>
                 </View>
-
-                <View style={styles.places}>
-                    <Text style={styles.textoLocales}>Domingo</Text>
-                    <Image source={require('../../assets/Food/Ravioles.jpg')} style={styles.foodPhotos} />
+                <View style={styles.subContainer}>
+                    <Image source={require('../../assets/Food/Ravioles.jpg')} style={styles.fondoLocal} />
+                    <Text style={styles.textoLocales}>Domingo{'\n'}Ravioles de Verdura{'\n'}Sabores al Paso</Text>                    
                 </View>
-
-            </View>
+            </ScrollView>
         </View>
-    )
-}
+            )
+        }        
+
 
 const styles = StyleSheet.create({
     container: {
+        flexDirection: 'column',
         alignItems: 'center',
+        justifyContent: 'center',       
         width: '100%',
-        height: 700,
-        backgroundColor: 'pink',
-        //marginBottom: '-500%'                           
+        height: '15%',
+        marginVertical: '2%',
+        backgroundColor: '#A6ACAF',
+        
     },
 
-    title: {        
-        marginTop: '3%',        
-        color: 'white',
-        fontSize: 18,
-        fontWeight: 'bold'        
-    },
-
-    placesContainer: {
-        paddingTop: '1%',              
-        width: '100%',
-        height: '92%',        
-        flexDirection: 'row',
-        flexWrap: 'wrap',       
-        justifyContent: 'center'               
-    },
-
-    places: {
+    subContainer: {
         alignItems: 'center',
-        width: '45%',
-        height: '21%',        
-        borderRadius: 5,
-        marginHorizontal: '1.5%',
-        marginVertical: '4%'        
+        justifyContent: 'center',
+        width: 170,
+        height: 150,
+        marginHorizontal: 5,
+        backgroundColor: '#d3bcf6',
+        borderRadius: 5
     },
 
-    foodPhotos: {
+    overlay: {
+        ...StyleSheet.absoluteFillObject,
+        backgroundColor: 'rgba(0,0,0,0.9)',
+    },
+
+    fondoLocal: {
         width: '100%',
         height: '100%',
         resizeMode: 'cover',
         borderRadius: 5
     },
 
-    textoLocales: {
+    textoLocales: {               
+        backgroundColor: 'rgba(0,0,0,0.4)',
         color: 'white',
+        fontSize: 14,
         fontWeight: 'bold',
-        marginBottom: 4        
+        position: 'absolute',       
+        borderRadius: 5,
+        width: '100%',
+        height: '100%',
+        alignItems: 'center',
+        justifyContent: 'center',
+        textAlign: 'center',
+        textAlignVertical: 'center'      
+    },
+
+    title: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        marginVertical: '2.5%'        
     }
 })
