@@ -47,8 +47,7 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '15%',
         marginVertical: '2%',
-        backgroundColor: '#A6ACAF',
-        
+        backgroundColor: '#A6ACAF',        
     },
 
     subContainer: {

@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
-import { View, TextInput, Text, Image, TouchableOpacity, KeyboardAvoidingView, ScrollView, Platform, StyleSheet } from 'react-native';
+import { View, TextInput, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-export default function Ingreso() {   
+export default function Ingreso() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const navigation = useNavigation();   
+    const navigation = useNavigation();
 
     const handleLogin = () => {
         // if (email != 'calo@gula.com' || password != 'calo1234') {
         //     alert('Email y/o contraseña incorrecta')
         //     return;
         // } else (
-            navigation.navigate('Home')
+        navigation.navigate('Home')
         //)
         // Aquí puedes implementar la lógica para el inicio de sesión, como enviar los datos a un servidor
 
@@ -33,93 +33,111 @@ export default function Ingreso() {
 
     return (
         
-                <View style={styles.container}
-                >
+
+                <View style={styles.container}>
                     <View style={styles.subContainer}>
                         <Image source={require('../../assets/GulaBlanco.png')} style={styles.logoGula} />
                     </View>
-                    <TextInput
-                        style={styles.textInputs}
-                        placeholder="Correo electrónico"
-                        value={email}
-                        onChangeText={setEmail}
-                        keyboardType="email-address"
-                        autoCapitalize="none"
-                    />
-                    
-                    <TextInput
-                        style={styles.textInputs}
-                        placeholder="Contraseña"
-                        value={password}
-                        onChangeText={setPassword}
-                        secureTextEntry
-                    />                    
 
-                    <TouchableOpacity style={styles.btnLogin}>
-                        <Text style={styles.btnText} onPress={handleLogin}>Inicia Sesion</Text>
-                    </TouchableOpacity>
+                    <View style={styles.inputsContainer}>
 
-                    <TouchableOpacity>
-                        <Text style={styles.volverText} onPress={() => navigation.navigate('SliderEntrada')}>Volver</Text>
-                    </TouchableOpacity>
-                </View>        
-    );
+                        <TextInput
+                            style={styles.textInputs}
+                            placeholder="Correo electrónico"
+                            value={email}
+                            onChangeText={setEmail}
+                            keyboardType="email-address"
+                            autoCapitalize="none"
+                        />
+
+                        <TextInput
+                            style={styles.textInputs}
+                            placeholder="Contraseña"
+                            value={password}
+                            onChangeText={setPassword}
+                            secureTextEntry
+                        />
+
+                        <TouchableOpacity style={styles.btnLogin}>
+                            <Text style={styles.btnText} onPress={handleLogin}>Inicia Sesion</Text>
+                        </TouchableOpacity>
+
+                        <View style={styles.backBtnContainer}>
+                            <TouchableOpacity>
+                                <Text style={styles.volverText} onPress={() => navigation.navigate('SliderEntrada')}>Volver</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </View>
+            
+                );
 };
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        paddingHorizontal: 36,
-        paddingVertical:  20,
-        backgroundColor: 'red'        
+                const styles = StyleSheet.create({
+                    container: {
+                    width: '100%',
+                flex: 1,
+                alignItems: 'center',
+                justifyContent: 'center',
+                paddingHorizontal: 36,
+                paddingVertical: 20,
+                backgroundColor: 'red'
     },
 
-    subContainer: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundcolor: 'red',        
+                subContainer: {
+                    alignItems: 'center',
+                width: '100%',
+                height: '25%',
+                justifyContent: 'center',
+        //backgroundColor: 'black'
     },
 
-    logoGula: {
-        width: 224,
-        height: 128,
-        marginBottom: '-50%'     
-    },
-    
-
-    textInputs: {
-        width: 320,
-        height: 48,
-        borderRadius: 5,
-        paddingLeft: 12,
-        paddingRight: 12,
-        backgroundColor: 'white',
-        marginVertical: '3%'
+                logoGula: {
+                    resizeMode: 'center',
+                width: '75%',
+                height: '75%'
     },
 
-    btnLogin: {
-        backgroundColor: '#BDC3C7',
-        borderRadius: 5,
-        marginVertical: '3%'
+                textInputs: {
+                    width: 320,
+                height: 48,
+                borderRadius: 2,
+                paddingLeft: 12,
+                paddingRight: 12,
+                backgroundColor: 'white',
+                marginVertical: '3%',
     },
 
-    btnText: {
-        width: 320,
-        height: 48,
-        textAlign: 'center',
-        alignItems: 'center',
-        fontWeight: 'bold',
-        color: '#717D7E',
-        paddingTop: 12,
-        paddingBottom: 12
-    },   
+                inputsContainer: {
+                    alignItems: 'center',
+                width: '100%',
+                height: '30%',
+                justifyContent: 'center',
+                gap: 10,
+        //backgroundColor: 'green'
+    },
 
-    volverText: {
-        marginTop: '1%',  
-        marginBottom: '70%'     
+                btnLogin: {
+                    backgroundColor: '#BDC3C7',
+                borderRadius: 5,
+                marginVertical: '3%'
+    },
+
+                btnText: {
+                    width: 320,
+                height: 48,
+                textAlign: 'center',
+                alignItems: 'center',
+                fontWeight: 'bold',
+                color: '#717D7E',
+                paddingVertical: 12
+    },
+
+                backBtnContainer: {
+                    alignItems: 'center',
+                justifyContent: 'center',
+
+                height: '7%',
     }
 })
 

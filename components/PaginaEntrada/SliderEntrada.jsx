@@ -12,42 +12,25 @@ export default function SliderEntrada() {
         <Swiper >
             <View style={styles.container}>
                 <Image
-                    source={require('../../assets/Webp Img/fries.webp')}
+                    source={require('../../assets/Slider Entrada/Pantalla Papas.png')}
                     style={styles.sliderImg}
                 />
-
-                <View style={styles.overlay}>
-                    <Text style={styles.sliderText}>Tenes hambre?</Text>
-                </View>
             </View>
 
             <View style={styles.container}>
                 <Image
-                    source={require('../../assets/Webp Img/soda.webp')}
+                    source={require('../../assets/Slider Entrada/Pantalla Coca.png')}
                     style={styles.sliderImg}
                 />
-                <View style={styles.overlay}>
-                    <Text style={styles.sliderText}>Tenes sed?</Text>
-                </View>
             </View>
 
             <View style={styles.container}>
                 <Image
-                    source={require('../../assets/Webp Img/burger.webp')}
+                    source={require('../../assets/Slider Entrada/Pantalla Hamburguesa.png')}
                     style={styles.sliderImg}
                 />
 
                 <View style={styles.TercerSlide}>
-
-                    <View style={styles.textImgContainer}>
-                        <Text style={styles.sliderText}>Tenes</Text>
-                        <Image
-                            source={require('../../assets/GulaBlanco.png')}
-                            style={styles.logoBlanco}
-                        />
-                    </View>
-
-
                     <View style={styles.bottonContainer}>
                         <TouchableOpacity style={styles.btnSlider} onPress={() => navigation.navigate('Ingreso')}>
                             <Text >Ingresa</Text>
@@ -90,21 +73,19 @@ const styles = StyleSheet.create({
         ...StyleSheet.absoluteFillObject,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'rgba(0, 0, 0, 0.6)'
+        //backgroundColor: 'rgba(0, 0, 0, 0.6)'
     },
 
-    logoBlanco: {        
+    logoBlanco: {
         resizeMode: 'center',
         width: '90%',
-        height: '40%'        
+        height: '40%'
     },
 
     TercerSlide: {
         ...StyleSheet.absoluteFillObject,
         justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'rgba(0, 0, 0, 0.6)',
-        
+        alignItems: 'center'
     },
 
     textImgContainer: {
@@ -116,13 +97,14 @@ const styles = StyleSheet.create({
         paddingTop: '20%'
     },
 
-    bottonContainer: { 
+    bottonContainer: {
         width: '100%',
-        height: '15%',           
+        height: '15%',
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'colum',
         gap: 20,        
+        marginTop: '130%'
     },
 
     btnSlider: {
