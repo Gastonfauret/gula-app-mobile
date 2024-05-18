@@ -3,8 +3,8 @@ import { View, TextInput, Text, Image, TouchableOpacity, StyleSheet, form } from
 import { useNavigation } from '@react-navigation/native';
 import useRegister from '../../hooks/useRegister';
 import useShowHidePassword from '../../hooks/useShowHidePassword';
-import { IoMdEye } from "react-icons/io";
-import { IoMdEyeOff } from "react-icons/io";
+//import { IoMdEye } from "react-icons/io";
+//import { IoMdEyeOff } from "react-icons/io";
 
 export default function Registro() {
 

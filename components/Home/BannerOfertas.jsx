@@ -22,7 +22,7 @@ export default function BannerOfertas() {
 const styles = StyleSheet.create({
     salePlacesContainer: {
         width: '100%',
-        height: '12%',
+        height: 150,
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'row',        
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     jooks: {
         width: '31.5%',
         height: '100%',
-        marginHorizontal: '1%',        
+        marginHorizontal: 3,        
         alignItems: 'center',
         justifyContent: 'center'             
     },  
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     paperia: {
         width: '31.5%',
         height: '100%',        
-        marginHorizontal: '1%',        
+        marginHorizontal: 3,        
         alignItems: 'center',
         justifyContent: 'center',        
     },  
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     akpizzas: {
         width: '31.5%',
         height: '100%',
-        marginHorizontal: '1%',
+        marginHorizontal: 3,
         borderRadius: 5,
         alignItems: 'center',
         justifyContent: 'center',

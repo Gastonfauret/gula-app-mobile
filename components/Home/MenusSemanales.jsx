@@ -10,44 +10,73 @@ export default function MenusSemanales() {
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                 <View style={styles.subContainer}>
                     <Image source={require('../../assets/Food/Merluza con Pure.jpg')} style={styles.fondoLocal} />
-                    <Text style={styles.textoLocales}>Martes {'\n'} Filete de Merluza con Pure {'\n'} Rotiseria Pablo</Text>
+                    <View style={styles.textContainer}>
+                        <Text style={styles.textoDia}>Martes</Text>
+                        <Text style={styles.textoMenu}>Filete de Merluza con Pure</Text>
+                        <Text style={styles.textoLocal}>Rotiseria Pablo</Text>
+                    </View>
                 </View>
 
                 <View style={styles.subContainer}>
                     <Image source={require('../../assets/Food/Mila con Fritas.jpg')} style={styles.fondoLocal} />
-                    <Text style={styles.textoLocales}>Miercoles {'\n'}Milanesas Napolitana con Papas {'\n'}Lo de Chairo</Text>
-                </View>
-                <View style={styles.subContainer}>
-                    <Image source={require('../../assets/Food/Pizza.jpg')} style={styles.fondoLocal} />
-                    <Text style={styles.textoLocales}>Jueves{'\n'}Pizza Napolitana{'\n'}Aka Pizzas</Text>
-                </View>
+                    <View style={styles.textContainer}>
+                        <Text style={styles.textoDia}>Miercoles</Text>
+                        <Text style={styles.textoMenu}>Milanesas con Papas</Text>
+                        <Text style={styles.textoLocal}>Lo de Chairo</Text>
+                    </View>
+                </View>                    
+
                 <View style={styles.subContainer}>
                     <Image source={require('../../assets/Food/Pollo al Verdeo con Papas Esp.jpg')} style={styles.fondoLocal} />
-                    <Text style={styles.textoLocales}>Viernes{'\n'}Hamburguesa Completa con Papas {'\n'}Cerveceria Jooks</Text>
-                </View>
+                    <View style={styles.textContainer}>
+                        <Text style={styles.textoDia}>Jueves</Text>
+                        <Text style={styles.textoMenu}>Pollo al Verdeo con Papas Españolas</Text>
+                        <Text style={styles.textoLocal}>Jooks</Text>
+                    </View>
+                </View>    
+
                 <View style={styles.subContainer}>
                     <Image source={require('../../assets/Food/Napo con Pure.jpg')} style={styles.fondoLocal} />
-                    <Text style={styles.textoLocales}>Sabado{'\n'}Papas con Cheddar{'\n'}La Paperia</Text>
-                </View>
+                    <View style={styles.textContainer}>
+                        <Text style={styles.textoDia}>Viernes</Text>
+                        <Text style={styles.textoMenu}>Milanesa Napolitana con Pure</Text>
+                        <Text style={styles.textoLocal}>La Paperia</Text>
+                    </View>
+                </View>   
+
+                <View style={styles.subContainer}>
+                    <Image source={require('../../assets/Food/Pizza.jpg')} style={styles.fondoLocal} />
+                    <View style={styles.textContainer}>
+                        <Text style={styles.textoDia}>Sabado</Text>
+                        <Text style={styles.textoMenu}>Pizza Napolitana</Text>
+                        <Text style={styles.textoLocal}>Aka Pizzas</Text>
+                    </View>
+                </View>   
+
                 <View style={styles.subContainer}>
                     <Image source={require('../../assets/Food/Ravioles.jpg')} style={styles.fondoLocal} />
-                    <Text style={styles.textoLocales}>Domingo{'\n'}Ravioles de Verdura{'\n'}Sabores al Paso</Text>                    
-                </View>
+                    <View style={styles.textContainer}>
+                        <Text style={styles.textoDia}>Domingo</Text>
+                        <Text style={styles.textoMenu}>Ravioles de Verdura con Salsa a eleccion</Text>
+                        <Text style={styles.textoLocal}>Sabores al Paso</Text>
+                    </View>
+                </View>              
+
             </ScrollView>
         </View>
-            )
-        }        
+    )
+}
 
 
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'center',       
+        justifyContent: 'center',
         width: '100%',
-        height: '15%',
+        height: 260,
         marginVertical: '2%',
-        backgroundColor: '#A6ACAF',        
+        backgroundColor: '#A6ACAF'
     },
 
     subContainer: {
@@ -60,11 +89,6 @@ const styles = StyleSheet.create({
         borderRadius: 5
     },
 
-    overlay: {
-        ...StyleSheet.absoluteFillObject,
-        backgroundColor: 'rgba(0,0,0,0.9)',
-    },
-
     fondoLocal: {
         width: '100%',
         height: '100%',
@@ -72,24 +96,60 @@ const styles = StyleSheet.create({
         borderRadius: 5
     },
 
-    textoLocales: {               
-        backgroundColor: 'rgba(0,0,0,0.4)',
+    textoDia: {
         color: 'white',
-        fontSize: 14,
-        fontWeight: 'bold',
-        position: 'absolute',       
-        borderRadius: 5,
-        width: '100%',
-        height: '100%',
+        fontSize: 10,
+        fontWeight: 'bold',        
         alignItems: 'center',
         justifyContent: 'center',
         textAlign: 'center',
-        textAlignVertical: 'center'      
+        textAlignVertical: 'center'
+    },
+
+    textoMenu: {
+        color: 'white',
+        fontSize: 18,
+        fontWeight: 'bold',        
+        alignItems: 'center',
+        justifyContent: 'center',
+        textAlign: 'center',
+        textAlignVertical: 'center'
+    },
+
+    textoLocal: {
+        color: 'white',
+        fontSize: 12,
+        fontWeight: 'bold',        
+        alignItems: 'center',
+        justifyContent: 'center',
+        textAlign: 'center',
+        textAlignVertical: 'center'
+    },
+
+    textContainer: {
+        position: 'absolute',
+        width: '100%',
+        height: '100%',
+        textAlign: 'center',
+        justifyContent: 'center',
+        backgroundColor: 'rgba(0,0,0,0.4)',
+        borderRadius: 5,
+        gap: 8
+    },
+
+    textoLocales: {        
+        color: 'white',
+        fontSize: 14,
+        fontWeight: 'bold',        
+        alignItems: 'center',
+        justifyContent: 'center',
+        textAlign: 'center',
+        textAlignVertical: 'center'
     },
 
     title: {
         fontSize: 16,
         fontWeight: 'bold',
-        marginVertical: '2.5%'        
+        marginVertical: '2.5%'
     }
 })

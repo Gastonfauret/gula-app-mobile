@@ -51,11 +51,10 @@ export default function SliderComidas() {
 const styles = StyleSheet.create({
     container: {
         width: '96%',
-        height: '7%',
+        height: 100,
         alignItems: 'center',
         justifyContent: 'center',        
-        flexDirection: 'row',        
-        marginTop: '10%'
+        flexDirection: 'row'       
     },
 
     menuItemCenter: {

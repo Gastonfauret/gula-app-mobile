@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         width: '100%',
         height: 150,
-        marginVertical: '2%'
+        marginVertical: 5
     },
 
     subContainer: {

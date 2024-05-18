@@ -14,16 +14,16 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         width: '96%',
-        height: '7%',
-        marginTop: '10%',
+        height: 90,
+        marginTop: 30,
         borderRadius: 5,
         borderWidth: 1,
         borderColor: '#D5DBDB', 
-        marginHorizontal: '2%'      
+        marginHorizontal: 7      
     },
 
     logorojo: {
-        width: 100,
-        height: 57,
+        resizeMode: 'center',        
+        height: 60,
     },
 })

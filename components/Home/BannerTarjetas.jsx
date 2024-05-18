@@ -57,39 +57,39 @@ export default function BannerTarjetas() {
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    height: '4.8%',      
-    marginTop: '3%' ,
+    height: 100,      
+    marginTop: 10 ,
     borderRadius: 5,    
-    paddingHorizontal: '2%',     
+    paddingHorizontal: 8,        
   },
 
   slideCD: {
     width: '100%',
-    height: '12%',
+    height: 100,
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#279D2E',
-    paddingHorizontal: '9%',    
+    paddingHorizontal: 27,    
     borderRadius: 5 
   },
 
   slideMD: {
     width: '100%',
-    height: '12%',
+    height: 100,
     flexDirection: 'row',
     alignItems: 'center',  
     backgroundColor: '#008859',
-    paddingHorizontal: '9%',
+    paddingHorizontal: 35,
     borderRadius: 5
   },
 
   slidePP: {
     width: '100%',
-    height: '12%',
+    height: 100,
     flexDirection: 'row',
     alignItems: 'center',    
     backgroundColor: '#5a50f9',
-    paddingHorizontal: '10%',
+    paddingHorizontal: 15,
     borderRadius: 5
   },
   

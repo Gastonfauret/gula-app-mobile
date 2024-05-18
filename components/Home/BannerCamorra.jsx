@@ -12,10 +12,9 @@ export default function BannerCamorra() {
 const styles = StyleSheet.create({
     camorraContainer: {
         width: '100%',
-        height: '6%',        
+        height: 80,        
         flexDirection: 'row',
-        alignContent: 'center',       
-        marginTop: '2%'
+        alignContent: 'center'      
     },
 
     bannerCamorra: {

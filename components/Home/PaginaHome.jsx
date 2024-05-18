@@ -20,7 +20,7 @@ export default function PaginaHome() {
                 <SliderComidas />
                 <BannerOfertas />
                 <BannerCamorra />
-                <SliderLugares />                
+                <SliderLugares />
                 <MenusSemanales />
             </ScrollView>
             <MenuFlotante />
@@ -30,14 +30,11 @@ export default function PaginaHome() {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,       
-        alignItems: 'center',
-        justifyContent: 'start',
-        //backgroundColor: 'pink'        
-        },
+        flexGrow: 1,
+        alignItems: 'stretch'
+    },
 
     scrollViewContent: {
-        flexGrow: 1, // Permite que el ScrollView se expanda dinámicamente
-        //paddingBottom: 150, // Ajusta el espacio inferior para el menú flotante
+        flexGrow: 1
     }
 })
