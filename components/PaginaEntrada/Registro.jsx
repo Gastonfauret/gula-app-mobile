@@ -175,22 +175,20 @@ const styles = StyleSheet.create({
     subContainer: {
         alignItems: 'center',
         width: '100%',
-        height: '30%',
-        justifyContent: 'center'
+        height: 180,
+        justifyContent: 'center'        
     },
 
     logoGula: {
         resizeMode: 'center',
         width: '60%',
-        height: '60%'
+        height: 210
     },
 
     inputsContainer: {
         alignItems: 'center',
         width: '100%',
-        height: '70%',
-        justifyContent: 'center',             
-        //backgroundColor: 'black',        
+        height: 500               
     },
 
     textInputs: {

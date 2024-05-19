@@ -32,112 +32,110 @@ export default function Ingreso() {
     };
 
     return (
-        
 
-                <View style={styles.container}>
-                    <View style={styles.subContainer}>
-                        <Image source={require('../../assets/GulaBlanco.png')} style={styles.logoGula} />
-                    </View>
 
-                    <View style={styles.inputsContainer}>
+        <View style={styles.container}>
 
-                        <TextInput
-                            style={styles.textInputs}
-                            placeholder="Correo electrónico"
-                            value={email}
-                            onChangeText={setEmail}
-                            keyboardType="email-address"
-                            autoCapitalize="none"
-                        />
+            <View style={styles.subContainer}>
+                <Image source={require('../../assets/GulaBlanco.png')} style={styles.logoGula} />
+            </View>
 
-                        <TextInput
-                            style={styles.textInputs}
-                            placeholder="Contraseña"
-                            value={password}
-                            onChangeText={setPassword}
-                            secureTextEntry
-                        />
+            <View style={styles.inputsContainer}>
 
-                        <TouchableOpacity style={styles.btnLogin}>
-                            <Text style={styles.btnText} onPress={handleLogin}>Inicia Sesion</Text>
-                        </TouchableOpacity>
+                <TextInput
+                    style={styles.textInputs}
+                    placeholder="Correo electrónico"
+                    value={email}
+                    onChangeText={setEmail}
+                    keyboardType="email-address"
+                    autoCapitalize="none"
+                />
 
-                        <View style={styles.backBtnContainer}>
-                            <TouchableOpacity>
-                                <Text style={styles.volverText} onPress={() => navigation.navigate('SliderEntrada')}>Volver</Text>
-                            </TouchableOpacity>
-                        </View>
-                    </View>
+                <TextInput
+                    style={styles.textInputs}
+                    placeholder="Contraseña"
+                    value={password}
+                    onChangeText={setPassword}
+                    secureTextEntry
+                />
+
+                <TouchableOpacity style={styles.btnLogin}>
+                    <Text style={styles.btnText} onPress={handleLogin}>Inicia Sesion</Text>
+                </TouchableOpacity>
+
+                <View style={styles.backBtnContainer}>
+                    <TouchableOpacity>
+                        <Text style={styles.volverText} onPress={() => navigation.navigate('SliderEntrada')}>Volver</Text>
+                    </TouchableOpacity>
                 </View>
-            
-                );
+            </View>
+        </View>
+
+    );
 };
 
-                const styles = StyleSheet.create({
-                    container: {
-                    width: '100%',
-                flex: 1,
-                alignItems: 'center',
-                justifyContent: 'center',
-                paddingHorizontal: 36,
-                paddingVertical: 20,
-                backgroundColor: 'red'
+const styles = StyleSheet.create({
+    container: {
+        width: '100%',
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingHorizontal: 36,
+        paddingVertical: 20,
+        backgroundColor: 'red'
     },
 
-                subContainer: {
-                    alignItems: 'center',
-                width: '100%',
-                height: '25%',
-                justifyContent: 'center',
+    subContainer: {
+        alignItems: 'center',
+        width: '120%',
+        height: 180,
+        justifyContent: 'center',
         //backgroundColor: 'black'
     },
 
-                logoGula: {
-                    resizeMode: 'center',
-                width: '75%',
-                height: '75%'
+    logoGula: {
+        resizeMode: 'center',
+        width: '60%',
+        height: 250
     },
 
-                textInputs: {
-                    width: 320,
-                height: 48,
-                borderRadius: 2,
-                paddingLeft: 12,
-                paddingRight: 12,
-                backgroundColor: 'white',
-                marginVertical: '3%',
+    textInputs: {
+        width: 320,
+        height: 48,
+        borderRadius: 2,
+        paddingLeft: 12,
+        paddingRight: 12,
+        backgroundColor: 'white',
+        marginVertical: '3%',
     },
 
-                inputsContainer: {
-                    alignItems: 'center',
-                width: '100%',
-                height: '30%',
-                justifyContent: 'center',
-                gap: 10,
-        //backgroundColor: 'green'
+    inputsContainer: {
+        alignItems: 'center',
+        width: '130%',
+        height: 230             
     },
 
-                btnLogin: {
-                    backgroundColor: '#BDC3C7',
-                borderRadius: 5,
-                marginVertical: '3%'
+    btnLogin: {
+        backgroundColor: '#BDC3C7',
+        borderRadius: 5,
+        marginVertical: '3%'
     },
 
-                btnText: {
-                    width: 320,
-                height: 48,
-                textAlign: 'center',
-                alignItems: 'center',
-                fontWeight: 'bold',
-                color: '#717D7E',
-                paddingVertical: 12
+    btnText: {
+        width: 320,
+        height: 48,
+        textAlign: 'center',
+        alignItems: 'center',
+        fontWeight: 'bold',
+        color: '#717D7E',
+        paddingVertical: 12
     },
 
-                backBtnContainer: {
-                    alignItems: 'center',
-                justifyContent: 'center',
+    backBtnContainer: {
+        alignItems: 'center',
+        justifyContent: 'center',
 
-                height: '7%',
+        height: '7%',
     }
 })
 
