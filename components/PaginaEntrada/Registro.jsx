@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TextInput, Text, Image, TouchableOpacity, StyleSheet, form } from 'react-native';
+import { View, TextInput, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import useRegister from '../../hooks/useRegister';
 import useShowHidePassword from '../../hooks/useShowHidePassword';
