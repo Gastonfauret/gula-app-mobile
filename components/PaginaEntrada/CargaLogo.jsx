@@ -1,9 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { View, StyleSheet, Image } from 'react-native'
-
-import Principal from '../../tabs/Principal';
 import SliderEntrada from './SliderEntrada';
-import { NavigationContainer } from '@react-navigation/native';
+
 
 export default function CargaLogo() {
     const [componenteCargado, setComponenteCargado] = useState(false);

@@ -13,19 +13,19 @@ import CargaLogo from '../components/PaginaEntrada/CargaLogo.jsx';
 
 const Stack = createStackNavigator();
 
-export default function Principal() {   
+export default function Principal() {
 
     return (
         <NavigationContainer>
             <Stack.Navigator initialRouteName="CargaLogo">
-            <Stack.Screen name="CargaLogo" options={{ headerShown: false }} component={CargaLogo} />
+                <Stack.Screen name="CargaLogo" options={{ headerShown: false }} component={CargaLogo} />
                 <Stack.Screen name="SliderEntrada" options={{ headerShown: false }} component={SliderEntrada} />
                 <Stack.Screen name="Registro" options={{ headerShown: false }} component={Registro} />
                 <Stack.Screen name="Ingreso" options={{ headerShown: false }} component={Ingreso} />
-                <Stack.Screen name="Home" options={{ headerShown: false }} component={PaginaHome} />
-                <Stack.Screen name="SelectingFood" options={{ headerShown: false }} component={PaginaBusqueda} />
-                <Stack.Screen name="Orders" options={{ headerShown: false }} component={PaginaPedidos} />
-                <Stack.Screen name="Profile" options={{ headerShown: false }} component={PaginaPerfil} />
+                <Stack.Screen name="PaginaHome" options={{ headerShown: false }} component={PaginaHome} />
+                <Stack.Screen name="PaginaBusqueda" options={{ headerShown: false }} component={PaginaBusqueda} />
+                <Stack.Screen name="PaginaPedidos" options={{ headerShown: false }} component={PaginaPedidos} />
+                <Stack.Screen name="PaginaPerfil" options={{ headerShown: false }} component={PaginaPerfil} />
             </Stack.Navigator>
         </NavigationContainer>
     )
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-    },    
+    },
 });
 
 

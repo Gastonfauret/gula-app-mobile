@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, TextInput, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import useRegister from '../../hooks/useRegister';
@@ -24,33 +24,7 @@ export default function Registro() {
         userInputsError,
     } = useRegister();
 
-    // const [name, setName] = useState('');
-    // const [email, setEmail] = useState('');
-    // const [password, setPassword] = useState('');
-    // const [city, setCity] = useState('');
-    // const [birth, setBirth] = useState('');
-
     const navigation = useNavigation();
-
-    const handleLogin = () => {
-
-        navigation.navigate('Entrada')
-
-        // Aquí puedes implementar la lógica para el inicio de sesión, como enviar los datos a un servidor
-
-        // Por ejemplo:
-        // auth.signInWithEmailAndPassword(email, password)
-        //   .then((userCredential) => {
-        //     // Signed in
-        //     const user = userCredential.user;
-        //     console.log('User:', user);
-        //   })
-        //   .catch((error) => {
-        //     const errorCode = error.code;
-        //     const errorMessage = error.message;
-        //     console.error('Error:', errorMessage);
-        //   });
-    };
 
     return (
         <View style={styles.container}
@@ -59,105 +33,103 @@ export default function Registro() {
                 <Image source={require('../../assets/GulaBlanco.png')} style={styles.logoGula} />
             </View>
 
-            {/* <form onSubmit={handleSubmitRegister}> */}
-                <View style={styles.inputsContainer}>
-                    <TextInput
-                        type="text"
-                        style={styles.textInputs}
-                        placeholder="Nombre Completo"
-                        name="name"
-                        value={userData.name}
-                        onChangeText={handleChangeRegister}
-                    />
-                    {userNameError && (
-                        <Text className="register-input-error"> {userNameError}</Text>
-                    )}
+            {/* Input nombre */}
+            <View style={styles.inputsContainer}>
+                <TextInput
+                    type="text"
+                    style={styles.textInputs}
+                    placeholder="Nombre Completo"
+                    name="name"
+                    value={userData.name}
+                    onChangeText={(text) => handleChangeRegister({ target: { name: 'name', value: text } })}
+                />
+                {userNameError && (
+                    <Text style={styles.errorsText}> {userNameError}</Text>
+                )}
 
-                    <TextInput
-                        style={styles.textInputs}
-                        placeholder="Email"
-                        value={userData.email}
-                        name="email"
-                        type="text"
-                        onChange={handleChangeRegister}
-                        keyboardType="email-address"
-                        autoCapitalize="none"
-                    />
-                    {emailError && (
-                        <Text className="register-input-error">{emailError}</Text>
-                    )}
+                {/* Input Email */}
+                <TextInput
+                    style={styles.textInputs}
+                    placeholder="Email"
+                    value={userData.email}
+                    name="email"
+                    type="text"
+                    onChangeText={(text) => handleChangeRegister({ target: { name: 'email', value: text } })}
+                    keyboardType="email-address"
+                    autoCapitalize="none"
+                />
+                {emailError && (
+                    <Text style={styles.errorsText} >{emailError}</Text>
+                )}
 
-                    <TextInput
-                        style={styles.textInputs}
-                        placeholder="Contraseña"
-                        type={showPassword ? "text" : "password"}
-                        name="password"
-                        value={userData.password}
-                        onChange={handleChangeRegister}
-                        secureTextEntry
-                    />
-                    <View
-                        onClick={togglePasswordVisibility}
-                        className="toggle-show-password"
-                    >
-                        {/*{showPassword ? <IoMdEyeOff /> : <IoMdEye />}*/}
-                    </View>
-                    {passwordError && (
-                        <Text className="register-input-error">{passwordError}</Text>
-                    )}
-
-                    <TextInput
-                        style={styles.textInputs}
-                        placeholder="Confirmar contraseña"
-                        type={showPassword ? "text" : "password"}
-                        name="confirm-password"
-                        onChange={handleChangeRegister}
-                        secureTextEntry
-                    />
-                    {passwordConfirmError && (
-                        <Text className="register-input-error">{passwordConfirmError}</Text>
-                    )}
-
-                    <TextInput
-                        style={styles.textInputs}
-                        placeholder="Localidad"
-                        type="text"
-                        name="location"
-                        value={userData.location}
-                        onChange={handleChangeRegister}
-                    />
-                    {locationError && (
-                        <Text className="register-input-error">{locationError}</Text>
-                    )}
-
-                    <TextInput
-                        style={styles.textInputs}
-                        placeholder="dd/mm/aaaa"
-                        type="date"
-                        name="birthDate"
-                        value={userData.birthDate}
-                        onChange={handleChangeRegister}
-                    />
-                    {birthDateError && (
-                        <Text className="register-input-error">{birthDateError}</Text>
-                    )}
-
-                    <TextInput
-                        style={styles.btnLogin}
-                        type="submit"
-                        value="Registrarme"
-                        role="button" />
-
-                    {/* <Text style={styles.btnText} onPress={handleLogin}>Registrate</Text> */}
-
-
-                    <View style={styles.backBtnContainer}>
-                        <TouchableOpacity>
-                            <Text style={styles.volverText} onPress={() => navigation.navigate('SliderEntrada')}>Volver</Text>
-                        </TouchableOpacity>
-                    </View>
+                {/* Input Password */}
+                <TextInput
+                    style={styles.textInputs}
+                    placeholder="Contraseña"
+                    type={showPassword ? "text" : "password"}
+                    name="password"
+                    value={userData.password}
+                    onChangeText={(text) => handleChangeRegister({ target: { name: 'password', value: text } })}
+                    secureTextEntry
+                />
+                <View
+                    onClick={togglePasswordVisibility}                    
+                >
+                    {/*{showPassword ? <IoMdEyeOff /> : <IoMdEye />}*/}
                 </View>
-            {/* </form> */}
+                {passwordError && (
+                    <Text style={styles.errorsText}>{passwordError}</Text>
+                )}
+
+                {/* Input Confirmacion Password */}
+                <TextInput
+                    style={styles.textInputs}
+                    placeholder="Confirmar contraseña"
+                    type={showPassword ? "text" : "password"}
+                    name="confirm-password"
+                    onChangeText={(text) => handleChangeRegister({ target: { name: 'confirm-password', value: text } })}
+                    secureTextEntry
+                />
+                {passwordConfirmError && (
+                    <Text style={styles.errorsText}>{passwordConfirmError}</Text>
+                )}
+
+                {/* Input Location */}
+                <TextInput
+                    style={styles.textInputs}
+                    placeholder="Localidad"
+                    type="text"
+                    name="location"
+                    value={userData.location}
+                    onChangeText={(text) => handleChangeRegister({ target: { name: 'location', value: text } })}
+                />
+                {locationError && (
+                    <Text style={styles.errorsText}>{locationError}</Text>
+                )}
+
+                {/* Input Fecha Nacimiento */}
+                <TextInput
+                    style={styles.textInputs}
+                    placeholder="dd/mm/aaaa"
+                    type="date"
+                    name="birthDate"
+                    value={userData.birthDate}
+                    onChangeText={(text) => handleChangeRegister({ target: { name: 'birthDate', value: text } })}
+                />
+                {birthDateError && (
+                    <Text style={styles.errorsText}>{birthDateError}</Text>
+                )}
+
+                <TouchableOpacity onPress={handleSubmitRegister} style={styles.btnLogin}>
+                    <Text style={styles.btnText}>Registrarme</Text>
+                </TouchableOpacity>
+
+                <View style={styles.backBtnContainer}>
+                    <TouchableOpacity>
+                        <Text style={styles.volverText} onPress={() => navigation.navigate('SliderEntrada')}>Volver</Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
         </View>
 
     );
@@ -176,7 +148,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         width: '100%',
         height: 180,
-        justifyContent: 'center'        
+        justifyContent: 'center'
     },
 
     logoGula: {
@@ -188,7 +160,8 @@ const styles = StyleSheet.create({
     inputsContainer: {
         alignItems: 'center',
         width: '100%',
-        height: 500               
+        height: 500,
+        //gap: 12
     },
 
     textInputs: {
@@ -196,7 +169,7 @@ const styles = StyleSheet.create({
         height: 48,
         textAlign: 'center',
         borderRadius: 1,
-        backgroundColor: 'white'              
+        backgroundColor: 'white'
     },
 
     btnLogin: {
@@ -219,9 +192,16 @@ const styles = StyleSheet.create({
 
     backBtnContainer: {
         alignItems: 'center',
-        justifyContent: 'center',        
+        justifyContent: 'center',
         width: '100%',
         height: '7%',
+    },
+
+    errorsText: {
+        color: 'black',
+        fontSize: 12,
+        fontWeight: '700',
+        marginVertical: 6
     }
 })
 
