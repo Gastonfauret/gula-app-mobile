@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import Registro from '../components/PaginaEntrada/Registro.jsx';
+import Register from '../components/PaginaEntrada/Register.jsx';
 import Ingreso from '../components/PaginaEntrada/Ingreso.jsx';
 import SliderEntrada from '../components/PaginaEntrada/SliderEntrada.jsx';
 import PaginaHome from '../components/Home/PaginaHome.jsx';
@@ -20,7 +20,7 @@ export default function Principal() {
             <Stack.Navigator initialRouteName="CargaLogo">
                 <Stack.Screen name="CargaLogo" options={{ headerShown: false }} component={CargaLogo} />
                 <Stack.Screen name="SliderEntrada" options={{ headerShown: false }} component={SliderEntrada} />
-                <Stack.Screen name="Registro" options={{ headerShown: false }} component={Registro} />
+                <Stack.Screen name="Registro" options={{ headerShown: false }} component={Register} />
                 <Stack.Screen name="Ingreso" options={{ headerShown: false }} component={Ingreso} />
                 <Stack.Screen name="PaginaHome" options={{ headerShown: false }} component={PaginaHome} />
                 <Stack.Screen name="PaginaBusqueda" options={{ headerShown: false }} component={PaginaBusqueda} />

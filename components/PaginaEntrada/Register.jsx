@@ -3,10 +3,8 @@ import { View, TextInput, Text, Image, TouchableOpacity, StyleSheet } from 'reac
 import { useNavigation } from '@react-navigation/native';
 import useRegister from '../../hooks/useRegister';
 import useShowHidePassword from '../../hooks/useShowHidePassword';
-//import { IoMdEye } from "react-icons/io";
-//import { IoMdEyeOff } from "react-icons/io";
 
-export default function Registro() {
+export default function Register() {
 
     const { togglePasswordVisibility, showPassword } = useShowHidePassword();
     const {
@@ -73,7 +71,7 @@ export default function Registro() {
                     secureTextEntry
                 />
                 <View
-                    onClick={togglePasswordVisibility}                    
+                    onClick={togglePasswordVisibility}
                 >
                     {/*{showPassword ? <IoMdEyeOff /> : <IoMdEye />}*/}
                 </View>
@@ -119,6 +117,28 @@ export default function Registro() {
                 {birthDateError && (
                     <Text style={styles.errorsText}>{birthDateError}</Text>
                 )}
+
+                {/* {userInputsError ? (
+                    <TextInput
+                        type="submit"
+                        //value="Registrarme"
+                        //className="button-24 unabled-submit"
+                        role="button"
+                        //style={{
+                        //    background: "#0000003c",
+                        //    border: "1px solid #00000044",
+                        //}}
+                    />
+                ) : (
+                    <TextInput
+                        type="submit"
+                        //value="Registrarme"
+                        //className="button-24"
+                        role="button"
+                    />
+                )} */}
+
+                                   
 
                 <TouchableOpacity onPress={handleSubmitRegister} style={styles.btnLogin}>
                     <Text style={styles.btnText}>Registrarme</Text>
@@ -194,7 +214,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         width: '100%',
-        height: '7%',
+        height: '15%',
     },
 
     errorsText: {

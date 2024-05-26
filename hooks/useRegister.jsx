@@ -22,41 +22,48 @@ function useRegister() {
 
   async function handleSubmitRegister(e) {
     e.preventDefault();
-    //Si hay error en un input, no se le permitira al usuario hacer submit y hara un retorno vacio.
     if (userInputsError) {
       return;
     }
 
+    console.log("Datos enviados:", userData);
+
     try {
       setIsRegisterLoading(true);
-      const response = await fetch("http://localhost:3070/auth/register", {
+      const response = await fetch("http://localhost:3070/auth/register", { // Asegúrate de usar la IP correcta
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(userData),
-      });
+        body: JSON.stringify(userData)        
+      });     
+      
+      console.log("Estado de la respuesta del backend:", response.status);
+
       const data = await response.json();
-      if (data.message === "email must be an email") {
-        setEmailError("Debe ser de tipo E-mail");
-        throw new Error();
-      } else if (data.message === "User already exists") {
-        setEmailError("Este e-mail ya esta siendo utilizado por otro usuario");
-        throw new Error();
+      console.log("Respuesta del backend:", data);
+
+      if (!response.ok) {
+        console.error("Error en la respuesta del backend:", data.message);
+        if (data.message === "email must be an email") {
+          setEmailError("El formato del correo electrónico no es válido");
+        } else if (data.message === "User already exists") {
+          setEmailError("Este e-mail ya está siendo utilizado por otro usuario");
+        }
+        throw new Error(data.message);
       }
-      alert("Registro exitoso! Seras redirigido hacia la pagina de inicio");
-      window.location.href = "/";
+
+      alert("Registro exitoso! Serás redirigido hacia la página de inicio");
+      // Redirigir a la página de inicio u otra pantalla si es necesario
     } catch (err) {
-      setIsRegisterError(true);
-      console.error(err);
+      console.error("Error durante la solicitud de registro:", err);
+      setIsRegisterError(true);      
     } finally {
-      setIsRegisterLoading(true);
+      setIsRegisterLoading(false);
     }
   }
 
-  //Este useEffect se ejecuta cada vez que userData cambia para verificar que los valores de los input sean correctos.
   useEffect(() => {
-    // Si es el primer renderizado, establece userInputsError() en true
     if (isFirstRender) {
       setPasswordError(true);
       setPasswordConfirmError(true);
@@ -65,11 +72,9 @@ function useRegister() {
       setLocationError(true);
       setBirthDateError(true);
       setUserInputsError(true);
-      setIsFirstRender(false); // Marca que ya no es el primer renderizado
+      setIsFirstRender(false);
       return;
     }
-
-    // Verifica los errores de entrada
     verifyInputsError();
   }, [userData]);
 
@@ -88,7 +93,6 @@ function useRegister() {
     }
   }
 
-  //Comprobaciones de los inputs.
   function fieldsValidation(value, name) {
     if (name === "name") {
       if (!value.length) {
@@ -106,7 +110,6 @@ function useRegister() {
       if (!value.length) {
         setEmailError("Este campo no puede estar vacio");
       } else if (!validateEmail(value)) {
-        // El formato del correo electrónico no es válido
         setEmailError("El formato del correo electrónico no es válido");
       } else {
         setEmailError(null);
@@ -152,15 +155,12 @@ function useRegister() {
 
   const handleChangeRegister = (e) => {
     const { name, value } = e.target;
-    //Para que no se guarde lo escrito en el campo para confirmar password, de lo contrario enviara un dato no valido y sera rechazado por el backend.
     if (name !== "confirm-password") {
       setUserData({ ...userData, [name]: value });
     }
-
     fieldsValidation(value, name);
   };
 
-  // Expresión regular para validar el formato de correo electrónico
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.com+$/;
     return emailRegex.test(email);
