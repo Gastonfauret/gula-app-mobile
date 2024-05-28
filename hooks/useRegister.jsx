@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { fetch } from 'react-native/Libraries/Network/fetch';
 
 function useRegister() {
   const [isRegisterLoading, setIsRegisterLoading] = useState(false);
@@ -30,20 +31,20 @@ function useRegister() {
 
     try {
       setIsRegisterLoading(true);
-      const response = await fetch("http://localhost:3070/auth/register", { // Asegúrate de usar la IP correcta
+      const response = await fetch("http://192.168.12.102:3070/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(userData)        
-      });     
-      
-      console.log("Estado de la respuesta del backend:", response.status);
+        body: JSON.stringify(userData),
+      });
+
+      console.log("Estado de la respuesta del backend:", response);
 
       const data = await response.json();
       console.log("Respuesta del backend:", data);
 
-      if (!response.ok) {
+      if (data.error) {
         console.error("Error en la respuesta del backend:", data.message);
         if (data.message === "email must be an email") {
           setEmailError("El formato del correo electrónico no es válido");
@@ -54,10 +55,10 @@ function useRegister() {
       }
 
       alert("Registro exitoso! Serás redirigido hacia la página de inicio");
-      // Redirigir a la página de inicio u otra pantalla si es necesario
+      //Redirigir a la página de inicio u otra pantalla si es necesario
     } catch (err) {
       console.error("Error durante la solicitud de registro:", err);
-      setIsRegisterError(true);      
+      setIsRegisterError(true);
     } finally {
       setIsRegisterLoading(false);
     }

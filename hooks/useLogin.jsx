@@ -15,7 +15,8 @@ function useLogin() {
     setIsWrongEmail(null);
     setIsWrongPassword(null);
 
-    try {
+    try {         
+
       setLoginLoading(true);
       const response = await fetch("http://localhost:3070/auth/login", {
         method: "POST",
@@ -24,6 +25,7 @@ function useLogin() {
         },
         body: JSON.stringify(userCredentials),
       });
+
       const data = await response.json();
       if (data.error) {
         if (data.message === "User non-existent") {
