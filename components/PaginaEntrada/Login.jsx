@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, TextInput, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-export default function Ingreso() {
+export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 

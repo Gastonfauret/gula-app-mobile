@@ -18,7 +18,7 @@ function useLogin() {
     try {         
 
       setLoginLoading(true);
-      const response = await fetch("http://localhost:3070/auth/login", {
+      const response = await fetch("http://192.168.58.110:3070/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

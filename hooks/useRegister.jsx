@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetch } from 'react-native/Libraries/Network/fetch';
+import { useNavigation } from '@react-navigation/native';
 
 function useRegister() {
   const [isRegisterLoading, setIsRegisterLoading] = useState(false);
@@ -13,6 +13,8 @@ function useRegister() {
   const [userInputsError, setUserInputsError] = useState(null);
   const [isFirstRender, setIsFirstRender] = useState(true);
 
+  const navigation = useNavigation();
+
   const [userData, setUserData] = useState({
     name: "",
     email: "",
@@ -25,13 +27,12 @@ function useRegister() {
     e.preventDefault();
     if (userInputsError) {
       return;
-    }
-
-    console.log("Datos enviados:", userData);
+    }    
 
     try {
       setIsRegisterLoading(true);
-      const response = await fetch("http://192.168.12.102:3070/auth/register", {
+      //Notebook: const response = await fetch("http://192.168.12.102:3070/auth/register", {
+      const response = await fetch("http://192.168.58.110:3070/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -55,7 +56,7 @@ function useRegister() {
       }
 
       alert("Registro exitoso! Serás redirigido hacia la página de inicio");
-      //Redirigir a la página de inicio u otra pantalla si es necesario
+      navigation.navigate('Ingreso')
     } catch (err) {
       console.error("Error durante la solicitud de registro:", err);
       setIsRegisterError(true);
