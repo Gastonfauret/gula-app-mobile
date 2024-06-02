@@ -15,9 +15,9 @@ function useLogin() {
     setIsWrongEmail(null);
     setIsWrongPassword(null);
 
-    try {         
-
+    try {
       setLoginLoading(true);
+      //Notebook: const response = await fetch("http://192.168.12.102:3070/auth/register", {
       const response = await fetch("http://192.168.58.110:3070/auth/register", {
         method: "POST",
         headers: {

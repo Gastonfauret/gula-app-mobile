@@ -1,66 +1,96 @@
-import React from 'react'
-import { View, StyleSheet, Text, Image, ScrollView } from 'react-native'
+import React, { useState } from 'react'
+import { View, StyleSheet, Text, Image, ScrollView, TouchableOpacity } from 'react-native';
+import PaginaModal from './Modal';
 
 
-export default function MenusSemanales() {
+export default function MenusSemanales({props}) {
+
+    const [modalVisible, setModalVisible] = useState(false);
+    const [modalMessage, setModalMessage] = useState('');
+
+    const handleOpenModal = (message) => {
+        setModalMessage(message);
+        setModalVisible(true);
+    };
+
+    const handleCloseModal = () => {
+        setModalVisible(false);
+    };
+
     return (
         <View style={styles.container}>
 
             <Text style={styles.title}>Menús Semanales</Text>
+
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                <View style={styles.subContainer}>
-                    <Image source={require('../../assets/Food/Merluza con Pure.jpg')} style={styles.fondoLocal} />
-                    <View style={styles.textContainer}>
-                        <Text style={styles.textoDia}>Martes</Text>
-                        <Text style={styles.textoMenu}>Filete de Merluza con Pure</Text>
-                        <Text style={styles.textoLocal}>Rotiseria Pablo</Text>
+                <TouchableOpacity onPress={() => handleOpenModal('Martes')}>                    
+                    <View style={styles.subContainer}>
+                        <Image source={require('../../assets/Food/Merluza con Pure.jpg')} style={styles.fondoLocal} />
+                        <View style={styles.textContainer}>
+                            <Text style={styles.textoDia}>Martes</Text>
+                            <Text style={styles.textoMenu}>Filete de Merluza con Pure</Text>
+                            <Text style={styles.textoLocal}>Rotiseria Pablo</Text>
+                        </View>
                     </View>
-                </View>
+                </TouchableOpacity>                
 
-                <View style={styles.subContainer}>
-                    <Image source={require('../../assets/Food/Mila con Fritas.jpg')} style={styles.fondoLocal} />
-                    <View style={styles.textContainer}>
-                        <Text style={styles.textoDia}>Miercoles</Text>
-                        <Text style={styles.textoMenu}>Milanesas con Papas</Text>
-                        <Text style={styles.textoLocal}>Lo de Chairo</Text>
+                <TouchableOpacity onPress={() => handleOpenModal('Miercoles')}>
+                    <View style={styles.subContainer}>
+                        <Image source={require('../../assets/Food/Mila con Fritas.jpg')} style={styles.fondoLocal} />
+                        <View style={styles.textContainer}>
+                            <Text style={styles.textoDia}>Miercoles</Text>
+                            <Text style={styles.textoMenu}>Milanesas con Papas</Text>
+                            <Text style={styles.textoLocal}>Lo de Chairo</Text>
+                        </View>
                     </View>
-                </View>                    
+                </TouchableOpacity>
 
-                <View style={styles.subContainer}>
-                    <Image source={require('../../assets/Food/Pollo al Verdeo con Papas Esp.jpg')} style={styles.fondoLocal} />
-                    <View style={styles.textContainer}>
-                        <Text style={styles.textoDia}>Jueves</Text>
-                        <Text style={styles.textoMenu}>Pollo al Verdeo con Papas Españolas</Text>
-                        <Text style={styles.textoLocal}>Jooks</Text>
+                <TouchableOpacity onPress={() => handleOpenModal('Jueves')}>
+                    <View style={styles.subContainer}>
+                        <Image source={require('../../assets/Food/Pollo al Verdeo con Papas Esp.jpg')} style={styles.fondoLocal} />
+                        <View style={styles.textContainer}>
+                            <Text style={styles.textoDia}>Jueves</Text>
+                            <Text style={styles.textoMenu}>Pollo al Verdeo con Papas Españolas</Text>
+                            <Text style={styles.textoLocal}>Jooks</Text>
+                        </View>
                     </View>
-                </View>    
+                </TouchableOpacity>
 
-                <View style={styles.subContainer}>
-                    <Image source={require('../../assets/Food/Napo con Pure.jpg')} style={styles.fondoLocal} />
-                    <View style={styles.textContainer}>
-                        <Text style={styles.textoDia}>Viernes</Text>
-                        <Text style={styles.textoMenu}>Milanesa Napolitana con Pure</Text>
-                        <Text style={styles.textoLocal}>La Paperia</Text>
+                <TouchableOpacity onPress={() => handleOpenModal('Viernes')}>
+                    <View style={styles.subContainer}>
+                        <Image source={require('../../assets/Food/Napo con Pure.jpg')} style={styles.fondoLocal} />
+                        <View style={styles.textContainer}>
+                            <Text style={styles.textoDia}>Viernes</Text>
+                            <Text style={styles.textoMenu}>Milanesa Napolitana con Pure</Text>
+                            <Text style={styles.textoLocal}>La Paperia</Text>
+                        </View>
                     </View>
-                </View>   
+                </TouchableOpacity>
 
-                <View style={styles.subContainer}>
-                    <Image source={require('../../assets/Food/Pizza.jpg')} style={styles.fondoLocal} />
-                    <View style={styles.textContainer}>
-                        <Text style={styles.textoDia}>Sabado</Text>
-                        <Text style={styles.textoMenu}>Pizza Napolitana</Text>
-                        <Text style={styles.textoLocal}>Aka Pizzas</Text>
+                <TouchableOpacity onPress={() => handleOpenModal('Sabado')}>
+                    <View style={styles.subContainer}>
+                        <Image source={require('../../assets/Food/Pizza.jpg')} style={styles.fondoLocal} />
+                        <View style={styles.textContainer}>
+                            <Text style={styles.textoDia}>Sabado</Text>
+                            <Text style={styles.textoMenu}>Pizza Napolitana</Text>
+                            <Text style={styles.textoLocal}>Aka Pizzas</Text>
+                        </View>
                     </View>
-                </View>   
+                </TouchableOpacity>
 
-                <View style={styles.subContainer}>
-                    <Image source={require('../../assets/Food/Ravioles.jpg')} style={styles.fondoLocal} />
-                    <View style={styles.textContainer}>
-                        <Text style={styles.textoDia}>Domingo</Text>
-                        <Text style={styles.textoMenu}>Ravioles de Verdura con Salsa a eleccion</Text>
-                        <Text style={styles.textoLocal}>Sabores al Paso</Text>
+                <TouchableOpacity onPress={() => handleOpenModal('Domingo')}>
+                    <View style={styles.subContainer}>
+                        <Image source={require('../../assets/Food/Ravioles.jpg')} style={styles.fondoLocal} />
+                        <View style={styles.textContainer}>
+                            <Text style={styles.textoDia}>Domingo</Text>
+                            <Text style={styles.textoMenu}>Ravioles de Verdura con Salsa a eleccion</Text>
+                            <Text style={styles.textoLocal}>Sabores al Paso</Text>
+                        </View>
                     </View>
-                </View>              
+                </TouchableOpacity>
+
+                {modalVisible && (
+        <PaginaModal message={modalMessage} visible={modalVisible} onClose={handleCloseModal} />    )}
 
             </ScrollView>
         </View>
@@ -99,7 +129,7 @@ const styles = StyleSheet.create({
     textoDia: {
         color: 'white',
         fontSize: 10,
-        fontWeight: 'bold',        
+        fontWeight: 'bold',
         alignItems: 'center',
         justifyContent: 'center',
         textAlign: 'center',
@@ -109,7 +139,7 @@ const styles = StyleSheet.create({
     textoMenu: {
         color: 'white',
         fontSize: 18,
-        fontWeight: 'bold',        
+        fontWeight: 'bold',
         alignItems: 'center',
         justifyContent: 'center',
         textAlign: 'center',
@@ -119,7 +149,7 @@ const styles = StyleSheet.create({
     textoLocal: {
         color: 'white',
         fontSize: 12,
-        fontWeight: 'bold',        
+        fontWeight: 'bold',
         alignItems: 'center',
         justifyContent: 'center',
         textAlign: 'center',
@@ -137,10 +167,10 @@ const styles = StyleSheet.create({
         gap: 8
     },
 
-    textoLocales: {        
+    textoLocales: {
         color: 'white',
         fontSize: 14,
-        fontWeight: 'bold',        
+        fontWeight: 'bold',
         alignItems: 'center',
         justifyContent: 'center',
         textAlign: 'center',
@@ -151,5 +181,5 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: 'bold',
         marginVertical: '2.5%'
-    }
+    },    
 })

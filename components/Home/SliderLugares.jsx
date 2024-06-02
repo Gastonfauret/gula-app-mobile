@@ -1,34 +1,69 @@
-import React from 'react'
-import { View, StyleSheet, Text, ScrollView, Image } from 'react-native'
+import React, { useState } from 'react'
+import { View, StyleSheet, Text, ScrollView, Image, TouchableOpacity } from 'react-native';
+import PaginaModal from './Modal';
 
 export default function SliderLugares() {
+    const [modalVisible, setModalVisible] = useState(false);
+    const [modalMessage, setModalMessage] = useState('');
+
+    const handleOpenModal = (message) => {
+        setModalMessage(message);
+        setModalVisible(true);
+    };
+
+    const handleCloseModal = () => {
+        setModalVisible(false);
+    };
+
     return (
         <View style={styles.container}>
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                <View style={styles.subContainer}>
-                    <Image source={require('../../assets/Food Places/roti-pablo.jpg')} style={styles.fondoLocal} />
-                    <Text style={styles.textoLocales}>Rotiseria Pablo</Text>
-                </View>
-                <View style={styles.subContainer}>
-                    <Image source={require('../../assets/Food Places/chairo.jpg')} style={styles.fondoLocal} />
-                    <Text style={styles.textoLocales}>Lo de Chairo</Text>
-                </View>
-                <View style={styles.subContainer}>
-                    <Image source={require('../../assets/Food Places/ak-pizzas.jpg')} style={styles.fondoLocal} />
-                    <Text style={styles.textoLocales}>Aka Pizzas</Text>
-                </View>
-                <View style={styles.subContainer}>
-                    <Image source={require('../../assets/Food Places/jooks.jpg')} style={styles.fondoLocal} />
-                    <Text style={styles.textoLocales}>Cerveceria Jooks</Text>
-                </View>
-                <View style={styles.subContainer}>
-                    <Image source={require('../../assets/Food Places/paperia.jpeg')} style={styles.fondoLocal} />
-                    <Text style={styles.textoLocales}>La Paperia</Text>
-                </View>
-                <View style={styles.subContainer}>
-                    <Image source={require('../../assets/Food Places/sabores-al-paso.jpg')} style={styles.fondoLocal} />
-                    <Text style={styles.textoLocales}>Sabores al Paso</Text>                    
-                </View>
+
+                <TouchableOpacity onPress={() => handleOpenModal('Rotiseria Pablo')}>
+                    <View style={styles.subContainer}>
+                        <Image source={require('../../assets/Food Places/roti-pablo.jpg')} style={styles.fondoLocal} />
+                        <Text style={styles.textoLocales}>Rotiseria Pablo</Text>
+                    </View>
+                </TouchableOpacity>
+
+                <TouchableOpacity onPress={() => handleOpenModal('Rotiseria Lo de Chairo')}>
+                    <View style={styles.subContainer}>
+                        <Image source={require('../../assets/Food Places/chairo.jpg')} style={styles.fondoLocal} />
+                        <Text style={styles.textoLocales}>Lo de Chairo</Text>
+                    </View>
+                </TouchableOpacity>
+
+                <TouchableOpacity onPress={() => handleOpenModal('Aka Pizzas')}>
+                    <View style={styles.subContainer}>
+                        <Image source={require('../../assets/Food Places/ak-pizzas.jpg')} style={styles.fondoLocal} />
+                        <Text style={styles.textoLocales}>Aka Pizzas</Text>
+                    </View>
+                </TouchableOpacity>
+
+                <TouchableOpacity onPress={() => handleOpenModal('Cerveceria Jooks')}>
+                    <View style={styles.subContainer}>
+                        <Image source={require('../../assets/Food Places/jooks.jpg')} style={styles.fondoLocal} />
+                        <Text style={styles.textoLocales}>Cerveceria Jooks</Text>
+                    </View>
+                </TouchableOpacity>
+
+                <TouchableOpacity onPress={() => handleOpenModal('La Paperia')}>
+                    <View style={styles.subContainer}>
+                        <Image source={require('../../assets/Food Places/paperia.jpeg')} style={styles.fondoLocal} />
+                        <Text style={styles.textoLocales}>La Paperia</Text>
+                    </View>
+                </TouchableOpacity>
+
+                <TouchableOpacity onPress={() => handleOpenModal('Sabores al Paso.')}>
+                    <View style={styles.subContainer}>
+                        <Image source={require('../../assets/Food Places/sabores-al-paso.jpg')} style={styles.fondoLocal} />
+                        <Text style={styles.textoLocales}>Sabores al Paso</Text>
+                    </View>
+                </TouchableOpacity>
+
+                {modalVisible && (
+                    <PaginaModal message={modalMessage} visible={modalVisible} onClose={handleCloseModal} />)}
+
             </ScrollView>
         </View>
     )
@@ -66,18 +101,18 @@ const styles = StyleSheet.create({
         borderRadius: 5
     },
 
-    textoLocales: {               
+    textoLocales: {
         backgroundColor: 'rgba(0,0,0,0.6)',
         color: 'white',
         fontSize: 18,
         fontWeight: 'bold',
-        position: 'absolute',       
+        position: 'absolute',
         borderRadius: 5,
         width: '100%',
         height: '100%',
         alignItems: 'center',
         justifyContent: 'center',
         textAlign: 'center',
-        textAlignVertical: 'center'      
+        textAlignVertical: 'center'
     }
 })

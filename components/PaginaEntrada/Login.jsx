@@ -1,39 +1,56 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, TextInput, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import useLogin from '../../hooks/useLogin';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export default function Login() {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+function Login() {
+    //const token = AsyncStorage.getItem("accessToken");
 
-    const navigation = useNavigation();
+    // const [isLoading, setIsLoading] = useState(true);
 
-    const handleLogin = () => {
-        // if (email != 'calo@gula.com' || password != 'calo1234') {
-        //     alert('Email y/o contraseña incorrecta')
-        //     return;
-        // } else (
-        navigation.navigate('Home')
-        //)
-        // Aquí puedes implementar la lógica para el inicio de sesión, como enviar los datos a un servidor
+    // const checkToken = async () => {
+    //     try {
+    //         const token = await AsyncStorage.getItem('accessToken');
+    //         console.log('Retrieved token:', token);
+    //         if (token !== null) {
+    //             // Navegar a la página Home si el token existe
+    //             navigation.navigate('PaginaHome');
+    //         } else {
+    //             console.log('No token found');
+    //         }
+    //     } catch (error) {
+    //         console.error('Error retrieving the token', error);
+    //     } finally {
+    //         setIsLoading(false);
+    //     }
+    // };
 
-        // Por ejemplo:
-        // auth.signInWithEmailAndPassword(email, password)
-        //   .then((userCredential) => {
-        //     // Signed in
-        //     const user = userCredential.user;
-        //     console.log('User:', user);
-        //   })
-        //   .catch((error) => {
-        //     const errorCode = error.code;
-        //     const errorMessage = error.message;
-        //     console.error('Error:', errorMessage);
-        //   });
-    };
+    // useEffect(() => {
+    //     // Llama a checkToken después del primer renderizado
+    //     checkToken();
+    // }, []);   
+
+    const navigation = useNavigation();  
+
+    const {
+        userCredentials,
+        handleChangeLogin,
+        //handleSubmitLogin,
+        isWrongEmail,
+        isWrongPassword,
+        loginLoading,
+    } = useLogin();
+
+    // if (token) {
+    //     navigation.navigate("PaginaHome");
+    // }
+
+    function handleSubmitLogin() {
+        navigation.navigate("PaginaHome")
+    }
 
     return (
-
-
         <View style={styles.container}>
 
             <View style={styles.subContainer}>
@@ -44,23 +61,39 @@ export default function Login() {
 
                 <TextInput
                     style={styles.textInputs}
+                    type="email"
+                    name="email"
                     placeholder="Correo electrónico"
-                    value={email}
-                    onChangeText={setEmail}
+                    value={userCredentials.email}
+                    onChange={handleChangeLogin}
                     keyboardType="email-address"
                     autoCapitalize="none"
+                    required
                 />
+
+                {isWrongEmail && (
+                    <>
+                        <Text style={styles.login - error}>Usuario no encontrado</Text>
+                    </>
+                )}
 
                 <TextInput
                     style={styles.textInputs}
                     placeholder="Contraseña"
-                    value={password}
-                    onChangeText={setPassword}
+                    value={userCredentials.password}
+                    onChange={handleChangeLogin}
                     secureTextEntry
+                    required
                 />
 
+                {isWrongPassword && (
+                    <>
+                        <Text style={styles.login - error}>Contraseña incorrecta</Text>
+                    </>
+                )}
+
                 <TouchableOpacity style={styles.btnLogin}>
-                    <Text style={styles.btnText} onPress={handleLogin}>Inicia Sesion</Text>
+                    <Text style={styles.btnText} onPress={handleSubmitLogin}>Inicia Sesion</Text>
                 </TouchableOpacity>
 
                 <View style={styles.backBtnContainer}>
@@ -73,6 +106,8 @@ export default function Login() {
 
     );
 };
+
+export default Login;
 
 const styles = StyleSheet.create({
     container: {
@@ -112,7 +147,7 @@ const styles = StyleSheet.create({
     inputsContainer: {
         alignItems: 'center',
         width: '130%',
-        height: 230             
+        height: 230
     },
 
     btnLogin: {
