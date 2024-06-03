@@ -1,5 +1,6 @@
 //Este hook maneja la logica de inicio de sesion, devolviendo un error en caso que la clave y/o contraseña sean incorrectos, o un token en caso que las credenciales sean correctas.
 import { useState } from "react";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function useLogin() {
   const [userCredentials, setUserCredentials] = useState({
@@ -10,15 +11,13 @@ function useLogin() {
   const [isWrongPassword, setIsWrongPassword] = useState(null);
   const [loginLoading, setLoginLoading] = useState(false);
 
-  const handleSubmitLogin = async (e) => {
-    e.preventDefault();
+  const handleSubmitLogin = async () => {   
     setIsWrongEmail(null);
     setIsWrongPassword(null);
 
     try {
-      setLoginLoading(true);
-      //Notebook: const response = await fetch("http://192.168.12.102:3070/auth/register", {
-      const response = await fetch("http://192.168.58.110:3070/auth/register", {
+      setLoginLoading(true);      
+      const response = await fetch("http://192.168.12.103:3070/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -33,18 +32,20 @@ function useLogin() {
         } else if (data.message === "Incorrect password") {
           setIsWrongPassword(true);
         }
-        throw new Error(data.message);
+        throw new Error(data.message);        
       }
-      localStorage.setItem("accessToken", data.token);
+
+      await AsyncStorage.setItem("accessToken", data.token);
+      return data.token;
     } catch (err) {
       console.error("Error trying to login user");
+       return null;
     } finally {
       setLoginLoading(false);
     }
   };
 
-  const handleChangeLogin = (e) => {
-    const { name, value } = e.target;
+  const handleChangeLogin = (name, value) => {    
     setUserCredentials({ ...userCredentials, [name]: value });
   };
 

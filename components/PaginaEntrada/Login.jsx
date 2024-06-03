@@ -1,53 +1,66 @@
 import React, { useEffect, useState } from 'react';
-import { View, TextInput, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, TextInput, Text, Image, TouchableOpacity, StyleSheet,  ActivityIndicator } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import useLogin from '../../hooks/useLogin';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function Login() {
-    //const token = AsyncStorage.getItem("accessToken");
+    const [isLoading, setIsLoading] = useState(true);
+    const [loginLoading, setLoginLoading] = useState(false);
+    const navigation = useNavigation();   
 
-    // const [isLoading, setIsLoading] = useState(true);
+    useEffect(() => {
+        const checkToken = async () => {
+            try {
+                const token = await AsyncStorage.getItem('accessToken');
+                console.log('Retrieved token:', token);
+                if (token !== null) {
+                    // Navegar a la página Home si el token existe
+                    navigation.navigate('PaginaHome');
+                } else {
+                    console.log('No token found');
+                }
+            } catch (error) {
+                console.error('Error retrieving the token', error);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+        checkToken();
+    }, [navigation]);
 
-    // const checkToken = async () => {
-    //     try {
-    //         const token = await AsyncStorage.getItem('accessToken');
-    //         console.log('Retrieved token:', token);
-    //         if (token !== null) {
-    //             // Navegar a la página Home si el token existe
-    //             navigation.navigate('PaginaHome');
-    //         } else {
-    //             console.log('No token found');
-    //         }
-    //     } catch (error) {
-    //         console.error('Error retrieving the token', error);
-    //     } finally {
-    //         setIsLoading(false);
-    //     }
-    // };
-
-    // useEffect(() => {
-    //     // Llama a checkToken después del primer renderizado
-    //     checkToken();
-    // }, []);   
-
-    const navigation = useNavigation();  
 
     const {
         userCredentials,
         handleChangeLogin,
-        //handleSubmitLogin,
+        handleSubmitLogin,
         isWrongEmail,
-        isWrongPassword,
-        loginLoading,
+        isWrongPassword        
     } = useLogin();
 
-    // if (token) {
-    //     navigation.navigate("PaginaHome");
-    // }
+    const handleLogin = async () => {
+        setLoginLoading(true);
+        try {
+            const token = await handleSubmitLogin();
+            if (token) {                
+                console.log('Token saved successfully');
+                navigation.navigate('PaginaHome');
+            } else {
+                console.log('Login failed');
+            }
+        } catch (error) {
+            console.error('Error trying to login user', error);
+        } finally {
+            setLoginLoading(false);
+        }
+    };
 
-    function handleSubmitLogin() {
-        navigation.navigate("PaginaHome")
+    if (isLoading) {
+        return (
+            <View style={styles.container}>
+                <ActivityIndicator size="large" color="#0000ff" />
+            </View>
+        );
     }
 
     return (
@@ -61,11 +74,11 @@ function Login() {
 
                 <TextInput
                     style={styles.textInputs}
-                    type="email"
+                    type="text"
                     name="email"
                     placeholder="Correo electrónico"
                     value={userCredentials.email}
-                    onChange={handleChangeLogin}
+                    onChangeText={text => handleChangeLogin('email', text)}                    
                     keyboardType="email-address"
                     autoCapitalize="none"
                     required
@@ -81,7 +94,7 @@ function Login() {
                     style={styles.textInputs}
                     placeholder="Contraseña"
                     value={userCredentials.password}
-                    onChange={handleChangeLogin}
+                    onChangeText={text => handleChangeLogin('password', text)}                    
                     secureTextEntry
                     required
                 />
@@ -92,8 +105,12 @@ function Login() {
                     </>
                 )}
 
-                <TouchableOpacity style={styles.btnLogin}>
-                    <Text style={styles.btnText} onPress={handleSubmitLogin}>Inicia Sesion</Text>
+                <TouchableOpacity style={styles.btnLogin} onPress={handleLogin}>
+                    {loginLoading ? (
+                        <ActivityIndicator size="small" color="#0000ff" />
+                    ) : (
+                        <Text style={styles.btnText}>Inicia Sesion</Text>
+                    )}
                 </TouchableOpacity>
 
                 <View style={styles.backBtnContainer}>
@@ -169,7 +186,6 @@ const styles = StyleSheet.create({
     backBtnContainer: {
         alignItems: 'center',
         justifyContent: 'center',
-
         height: '7%',
     }
 })
