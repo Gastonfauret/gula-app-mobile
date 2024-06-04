@@ -1,10 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, TextInput, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import useRegister from '../../hooks/useRegister';
 import useShowHidePassword from '../../hooks/useShowHidePassword';
+import SelectorCiudad from './SelectorCiudad';
+import DateTimePickerModal from 'react-native-modal-datetime-picker';
 
 export default function Register() {
+
+    const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+    const [birthDate, setBirthDate] = useState('');
+
+    const showDatePicker = () => {
+        setDatePickerVisibility(true);
+    };
+
+    const hideDatePicker = () => {
+        setDatePickerVisibility(false);
+    };
+
+    const handleConfirm = (date) => {
+        // Formatear la fecha como string
+        const formattedDate = date.toISOString().split('T')[0]; // Formato YYYY-MM-DD
+        setBirthDate(formattedDate);
+        hideDatePicker();
+    };
 
     const { togglePasswordVisibility, showPassword } = useShowHidePassword();
     const {
@@ -93,52 +113,47 @@ export default function Register() {
                 )}
 
                 {/* Input Location */}
-                <TextInput
+                {/* <TextInput
                     style={styles.textInputs}
                     placeholder="Localidad"
                     type="text"
                     name="location"
                     value={userData.location}
                     onChangeText={(text) => handleChangeRegister({ target: { name: 'location', value: text } })}
+                /> */}
+
+                <SelectorCiudad
+                    //style={styles.textInputs}
+                    type="text"
+                    name="location"
+                    value={userData.location}
+                    onChangeText={(text) => handleChangeRegister({ target: { name: 'location', value: text } })}
                 />
+
                 {locationError && (
                     <Text style={styles.errorsText}>{locationError}</Text>
                 )}
 
                 {/* Input Fecha Nacimiento */}
-                <TextInput
-                    style={styles.textInputs}
-                    placeholder="dd/mm/aaaa"
-                    type="date"
-                    name="birthDate"
-                    value={userData.birthDate}
-                    onChangeText={(text) => handleChangeRegister({ target: { name: 'birthDate', value: text } })}
-                />
+
+            
+                    <TextInput
+                        style={styles.textInputs}
+                        placeholder="Fecha de nacimiento"
+                        value={birthDate}
+                        onFocus={showDatePicker}    
+                        //editable={true}                    
+                    />
+                    <DateTimePickerModal
+                        isVisible={isDatePickerVisible}
+                        mode="date"
+                        onConfirm={handleConfirm}
+                        onCancel={hideDatePicker}
+                    />                
+
                 {birthDateError && (
                     <Text style={styles.errorsText}>{birthDateError}</Text>
                 )}
-
-                {/* {userInputsError ? (
-                    <TextInput
-                        type="submit"
-                        //value="Registrarme"
-                        //className="button-24 unabled-submit"
-                        role="button"
-                        //style={{
-                        //    background: "#0000003c",
-                        //    border: "1px solid #00000044",
-                        //}}
-                    />
-                ) : (
-                    <TextInput
-                        type="submit"
-                        //value="Registrarme"
-                        //className="button-24"
-                        role="button"
-                    />
-                )} */}
-
-                                   
 
                 <TouchableOpacity onPress={handleSubmitRegister} style={styles.btnLogin}>
                     <Text style={styles.btnText}>Registrarme</Text>
@@ -221,6 +236,6 @@ const styles = StyleSheet.create({
         color: 'black',
         fontSize: 12,
         fontWeight: '700',
-        marginVertical: 6
+        marginVertical: 6,        
     }
 })
