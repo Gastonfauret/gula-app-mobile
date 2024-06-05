@@ -27,22 +27,23 @@ function useRegister() {
     e.preventDefault();
     if (userInputsError) {
       return;
-    }    
+    }   
+    
+    console.log(userData);
 
     try {
       setIsRegisterLoading(true);
-      const response = await fetch("http://192.168.12.102:3070/auth/register", {      
+      const response = await fetch("http://192.168.12.101:3070/auth/register", {      
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(userData),
-      });
+      }); 
+      
+      console.log(userData);
 
-      console.log("Estado de la respuesta del backend:", response);
-
-      const data = await response.json();
-      console.log("Respuesta del backend:", data);
+      const data = await response.json();      
 
       if (data.error) {
         console.error("Error en la respuesta del backend:", data.message);

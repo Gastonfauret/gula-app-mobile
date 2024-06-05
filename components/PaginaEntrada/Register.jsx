@@ -61,9 +61,12 @@ export default function Register() {
                     value={userData.name}
                     onChangeText={(text) => handleChangeRegister({ target: { name: 'name', value: text } })}
                 />
-                {userNameError && (
-                    <Text style={styles.errorsText}> {userNameError}</Text>
-                )}
+
+                <View style={styles.errorTextContainer}>
+                    {userNameError && (
+                        <Text style={styles.errorsText}> {userNameError}</Text>
+                    )}
+                </View>
 
                 {/* Input Email */}
                 <TextInput
@@ -76,9 +79,12 @@ export default function Register() {
                     keyboardType="email-address"
                     autoCapitalize="none"
                 />
-                {emailError && (
-                    <Text style={styles.errorsText} >{emailError}</Text>
-                )}
+
+                <View style={styles.errorTextContainer}>
+                    {emailError && (
+                        <Text style={styles.errorsText} >{emailError}</Text>
+                    )}
+                </View>
 
                 {/* Input Password */}
                 <TextInput
@@ -95,9 +101,12 @@ export default function Register() {
                 >
                     {/*{showPassword ? <IoMdEyeOff /> : <IoMdEye />}*/}
                 </View>
-                {passwordError && (
-                    <Text style={styles.errorsText}>{passwordError}</Text>
-                )}
+
+                <View style={styles.errorTextContainer}>
+                    {passwordError && (
+                        <Text style={styles.errorsText}>{passwordError}</Text>
+                    )}
+                </View>
 
                 {/* Input Confirmacion Password */}
                 <TextInput
@@ -108,9 +117,12 @@ export default function Register() {
                     onChangeText={(text) => handleChangeRegister({ target: { name: 'confirm-password', value: text } })}
                     secureTextEntry
                 />
-                {passwordConfirmError && (
-                    <Text style={styles.errorsText}>{passwordConfirmError}</Text>
-                )}
+                <View style={styles.errorTextContainer}>
+
+                    {passwordConfirmError && (
+                        <Text style={styles.errorsText}>{passwordConfirmError}</Text>
+                    )}
+                </View>
 
                 {/* Input Location */}
                 {/* <TextInput
@@ -122,38 +134,40 @@ export default function Register() {
                     onChangeText={(text) => handleChangeRegister({ target: { name: 'location', value: text } })}
                 /> */}
 
-                <SelectorCiudad
-                    //style={styles.textInputs}
+                <SelectorCiudad                    
                     type="text"
                     name="location"
                     value={userData.location}
                     onChangeText={(text) => handleChangeRegister({ target: { name: 'location', value: text } })}
                 />
+                <View style={styles.errorTextContainer}>
 
-                {locationError && (
-                    <Text style={styles.errorsText}>{locationError}</Text>
-                )}
+                    {locationError && (
+                        <Text style={styles.errorsText}>{locationError}</Text>
+                    )}
+                </View>
 
                 {/* Input Fecha Nacimiento */}
 
-            
-                    <TextInput
-                        style={styles.textInputs}
-                        placeholder="Fecha de nacimiento"
-                        value={birthDate}
-                        onFocus={showDatePicker}    
-                        //editable={true}                    
-                    />
-                    <DateTimePickerModal
-                        isVisible={isDatePickerVisible}
-                        mode="date"
-                        onConfirm={handleConfirm}
-                        onCancel={hideDatePicker}
-                    />                
+                <TextInput
+                    style={styles.textInputs}
+                    placeholder="Fecha de nacimiento"
+                    value={birthDate}
+                    onFocus={showDatePicker}
+                //editable={true}                    
+                />
+                <DateTimePickerModal
+                    isVisible={isDatePickerVisible}
+                    mode="date"
+                    onConfirm={handleConfirm}
+                    onCancel={hideDatePicker}
+                />
+                <View style={styles.errorTextContainer}>
 
-                {birthDateError && (
-                    <Text style={styles.errorsText}>{birthDateError}</Text>
-                )}
+                    {birthDateError && (
+                        <Text style={styles.errorsText}>{birthDateError}</Text>
+                    )}
+                </View>
 
                 <TouchableOpacity onPress={handleSubmitRegister} style={styles.btnLogin}>
                     <Text style={styles.btnText}>Registrarme</Text>
@@ -192,11 +206,17 @@ const styles = StyleSheet.create({
         height: 210
     },
 
+    errorTextContainer: {
+        width: '100%',
+        height: '5%',
+        alignItems: 'center',
+        justifyContent: 'center'        
+    },
+
     inputsContainer: {
         alignItems: 'center',
         width: '100%',
-        height: 500,
-        //gap: 12
+        height: 500        
     },
 
     textInputs: {
@@ -236,6 +256,6 @@ const styles = StyleSheet.create({
         color: 'black',
         fontSize: 12,
         fontWeight: '700',
-        marginVertical: 6,        
+        //marginVertical: 6,
     }
 })
