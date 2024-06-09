@@ -7,7 +7,16 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 function Login() {
     const [isLoading, setIsLoading] = useState(true);
     const [loginLoading, setLoginLoading] = useState(false);
-    const navigation = useNavigation();   
+    const navigation = useNavigation();      
+
+
+    const {
+        userCredentials,
+        handleChangeLogin,
+        handleSubmitLogin,
+        isWrongEmail,
+        isWrongPassword        
+    } = useLogin();
 
     useEffect(() => {
         const checkToken = async () => {
@@ -21,22 +30,13 @@ function Login() {
                     console.log('No token found');
                 }
             } catch (error) {
-                console.error('Error retrieving the token', error);
+                console.log('Error retrieving the token', error);
             } finally {
                 setIsLoading(false);
             }
         };
         checkToken();
     }, [navigation]);
-
-
-    const {
-        userCredentials,
-        handleChangeLogin,
-        handleSubmitLogin,
-        isWrongEmail,
-        isWrongPassword        
-    } = useLogin();
 
     const handleLogin = async () => {
         setLoginLoading(true);
@@ -49,7 +49,8 @@ function Login() {
                 console.log('Login failed');
             }
         } catch (error) {
-            console.error('Error trying to login user', error);
+            console.log('Error trying to login user', error);
+            alert('Usuario no encontrado')
         } finally {
             setLoginLoading(false);
         }

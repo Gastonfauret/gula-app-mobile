@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Modal, StyleSheet, Pressable, Text} from 'react-native'
 
-export default function PaginaModal({ visible, onClose, message }) {
+export default function PaginaModal({ visible, onClose, message = '' }) {
 
   return (
     <View style={styles.centeredView}>

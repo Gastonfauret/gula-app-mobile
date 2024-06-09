@@ -31,11 +31,11 @@ export default function SliderEntrada() {
 
                 <View style={styles.TercerSlide}>
                     <View style={styles.bottonContainer}>
-                        <TouchableOpacity style={styles.btnSlider} onPress={() => navigation.navigate('Ingreso')}>
+                        <TouchableOpacity style={styles.btnSlider} onPress={() => navigation.navigate('Login')}>
                             <Text >Ingresa</Text>
                         </TouchableOpacity>
 
-                        <TouchableOpacity style={styles.btnSlider} onPress={() => navigation.navigate('Registro')}>
+                        <TouchableOpacity style={styles.btnSlider} onPress={() => navigation.navigate('Register')}>
                             <Text>Registrate Gratis</Text>
                         </TouchableOpacity>
                     </View>

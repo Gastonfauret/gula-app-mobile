@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import RNPickerSelect from 'react-native-picker-select';
 
-export default function SelectorCiudad() {
-    const [selectedValue, setSelectedValue] = useState(null);
+export default function SelectorCiudad({ value, onValueChange }) {
+    //const [selectedValue, setSelectedValue] = useState(null);
 
     const placeholder = {
         label: 'Seleccione su ciudad...',
@@ -23,10 +23,10 @@ export default function SelectorCiudad() {
             <RNPickerSelect                               
                 placeholder={placeholder}
                 items={options}
-                onValueChange={(value) => setSelectedValue(value)}                
-                //value={selectedValue}
+                onValueChange={onValueChange}                
+                value={value}
             />
-            {selectedValue && <Text></Text>}
+            {/* {selectedValue && <Text></Text>} */}
         </View>
     );
 }; 

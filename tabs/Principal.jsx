@@ -19,8 +19,8 @@ export default function Principal() {
             <Stack.Navigator initialRouteName="CargaLogo">
                 <Stack.Screen name="CargaLogo" options={{ headerShown: false }} component={CargaLogo} />
                 <Stack.Screen name="SliderEntrada" options={{ headerShown: false }} component={SliderEntrada} />
-                <Stack.Screen name="Registro" options={{ headerShown: false }} component={Register} />
-                <Stack.Screen name="Ingreso" options={{ headerShown: false }} component={Login} />
+                <Stack.Screen name="Register" options={{ headerShown: false }} component={Register} />
+                <Stack.Screen name="Login" options={{ headerShown: false }} component={Login} />
                 <Stack.Screen name="PaginaHome" options={{ headerShown: false }} component={PaginaHome} />
                 <Stack.Screen name="PaginaBusqueda" options={{ headerShown: false }} component={PaginaBusqueda} />
                 <Stack.Screen name="PaginaPedidos" options={{ headerShown: false }} component={PaginaPedidos} />

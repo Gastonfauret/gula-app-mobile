@@ -21,6 +21,7 @@ function useRegister() {
     location: "",
     birthDate: "",
     password: "",
+    //confirmPassword: ""
   });
 
   async function handleSubmitRegister(e) {
@@ -29,11 +30,11 @@ function useRegister() {
       return;
     }   
     
-    console.log(userData);
+    console.log('Submitting user data:', userData);
 
     try {
       setIsRegisterLoading(true);
-      const response = await fetch("http://192.168.12.101:3070/auth/register", {      
+      const response = await fetch("http://192.168.58.110:3070/auth/register", {      
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -41,7 +42,7 @@ function useRegister() {
         body: JSON.stringify(userData),
       }); 
       
-      console.log(userData);
+      console.log('Server response user data:', userData);
 
       const data = await response.json();      
 
@@ -56,7 +57,7 @@ function useRegister() {
       }
 
       alert("Registro exitoso! Serás redirigido hacia la página de inicio");
-      navigation.navigate('Ingreso')
+      navigation.navigate('Login')
     } catch (err) {
       console.error("Error durante la solicitud de registro:", err);
       setIsRegisterError(true);
@@ -161,6 +162,7 @@ function useRegister() {
       setUserData({ ...userData, [name]: value });
     }
     fieldsValidation(value, name);
+    console.log('Updated user data:', userData);
   };
 
   const validateEmail = (email) => {
@@ -172,6 +174,7 @@ function useRegister() {
     handleSubmitRegister,
     handleChangeRegister,
     userData,
+    setUserData,
     isRegisterLoading,
     isRegisterError,
     passwordError,

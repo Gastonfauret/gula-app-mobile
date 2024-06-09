@@ -3,7 +3,7 @@ import { View, StyleSheet, Text, Image, ScrollView, TouchableOpacity } from 'rea
 import PaginaModal from './Modal';
 
 
-export default function MenusSemanales({props}) {
+export default function MenusSemanales() {
 
     const [modalVisible, setModalVisible] = useState(false);
     const [modalMessage, setModalMessage] = useState('');

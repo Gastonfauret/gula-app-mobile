@@ -6,31 +6,14 @@ import useShowHidePassword from '../../hooks/useShowHidePassword';
 import SelectorCiudad from './SelectorCiudad';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 
-export default function Register() {
-
-    const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
-    const [birthDate, setBirthDate] = useState('');
-
-    const showDatePicker = () => {
-        setDatePickerVisibility(true);
-    };
-
-    const hideDatePicker = () => {
-        setDatePickerVisibility(false);
-    };
-
-    const handleConfirm = (date) => {
-        // Formatear la fecha como string
-        const formattedDate = date.toISOString().split('T')[0]; // Formato YYYY-MM-DD
-        setBirthDate(formattedDate);
-        hideDatePicker();
-    };
+export default function Register() {   
 
     const { togglePasswordVisibility, showPassword } = useShowHidePassword();
     const {
         handleSubmitRegister,
         handleChangeRegister,
         userData,
+        setUserData,
         isRegisterLoading,
         isRegisterError,
         passwordError,
@@ -125,23 +108,11 @@ export default function Register() {
                 </View>
 
                 {/* Input Location */}
-                {/* <TextInput
-                    style={styles.textInputs}
-                    placeholder="Localidad"
-                    type="text"
-                    name="location"
+                <SelectorCiudad       
                     value={userData.location}
-                    onChangeText={(text) => handleChangeRegister({ target: { name: 'location', value: text } })}
-                /> */}
-
-                <SelectorCiudad                    
-                    type="text"
-                    name="location"
-                    value={userData.location}
-                    onChangeText={(text) => handleChangeRegister({ target: { name: 'location', value: text } })}
+                    onValueChange={(text) => handleChangeRegister({ target: { name: 'location', value: text } })}
                 />
                 <View style={styles.errorTextContainer}>
-
                     {locationError && (
                         <Text style={styles.errorsText}>{locationError}</Text>
                     )}
@@ -152,18 +123,11 @@ export default function Register() {
                 <TextInput
                     style={styles.textInputs}
                     placeholder="Fecha de nacimiento"
-                    value={birthDate}
-                    onFocus={showDatePicker}
-                //editable={true}                    
+                    value={userData.birthDate}                    
+                    onChangeText={(text) => handleChangeRegister({ target: { name: 'birthDate', value: text } })}                               
                 />
-                <DateTimePickerModal
-                    isVisible={isDatePickerVisible}
-                    mode="date"
-                    onConfirm={handleConfirm}
-                    onCancel={hideDatePicker}
-                />
+                
                 <View style={styles.errorTextContainer}>
-
                     {birthDateError && (
                         <Text style={styles.errorsText}>{birthDateError}</Text>
                     )}
@@ -180,7 +144,6 @@ export default function Register() {
                 </View>
             </View>
         </View>
-
     );
 };
 
