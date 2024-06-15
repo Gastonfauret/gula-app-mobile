@@ -34,7 +34,7 @@ function useRegister() {
 
     try {
       setIsRegisterLoading(true);
-      const response = await fetch("http://192.168.58.110:3070/auth/register", {      
+      const response = await fetch("http://192.168.12.101:3070/auth/register", {      
         method: "POST",
         headers: {
           "Content-Type": "application/json",

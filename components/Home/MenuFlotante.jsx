@@ -10,46 +10,43 @@ export default function MenuFlotante() {
 
     const [pendingOrders, setPendingOrders] = useState(1);
 
-    const [activeButton, setActiveButton] = useState('Home');
+    const [activeButton, setActiveButton] = useState('PaginaHome');    
 
-    // Función para simular la confirmación de un pedido
-    const confirmOrder = () => {
-        setPendingOrders(prevCount => prevCount - 1);
+    const handlePress = (buttonName) => {
+        navigation.navigate(buttonName);
+        setActiveButton(buttonName);        
     };
 
-    // useEffect(() => {
-    //     navigation.navigate(activeButton);
-    // }, [activeButton, navigation]);
-
-    // const setActive = (buttonName) => {
-    //     setActiveButton(buttonName);
-    // };
+    //Función para simular la confirmación de un pedido
+    const confirmOrder = () => {
+        setPendingOrders(prevCount => prevCount - 1);
+    };   
 
     return (
         <View style={styles.menuContainer}>
 
             <View style={styles.menuItem} >
-                <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-                    <Icon name="home" style={[styles.icon, activeButton === 'Home' && styles.activeIcon]} />
+                <TouchableOpacity onPress={() => handlePress('PaginaHome')}>
+                    <Icon name="home" style={[styles.icon, activeButton === 'PaginaHome' ? styles.activeIcon : styles.icon]} />
                 </TouchableOpacity>
             </View>
 
             <View style={styles.menuItem} >
-                <TouchableOpacity onPress={() => navigation.navigate('SelectingFood')}>
-                    <Icon2 name="hamburger" style={[styles.icon, activeButton === 'SelectingFood' && styles.activeIcon]} />
+                <TouchableOpacity onPress={() => handlePress('PaginaBusqueda')}>
+                    <Icon2 name="hamburger" style={[styles.icon, activeButton === 'PaginaBusqueda' ? styles.activeIcon : styles.icon]} />
                 </TouchableOpacity>
             </View>
 
 
             <View style={styles.menuItem} >
-                <TouchableOpacity onPress={() => navigation.navigate('Orders')}>
-                    <Icon name="list-alt" style={[styles.icon, activeButton === 'Orders' && styles.activeIcon]} />
+                <TouchableOpacity onPress={() => handlePress('PaginaPedidos')}>
+                    <Icon name="list-alt" style={[styles.icon, activeButton === 'PaginaPedidos' ? styles.activeIcon : styles.icon]} />
                 </TouchableOpacity>
             </View>
 
             <View style={styles.menuItem} >
-                <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
-                    <Icon name="user" style={[styles.icon, activeButton === 'Profile' && styles.activeIcon]} />
+                <TouchableOpacity onPress={() => handlePress('PaginaPerfil')}>
+                    <Icon name="user" style={[styles.icon, activeButton === 'PaginaPerfil' ? styles.activeIcon : styles.icon]} />
                 </TouchableOpacity>
                 <View style={styles.nroOrder}>
                     <Text style={styles.nroOrderText}>{pendingOrders}</Text>
@@ -62,7 +59,7 @@ export default function MenuFlotante() {
 
 const styles = StyleSheet.create({
     menuContainer: {
-        position: 'absolute',        
+        position: 'absolute',
         bottom: 0,
         left: 0,
         right: 0,
@@ -70,7 +67,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         gap: 1,
         zIndex: 999,
-        backgroundColor: 'white',        
+        backgroundColor: 'white',
     },
 
     menuItem: {

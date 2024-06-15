@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { View, TextInput, Text, Image, TouchableOpacity, StyleSheet,  ActivityIndicator } from 'react-native';
+import { View, TextInput, Text, Image, TouchableOpacity, StyleSheet, ActivityIndicator } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import useLogin from '../../hooks/useLogin';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 
 function Login() {
     const [isLoading, setIsLoading] = useState(true);
     const [loginLoading, setLoginLoading] = useState(false);
-    const navigation = useNavigation();      
+
+    const navigation = useNavigation();
+    const Tab = createBottomTabNavigator();
+    const Stack = createStackNavigator();
 
 
     const {
@@ -15,7 +20,7 @@ function Login() {
         handleChangeLogin,
         handleSubmitLogin,
         isWrongEmail,
-        isWrongPassword        
+        isWrongPassword
     } = useLogin();
 
     useEffect(() => {
@@ -42,7 +47,7 @@ function Login() {
         setLoginLoading(true);
         try {
             const token = await handleSubmitLogin();
-            if (token) {                
+            if (token) {
                 console.log('Token saved successfully');
                 navigation.navigate('PaginaHome');
             } else {
@@ -79,7 +84,7 @@ function Login() {
                     name="email"
                     placeholder="Correo electrónico"
                     value={userCredentials.email}
-                    onChangeText={text => handleChangeLogin('email', text)}                    
+                    onChangeText={text => handleChangeLogin('email', text)}
                     keyboardType="email-address"
                     autoCapitalize="none"
                     required
@@ -95,7 +100,7 @@ function Login() {
                     style={styles.textInputs}
                     placeholder="Contraseña"
                     value={userCredentials.password}
-                    onChangeText={text => handleChangeLogin('password', text)}                    
+                    onChangeText={text => handleChangeLogin('password', text)}
                     secureTextEntry
                     required
                 />

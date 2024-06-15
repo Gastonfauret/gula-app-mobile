@@ -3,10 +3,9 @@ import Swiper from 'react-native-swiper';
 import { useNavigation } from '@react-navigation/native';
 
 
-export default function SliderEntrada() {
-
-    const navigation = useNavigation();
+export default function SliderEntrada() {    
     
+    const navigation = useNavigation();
     return (
         <Swiper >
             <View style={styles.container}>
