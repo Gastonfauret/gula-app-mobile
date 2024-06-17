@@ -11,7 +11,7 @@ function useGetFoodByFilter() {
     try {
       setFoodByQueryLoading(true);
       const response = await fetch(
-        `http://localhost:3070/food/filter?food=${food}`,
+        `http://192.168.58.110:3070/food/filter?food=${food}`,
         {
           method: "GET",
           headers: {

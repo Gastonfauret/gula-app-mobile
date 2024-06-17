@@ -1,20 +1,27 @@
-import { useContext, useState } from "react";
-import { removeHeaderContext } from "../components/Home/Siders/SiderContext";
+import { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-function useLogOut() {
-  const [logOutLoading, setLogOutLoading] = useState(false);
-  const { removeHeader } = useContext(removeHeaderContext);
+export default function useLogOut() {
+  const [logOutLoading, setLogOutLoading] = useState(false); 
+
+  const navigation = useNavigation();
 
   function handleLogOut() {
-    removeHeader();
     setLogOutLoading(true);
+
     setTimeout(() => {
-      localStorage.clear();
-      location.reload();
+      AsyncStorage.clear()
+      .then(() => {
+        setLogOutLoading(false);
+        navigation.navigate('Login')
+      })
+      .catch(error => {
+        setLogOutLoading(false);
+        console.log("Error al borrar el token", error)
+      })      
     }, 1000);
   }
 
   return { handleLogOut, logOutLoading };
 }
-
-export default useLogOut;

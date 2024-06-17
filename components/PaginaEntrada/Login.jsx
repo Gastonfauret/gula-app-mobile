@@ -2,18 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { View, TextInput, Text, Image, TouchableOpacity, StyleSheet, ActivityIndicator } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import useLogin from '../../hooks/useLogin';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createStackNavigator } from '@react-navigation/stack';
 
 function Login() {
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
     const [loginLoading, setLoginLoading] = useState(false);
 
     const navigation = useNavigation();
-    const Tab = createBottomTabNavigator();
-    const Stack = createStackNavigator();
-
 
     const {
         userCredentials,
@@ -23,51 +17,26 @@ function Login() {
         isWrongPassword
     } = useLogin();
 
-    useEffect(() => {
-        const checkToken = async () => {
-            try {
-                const token = await AsyncStorage.getItem('accessToken');
-                console.log('Retrieved token:', token);
-                if (token !== null) {
-                    // Navegar a la página Home si el token existe
-                    navigation.navigate('PaginaHome');
-                } else {
-                    console.log('No token found');
-                }
-            } catch (error) {
-                console.log('Error retrieving the token', error);
-            } finally {
-                setIsLoading(false);
-            }
-        };
-        checkToken();
-    }, [navigation]);
 
     const handleLogin = async () => {
         setLoginLoading(true);
         try {
             const token = await handleSubmitLogin();
             if (token) {
-                console.log('Token saved successfully');
-                navigation.navigate('PaginaHome');
+                console.log('Token saved successfully', token);
+                navigation.navigate('Protected', { screen: 'PaginaHome' });
             } else {
                 console.log('Login failed');
+                alert('Usuario no encontrado')
             }
         } catch (error) {
             console.log('Error trying to login user', error);
-            alert('Usuario no encontrado')
+            //alert('Usuario no encontrado')
         } finally {
             setLoginLoading(false);
         }
     };
 
-    if (isLoading) {
-        return (
-            <View style={styles.container}>
-                <ActivityIndicator size="large" color="#0000ff" />
-            </View>
-        );
-    }
 
     return (
         <View style={styles.container}>
@@ -90,11 +59,11 @@ function Login() {
                     required
                 />
 
-                {isWrongEmail && (
+                {/* {isWrongEmail && (
                     <>
-                        <Text style={styles.login - error}>Usuario no encontrado</Text>
+                        <Text>Usuario no encontrado</Text>
                     </>
-                )}
+                )} */}
 
                 <TextInput
                     style={styles.textInputs}
@@ -104,12 +73,12 @@ function Login() {
                     secureTextEntry
                     required
                 />
-
+                {/* 
                 {isWrongPassword && (
                     <>
-                        <Text style={styles.login - error}>Contraseña incorrecta</Text>
+                        <Text>Contraseña incorrecta</Text>
                     </>
-                )}
+                )} */}
 
                 <TouchableOpacity style={styles.btnLogin} onPress={handleLogin}>
                     {loginLoading ? (

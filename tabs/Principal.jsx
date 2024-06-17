@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
@@ -7,16 +7,12 @@ import Register from '../components/PaginaEntrada/Register.jsx';
 import Login from '../components/PaginaEntrada/Login.jsx';
 import SliderEntrada from '../components/PaginaEntrada/SliderEntrada.jsx';
 import CargaLogo from '../components/PaginaEntrada/CargaLogo.jsx';
-
-import PaginaHome from '../components/Home/PaginaHome.jsx';
-import PaginaPerfil from '../components/PaginaPerfil/PaginaPerfil.jsx';
-import PaginaBusqueda from '../components/PaginaBuqueda/PaginaBusqueda.jsx';
-import PaginaPedidos from '../components/PaginaPedidos/PaginaPedidos.jsx';
+import Protected from './Protected.jsx';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
-export default function StacksNavegacion() {
+export default function StacksNavegacion() {   
 
     function StackPantallaCarga() {
         return (
@@ -27,18 +23,7 @@ export default function StacksNavegacion() {
                 <Stack.Screen name="Login" options={{ headerShown: false }} component={Login} />
             </Stack.Navigator>
         )
-    }
-
-    function StackPantallaHome() {
-        return (
-            <Stack.Navigator initialRouteName="PaginaHome">
-                <Stack.Screen name="PaginaHome" options={{ headerShown: false }} component={PaginaHome} />
-                <Stack.Screen name="PaginaBusqueda" options={{ headerShown: false }} component={PaginaBusqueda} />
-                <Stack.Screen name="PaginaPedidos" options={{ headerShown: false }} component={PaginaPedidos} />
-                <Stack.Screen name="PaginaPerfil" options={{ headerShown: false }} component={PaginaPerfil} />
-            </Stack.Navigator>
-        )
-    }
+    }  
 
     return (
         <NavigationContainer>
@@ -47,10 +32,11 @@ export default function StacksNavegacion() {
                     headerShown: false,
                     tabBarStyle: { display: 'none' }
                 }} component={StackPantallaCarga} />
-                <Tab.Screen name='PaginaHome' options={{
+
+                <Tab.Screen name='Protected' options={{
                     headerShown: false,
                     tabBarStyle: { display: 'none' }
-                }} component={StackPantallaHome} />
+                }} component={Protected} />
             </Tab.Navigator>
         </NavigationContainer>
     )

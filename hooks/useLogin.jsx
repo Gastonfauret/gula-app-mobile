@@ -2,7 +2,7 @@
 import { useState } from "react";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-function useLogin() {
+export default function useLogin() {
   const [userCredentials, setUserCredentials] = useState({
     email: "",
     password: "",
@@ -11,13 +11,13 @@ function useLogin() {
   const [isWrongPassword, setIsWrongPassword] = useState(null);
   const [loginLoading, setLoginLoading] = useState(false);
 
-  const handleSubmitLogin = async () => {   
+  const handleSubmitLogin = async () => {
     setIsWrongEmail(null);
     setIsWrongPassword(null);
 
     try {
-      setLoginLoading(true);      
-      const response = await fetch("http://192.168.12.101:3070/auth/login", {
+      setLoginLoading(true);
+      const response = await fetch("http://192.168.58.110:3070/auth/login", {
         method: "POST", //192.168.1.123
         headers: {
           "Content-Type": "application/json",
@@ -32,20 +32,20 @@ function useLogin() {
         } else if (data.message === "Incorrect password") {
           setIsWrongPassword(true);
         }
-        throw new Error(data.message);        
+        return null
       }
 
       await AsyncStorage.setItem("accessToken", data.token);
       return data.token;
     } catch (err) {
       console.error("Error trying to login user");
-       return null;
+      return null;
     } finally {
       setLoginLoading(false);
     }
   };
 
-  const handleChangeLogin = (name, value) => {    
+  const handleChangeLogin = (name, value) => {
     setUserCredentials({ ...userCredentials, [name]: value });
   };
 
@@ -59,4 +59,3 @@ function useLogin() {
   };
 }
 
-export default useLogin;

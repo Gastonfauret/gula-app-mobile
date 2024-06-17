@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, Linking, StyleSheet } from 'react-native';
+import useLogOut from '../../hooks/useLogOut';
 
 export default function ItemsExpandiblesSalir({ title, content }) {
     const [isExpanded, setIsExpanded] = useState(false);
+    const { handleLogOut, logOutLoading } = useLogOut();
 
     const toggleExpansion = () => {
         setIsExpanded(!isExpanded);
@@ -15,10 +17,11 @@ export default function ItemsExpandiblesSalir({ title, content }) {
                     <Text style={styles.title}>{title}</Text>
                 </View>
             </TouchableOpacity>
+
             {isExpanded && (
                 <View style={styles.contentContainer}>
-                    <TouchableOpacity onPress={() => handleLinkPress(content.url)}>
-                        <Text style={styles.link}>{content.text}</Text>
+                    <TouchableOpacity onPress={handleLogOut}>
+                        <Text style={styles.link}>{content}</Text>
                     </TouchableOpacity>
                 </View>
             )}
@@ -45,8 +48,8 @@ const styles = StyleSheet.create({
         paddingTop: 5,
     },
     link: {
-        color: 'blue',
-        textDecorationLine: 'underline',
+        //color: ,
+        //textDecorationLine: 'underline',
     },
 });
 

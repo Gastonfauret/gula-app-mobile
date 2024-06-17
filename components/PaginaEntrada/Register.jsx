@@ -4,7 +4,6 @@ import { useNavigation } from '@react-navigation/native';
 import useRegister from '../../hooks/useRegister';
 import useShowHidePassword from '../../hooks/useShowHidePassword';
 import SelectorCiudad from './SelectorCiudad';
-import DateTimePickerModal from 'react-native-modal-datetime-picker';
 
 export default function Register() {   
 

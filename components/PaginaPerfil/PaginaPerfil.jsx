@@ -1,13 +1,61 @@
-import React from 'react'
-import { Text, View, StyleSheet, Image } from 'react-native';
+import React, { useEffect, useState } from 'react'
+import { Text, View, StyleSheet, Image, ActivityIndicator } from 'react-native';
 import FloatingMenu from '../Home/MenuFlotante';
 import Header from '../Home/Header';
 import ExpandableItem from './ItemsExpandibles';
-import ExpandableItemLogOut from './ItemsExpandiblesSalir';
-import MainSlider from '../PaginaEntrada/SliderEntrada';
+import ExpandableItemSalir from './ItemsExpandiblesSalir';
+import useGetUserData from '../../hooks/useGetUserData'
+import useGetProfileData from '../../hooks/useGetProfileData';
+
 
 
 export default function PaginaPerfil() {
+    const [userData, setUserData] = useState(null);
+    const [profileData, setProfileData] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const userData = await useGetUserData();
+                setUserData(userData);
+
+                const profileData = await useGetProfileData();
+                setProfileData(profileData);
+
+                setLoading(false);
+            } catch (err) {
+                setError(err.message);
+                setLoading(false);
+            }
+        }
+
+        fetchData();
+    }, []);
+
+    // useEffect(() => {
+    //     async function fetchProfileData() {
+    //         try {
+                
+    //             setLoading(false);
+    //         } catch (err) {
+    //             setError(err.message);
+    //             setLoading(false);
+    //         }
+    //     }
+
+    //     fetchProfileData();
+    // }, []);
+
+    if (loading) {
+        return <ActivityIndicator size="large" color="#0000ff" />;
+    }
+
+    if (error) {
+        return <Text>{error}</Text>;
+    }
+
     return (
         <>
             <View style={styles.container}>
@@ -18,18 +66,18 @@ export default function PaginaPerfil() {
                         <Image style={styles.profilePhoto} source={require('../../assets/Profile Image.png')}></Image>
                     </View>
                     <View style={styles.textContainer}>
-                        <Text style={styles.textProfileName}>Adrian Calo</Text>
-                        <Text style={styles.textProfileEmail}>calo@gula.com</Text>
-                        <Text style={styles.textProfile}>Benito Juarez</Text>
+                        <Text style={styles.textProfileName}>{userData.name}</Text>
+                        <Text style={styles.textProfileEmail}>{userData.email}</Text>
+                        <Text style={styles.textProfile}>{profileData.location}</Text>
                     </View>
                 </View>
 
                 <View style={styles.expandableItemContainer}>
-                    <ExpandableItem title='Datos Personales' content={['Nombre Completo: Adrian Calo', 'Edad: 33 años', 'Dni: 35411043', 'Fecha de Nac.: 12/10/1990', 'Direccion: Pelegrini 120', 'Localidad: Benito Juarez, Buenos Aires, Argentina']} />
+                    <ExpandableItem title='Datos Personales' content={[`${userData.name}`,`${profileData.birthDate}`, `${profileData.location}`]} />
 
                     <ExpandableItem title='Ayuda' content={['Telefono: (02281) 15 123456', 'Email: ayuda@gula.com', 'Web: www.gula.com']} />
 
-                    <ExpandableItem
+                    <ExpandableItemSalir
                         title="Cerrar Sesión"
                         content={['Salir']}
                     />
@@ -85,7 +133,7 @@ const styles = StyleSheet.create({
     },
 
     textProfileName: {
-        fontSize: 26,
+        fontSize: 22,
         fontWeight: 'bold',
         color: 'black',
         marginBottom: '-3%'
