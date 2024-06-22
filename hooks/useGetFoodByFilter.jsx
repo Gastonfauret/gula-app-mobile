@@ -1,13 +1,28 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-function useGetFoodByFilter() {
-  const token = localStorage.getItem("accessToken");
+export default function useGetFoodByFilter() {
+
+  const [token, setToken] = useState(null);  
   const [foodsByQuery, setFoodsByQuery] = useState([]);
   const [foodByQueryLoading, setFoodByQueryLoading] = useState(false);
-  const [foodByQueryError, setFoodByQueryError] = useState(false);
+  const [foodByQueryError, setFoodByQueryError] = useState(null);
   const [filterInput, setFilterInput] = useState("");
 
-  async function getFoodsByQuery(food) {
+  useEffect(() => {
+    const getToken = async () => {
+      try {
+        const storedToken = await AsyncStorage.getItem("accessToken");
+        setToken(storedToken);
+      } catch (error) {
+        setFoodByQueryError("Error getting token from storage");
+      }
+    };
+    getToken();
+  }, []);
+
+  const getFoodsByQuery = useCallback(async (food) => {
+    if (!token) return;
     try {
       setFoodByQueryLoading(true);
       const response = await fetch(
@@ -20,27 +35,27 @@ function useGetFoodByFilter() {
           },
         }
       );
-      const data = await response.json();
-      if (data.error) {
-        throw new Error(data.error);
-      }
-      setFoodsByQuery(data);
-    } catch (err) {
-      setFoodByQueryError("Error trying to get foods by query", err);
-    } finally {
-      setFoodByQueryLoading(false);
-    }
-  }
 
-  const handleChangeFoodByFilter = (e) => {
-    const { value } = e.target;
-    //Para que no permita al usuario hacer espacio cuando el input este vacio.
-    if (value.trim() === "" && value !== "") {
+  const data = await response.json();
+  if (data.error) {
+    throw new Error(data.error);
+  }
+  setFoodsByQuery(data);
+} catch (err) {
+  setFoodByQueryError("Error trying to get foods by query");
+} finally {
+  setFoodByQueryLoading(false);
+}
+}, [token]);
+
+  const handleChangeFoodByFilter = useCallback((food) => {
+    //const { value } = e.target;
+    if (typeof food !== 'string' || food.trim() === "") {
       return;
     }
-    setFilterInput(value);
-    getFoodsByQuery(value);
-  };
+    //setFilterInput(value);
+    getFoodsByQuery(food);
+  }, [getFoodsByQuery]);
 
   const isEmptyField = filterInput.length === 0;
 
@@ -52,7 +67,7 @@ function useGetFoodByFilter() {
     handleChangeFoodByFilter,
     filterInput,
     isEmptyField,
-  };
-}
+  };}
 
-export default useGetFoodByFilter;
+
+

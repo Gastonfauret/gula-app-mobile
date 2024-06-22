@@ -7,9 +7,11 @@ export default function MenusSemanales() {
 
     const [modalVisible, setModalVisible] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
+    const [selectedFood, setSelectedFood] = useState('');
 
-    const handleOpenModal = (message) => {
+    const handleOpenModal = (message, food) => {
         setModalMessage(message);
+        setSelectedFood(food);
         setModalVisible(true);
     };
 
@@ -23,7 +25,7 @@ export default function MenusSemanales() {
             <Text style={styles.title}>Menús Semanales</Text>
 
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                <TouchableOpacity onPress={() => handleOpenModal('Martes')}>                    
+                <TouchableOpacity onPress={() => handleOpenModal('Martes', 'Filete de Merluza con Pure')}>                    
                     <View style={styles.subContainer}>
                         <Image source={require('../../assets/Food/Merluza con Pure.jpg')} style={styles.fondoLocal} />
                         <View style={styles.textContainer}>
@@ -34,7 +36,7 @@ export default function MenusSemanales() {
                     </View>
                 </TouchableOpacity>                
 
-                <TouchableOpacity onPress={() => handleOpenModal('Miercoles')}>
+                <TouchableOpacity onPress={() => handleOpenModal('Miercoles', 'Milanesas Simple con papas fritas')}>
                     <View style={styles.subContainer}>
                         <Image source={require('../../assets/Food/Mila con Fritas.jpg')} style={styles.fondoLocal} />
                         <View style={styles.textContainer}>
@@ -45,7 +47,7 @@ export default function MenusSemanales() {
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={() => handleOpenModal('Jueves')}>
+                <TouchableOpacity onPress={() => handleOpenModal('Jueves', 'Pollo al Verdeo con Papas Españolas')}>
                     <View style={styles.subContainer}>
                         <Image source={require('../../assets/Food/Pollo al Verdeo con Papas Esp.jpg')} style={styles.fondoLocal} />
                         <View style={styles.textContainer}>
@@ -56,7 +58,7 @@ export default function MenusSemanales() {
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={() => handleOpenModal('Viernes')}>
+                <TouchableOpacity onPress={() => handleOpenModal('Viernes', 'Milanesa Napolitana con Pure')}>
                     <View style={styles.subContainer}>
                         <Image source={require('../../assets/Food/Napo con Pure.jpg')} style={styles.fondoLocal} />
                         <View style={styles.textContainer}>
@@ -67,7 +69,7 @@ export default function MenusSemanales() {
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={() => handleOpenModal('Sabado')}>
+                <TouchableOpacity onPress={() => handleOpenModal('Sabado', 'Pizza Napolitana')}>
                     <View style={styles.subContainer}>
                         <Image source={require('../../assets/Food/Pizza.jpg')} style={styles.fondoLocal} />
                         <View style={styles.textContainer}>
@@ -78,7 +80,7 @@ export default function MenusSemanales() {
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={() => handleOpenModal('Domingo')}>
+                <TouchableOpacity onPress={() => handleOpenModal('Domingo', 'Ravioles de Verdura con Salsa')}>
                     <View style={styles.subContainer}>
                         <Image source={require('../../assets/Food/Ravioles.jpg')} style={styles.fondoLocal} />
                         <View style={styles.textContainer}>
@@ -90,7 +92,7 @@ export default function MenusSemanales() {
                 </TouchableOpacity>
 
                 {modalVisible && (
-        <PaginaModal message={modalMessage} visible={modalVisible} onClose={handleCloseModal} />    )}
+        <PaginaModal message={modalMessage} food={selectedFood} visible={modalVisible} onClose={handleCloseModal} />)}
 
             </ScrollView>
         </View>

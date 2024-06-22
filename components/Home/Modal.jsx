@@ -1,7 +1,25 @@
-import React from 'react'
-import { View, Modal, StyleSheet, Pressable, Text} from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { View, Modal, StyleSheet, Pressable, Text, ActivityIndicator, TouchableOpacity } from 'react-native'
+import FoodBanner from './FoodBanner';
+import useGetFoodByFilter from '../../hooks/useGetFoodByFilter';
 
-export default function PaginaModal({ visible, onClose, message = '' }) {
+export default function PaginaModal({ visible, onClose, message = '', food }) {  
+
+  const { foodsByQuery, foodByQueryLoading, foodByQueryError, handleChangeFoodByFilter } = useGetFoodByFilter();
+
+  useEffect(() => {
+      if (visible && food && food.trim() !== '') {
+          handleChangeFoodByFilter(food);
+      }
+  }, [visible, handleChangeFoodByFilter, food]);
+
+  if (foodByQueryLoading) {
+      return <ActivityIndicator size="large" color="#0000ff" />;
+  }
+
+  if (foodByQueryError) {
+      return <Text>Error: {foodByQueryError}</Text>;
+  }
 
   return (
     <View style={styles.centeredView}>
@@ -13,14 +31,19 @@ export default function PaginaModal({ visible, onClose, message = '' }) {
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <Text style={styles.modalText}>{message}</Text>
+
+            <FoodBanner foodData={foodsByQuery && foodsByQuery.length > 0 ? foodsByQuery[0] : null} />
+
             <Pressable
               style={[styles.button, styles.buttonClose]}
               onPress={onClose}>
-              <Text style={styles.textStyle}>Hide Modal</Text>
+              <Text style={styles.textStyle}>Volver</Text>
             </Pressable>
+
           </View>
+
         </View>
-      </Modal>  
+      </Modal>
     </View>
   )
 }
@@ -52,22 +75,19 @@ const styles = StyleSheet.create({
 
   button: {
     borderRadius: 20,
-    padding: 10,
-    elevation: 2,
+    padding: 10    
   },
 
   buttonClose: {
-    backgroundColor: '#2196F3',
+    backgroundColor: 'white',
   },
 
   textStyle: {
-    color: 'white',
-    fontWeight: 'bold',
+    color: 'black',    
     textAlign: 'center',
   },
 
-  modalText: {
-    marginBottom: 15,
+  modalText: {    
     textAlign: 'center',
   },
 });

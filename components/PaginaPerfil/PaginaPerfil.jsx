@@ -33,20 +33,7 @@ export default function PaginaPerfil() {
 
         fetchData();
     }, []);
-
-    // useEffect(() => {
-    //     async function fetchProfileData() {
-    //         try {
-                
-    //             setLoading(false);
-    //         } catch (err) {
-    //             setError(err.message);
-    //             setLoading(false);
-    //         }
-    //     }
-
-    //     fetchProfileData();
-    // }, []);
+   
 
     if (loading) {
         return <ActivityIndicator size="large" color="#0000ff" />;
