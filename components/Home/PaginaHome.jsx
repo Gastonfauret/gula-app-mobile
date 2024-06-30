@@ -2,13 +2,13 @@ import React, { useState } from 'react'
 import { View, StyleSheet, FlatList, ScrollView } from 'react-native'
 
 import BannerTarjetas from './BannerTarjetas';
-import SliderComidas from './SliderComidas';
+import SliderComidas from './SliderCategorias/SliderComidas';
 import MenuFlotante from './MenuFlotante';
 import Header from './Header';
 import BannerOfertas from './BannerOfertas';
 import BannerCamorra from './BannerCamorra';
-import SliderLugares from './SliderLugares';
-import MenusSemanales from './MenusSemanales';
+import SliderLugares from './SliderLugares/SliderLugares';
+import MenusSemanales from '../Home/SliderMenusSemanales/MenusSemanales';
 
 export default function PaginaHome() {
 

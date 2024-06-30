@@ -1,14 +1,13 @@
-import React from 'react'
-import { View, Text, Image, StyleSheet } from 'react-native'
-import Contador from './Contador'
+import React from 'react';
+import { View, Text, Image, StyleSheet } from 'react-native';
+import Contador from '../Contador'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 
-
-export default function FoodBanner({ foodData }) {
+export default function FoodBannerByPlaces({ foodData }) {
 
     function anadeACarrito() {
         console.log('Order añadida!')
-    }    
+    }
 
     return (
         <View>
@@ -22,6 +21,7 @@ export default function FoodBanner({ foodData }) {
 
                         <View style={styles.textContainer}>
                             <Text style={styles.foodText}>{foodData.description}</Text>
+                            <Text style={styles.shopText}>{foodData.shop.name}</Text>
                             <Text style={styles.priceText}>$ {foodData.price}</Text>
                         </View>
                     </View>
@@ -37,10 +37,10 @@ export default function FoodBanner({ foodData }) {
                     </View>
                 </View>
             ) : (
-                <Text>No data available</Text>
+                <Text>Banner: No data available</Text>
             )}
         </View>
-    )
+    );
 }
 
 const styles = StyleSheet.create({
@@ -79,22 +79,29 @@ const styles = StyleSheet.create({
         width: '64%',
         height: '90%',
         alignItems: 'flex-end',
-        justifyContent: 'space-around'        
+        justifyContent: 'space-around',
+        //backgroundColor: 'pink'        
     },
 
     foodText: {
-        fontSize: 14,
+        fontSize: 12,
         flexWrap: 'wrap',
         width: '90%',
         textAlign: 'right',
         marginRight: 10,
-        fontWeight: '500'
+        fontWeight: '500'       
     },
 
     priceText: {
         fontSize: 18,
         fontWeight: '500',
         color: 'green',
+        marginRight: 10
+    },
+
+    shopText: {
+        fontSize: 10,
+        fontWeight: '700',
         marginRight: 10
     },
 

@@ -1,21 +1,20 @@
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-function useGetShops() {
-  const token = localStorage.getItem("accessToken");
+export default function useGetShops() {
   const [shops, setShops] = useState([]);
   const [shopsByQueryLoading, setShopsByQueryLoading] = useState(false);
-  const [shopsByQueryError, setShopsByQueryError] = useState(false);
+  const [shopsByQueryError, setShopsByQueryError] = useState(null);
 
   useEffect(() => {
     async function getShopsByQuery() {
       try {
         setShopsByQueryLoading(true);
-        const response = await fetch("http://localhost:3070/shop", {
-          method: "GET",
+        const token = await AsyncStorage.getItem('accessToken');
+        const response = await fetch('http://192.168.58.110:3070/shop', {
+          method: 'GET',
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
             authorization: `Bearer ${token}`,
           },
         });
@@ -25,16 +24,16 @@ function useGetShops() {
         }
         setShops(data);
       } catch (err) {
-        setShopsByQueryError("Error trying to get shops by query", err);
+        setShopsByQueryError(`Error trying to get shops by query: ${err.message}`);
       } finally {
         setShopsByQueryLoading(false);
       }
     }
 
     getShopsByQuery();
-  }, [token]);
+  }, []);
 
   return { shops, shopsByQueryLoading, shopsByQueryError };
 }
 
-export default useGetShops;
+
