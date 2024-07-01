@@ -15,7 +15,7 @@ const useGetFoodsByCategory = (categoryId) => {
                 throw new Error('Token not found');
             }
 
-            const response = await fetch(`http://192.168.58.110:3070/food/by-category/${categoryId}`,
+            const response = await fetch(`http://192.168.12.101:3070/food/by-category/${categoryId}`,
                 {
                     method: "GET",
                     headers: {

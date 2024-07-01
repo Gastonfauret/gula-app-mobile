@@ -3,7 +3,7 @@ import { View, Modal, StyleSheet, Pressable, Text, ActivityIndicator } from 'rea
 import FoodBannerByCategory from './FoodBannerByCategory';
 import useGetFoodsByCategory from '../../../hooks/useGetFoodsByCategory';
 
-export default function ModalSliderComidas({ visible, onClose, message = '', categoryId }) {
+export default function ModalSliderComidas({ visible, onClose, message, categoryId }) {
     const { foods, loading, error } = useGetFoodsByCategory(categoryId);    
 
     if (loading) {
@@ -31,7 +31,7 @@ export default function ModalSliderComidas({ visible, onClose, message = '', cat
                                 <FoodBannerByCategory key={index} foodData={food} />
                             ))
                         ) : (
-                            <Text>No data available</Text>
+                            <Text>Modal: No data available</Text>
                         )}
 
                         <Pressable

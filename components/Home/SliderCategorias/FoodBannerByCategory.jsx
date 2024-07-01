@@ -1,14 +1,16 @@
-import React from 'react'
-import { View, Text, Image, StyleSheet } from 'react-native'
+import React,{ useState } from 'react'
+import { View, Text, Image, StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native'
 import Contador from '../Contador'
-import { TouchableOpacity } from 'react-native-gesture-handler'
+import useAddFoodOnCart from "../../../hooks/useAddFoodOnCart";
 
+export default function FoodBannerByCategory({ foodData }) {    
+    const [contador, setContador] = useState(1); 
 
-export default function FoodBannerByCategory({ foodData }) {
+    const { addFoodOnCart, addFoodOnCartLoading, addFoodOnCartError } = useAddFoodOnCart();
 
-    function anadeACarrito() {
-        console.log('Order añadida!')
-    }    
+    const handleAddToCart = () => {
+        addFoodOnCart(foodData.foodId, contador);
+    };
 
     return (
         <View>
@@ -28,11 +30,14 @@ export default function FoodBannerByCategory({ foodData }) {
                     </View>
 
                     <View style={styles.btnContainer}>
-                        <Contador />
+                    <Contador contador={contador} setContador={setContador} />
                         <View>
-                            <TouchableOpacity onPress={anadeACarrito}>
+                            <TouchableOpacity onPress={handleAddToCart}>
                                 <Text>Agregar a Carrito</Text>
                             </TouchableOpacity>
+
+                            {addFoodOnCartLoading && <ActivityIndicator />}
+                            {addFoodOnCartError && <Text>Error: {addFoodOnCartError.message}</Text>}      
                         </View>
 
                     </View>

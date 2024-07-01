@@ -42,15 +42,15 @@ export default function MenuFlotante() {
                 <TouchableOpacity onPress={() => handlePress('PaginaPedidos')}>
                     <Icon name="list-alt" style={[styles.icon, activeButton === 'PaginaPedidos' ? styles.activeIcon : styles.icon]} />
                 </TouchableOpacity>
+                <View style={styles.nroOrder}>
+                    <Text style={styles.nroOrderText}>{pendingOrders}</Text>
+                </View>
             </View>
 
             <View style={styles.menuItem} >
                 <TouchableOpacity onPress={() => handlePress('PaginaPerfil')}>
                     <Icon name="user" style={[styles.icon, activeButton === 'PaginaPerfil' ? styles.activeIcon : styles.icon]} />
-                </TouchableOpacity>
-                <View style={styles.nroOrder}>
-                    <Text style={styles.nroOrderText}>{pendingOrders}</Text>
-                </View>
+                </TouchableOpacity>                
             </View>
 
         </View>
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
         height: '100%',
         justifyContent: 'flex-start',
         alignItems: 'flex-end',
-        paddingRight: '30%'
+        paddingRight: '20%'
     },
 
     nroOrderText: {

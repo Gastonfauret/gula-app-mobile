@@ -17,7 +17,7 @@ const useGetFoodsByPlaces = (shopId) => {
                 throw new Error('Token not found');
             }         
 
-            const response = await fetch(`http://192.168.58.110:3070/food/by-shop/${shopId}`, {
+            const response = await fetch(`http://192.168.12.101:3070/food/by-shop/${shopId}`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",

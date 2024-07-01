@@ -26,7 +26,7 @@ export default function useGetFoodByFilter() {
     try {
       setFoodByQueryLoading(true);
       const response = await fetch(
-        `http://192.168.58.110:3070/food/filter?food=${food}`,
+        `http://192.168.12.101:3070/food/filter?food=${food}`,
         {
           method: "GET",
           headers: {

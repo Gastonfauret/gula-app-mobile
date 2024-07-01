@@ -18,7 +18,7 @@
     "@react-navigation/stack": "^6.3.29",
     "@types/react": "~18.2.45",
     "axios": "^1.7.2",
-    "expo": "^51.0.16",
+    "expo": "^51.0.17",
     "expo-constants": "^16.0.2",
     "expo-status-bar": "^1.12.1",
     "prop-types": "^15.8.1",

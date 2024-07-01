@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import { View, Text, Image, StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native';
-import Contador from '../Contador'
+import Contador from '../Contador';
 import useAddFoodOnCart from "../../../hooks/useAddFoodOnCart";
 
-export default function FoodBannerByPlaces({ foodData }) {
-    const [contador, setContador] = useState(1);
+export default function FoodBannerMenusSemanales({ foodData }) {
+    const [contador, setContador] = useState(1); 
     
     const { addFoodOnCart, addFoodOnCartLoading, addFoodOnCartError } = useAddFoodOnCart();
 
@@ -30,24 +30,23 @@ export default function FoodBannerByPlaces({ foodData }) {
                     </View>
 
                     <View style={styles.btnContainer}>
-                        
-                            <Contador contador={contador} setContador={setContador} />                        
-
+                    <Contador contador={contador} setContador={setContador} />   
                         <View>
-                            <TouchableOpacity onPress={handleAddToCart} disabled={addFoodOnCartLoading}>
+                            <TouchableOpacity onPress={handleAddToCart}>
                                 <Text>Agregar a Carrito</Text>
                             </TouchableOpacity>
 
                             {addFoodOnCartLoading && <ActivityIndicator />}
-                            {addFoodOnCartError && <Text>Error: {addFoodOnCartError.message}</Text>}
+                            {addFoodOnCartError && <Text>Error: {addFoodOnCartError.message}</Text>}                            
                         </View>
+
                     </View>
                 </View>
             ) : (
                 <Text>No data available</Text>
             )}
         </View>
-    );
+    )
 }
 
 const styles = StyleSheet.create({
@@ -56,11 +55,11 @@ const styles = StyleSheet.create({
         height: 150,
         alignItems: 'center',
         flexDirection: 'column',
-        justifyContent: 'center',
+        justifyContent: 'center',        
         borderRadius: 10,
         borderWidth: 2,
         borderColor: 'red',
-        marginVertical: '5%'
+        marginVertical: '5%'      
     },
 
     foodDataContainer: {
@@ -96,7 +95,7 @@ const styles = StyleSheet.create({
         width: '90%',
         textAlign: 'right',
         marginRight: 10,
-        fontWeight: '500'
+        fontWeight: '500'       
     },
 
     priceText: {
@@ -112,7 +111,7 @@ const styles = StyleSheet.create({
         marginRight: 10
     },
 
-    btnContainer: {
+    btnContainer: {        
         width: '100%',
         height: '22%',
         flexDirection: 'row',

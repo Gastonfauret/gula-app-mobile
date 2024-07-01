@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { View, Modal, StyleSheet, Pressable, Text, ActivityIndicator, TouchableOpacity } from 'react-native'
-import FoodBanner from '../../Home/SliderCategorias/FoodBannerByCategory';
 import useGetFoodByFilter from '../../../hooks/useGetFoodByFilter';
-//import useGetFoodsByCategory from '../../hooks/useGetFoodsByCategory';
+import FoodBannerMenusSemanales from '../../Home/SliderMenusSemanales/FoodBannerMenusSemanales';
 
 export default function PaginaModal({ visible, onClose, message = '', food }) {  
 
@@ -33,7 +32,7 @@ export default function PaginaModal({ visible, onClose, message = '', food }) {
           <View style={styles.modalView}>
             <Text style={styles.modalText}>{message}</Text>
 
-            <FoodBanner foodData={foodsByQuery && foodsByQuery.length > 0 ? foodsByQuery[0] : null} />
+            <FoodBannerMenusSemanales foodData={foodsByQuery && foodsByQuery.length > 0 ? foodsByQuery[0] : null} />
 
             <Pressable
               style={[styles.button, styles.buttonClose]}

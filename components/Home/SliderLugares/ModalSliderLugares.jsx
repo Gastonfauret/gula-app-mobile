@@ -9,7 +9,7 @@ export default function ModalSliderLugares({ visible, onClose, message, shopId }
     if (loading) {
         return <ActivityIndicator size="large" color="#0000ff" />;
     }
-
+    
     if (error) {
         return <Text>Error: {error}</Text>;
     }

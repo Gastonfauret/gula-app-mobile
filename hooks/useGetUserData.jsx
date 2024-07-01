@@ -10,7 +10,7 @@ export default async function useGetUserData() {
     }
     
     // Aquí se asume que tienes un endpoint para obtener la información del usuario basado en el token
-    const response = await fetch('http://192.168.58.110:3070/user/active', {
+    const response = await fetch('http://192.168.12.101:3070/user/active', {
         method: 'GET',
         headers: {
             Authorization: `Bearer ${token}`
