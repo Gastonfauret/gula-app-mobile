@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, StyleSheet, FlatList, ScrollView } from 'react-native'
+import { View, StyleSheet, ScrollView } from 'react-native'
 
 import BannerTarjetas from './BannerTarjetas';
 import SliderComidas from './SliderCategorias/SliderComidas';
