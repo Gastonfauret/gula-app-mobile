@@ -1,48 +1,98 @@
-import React from 'react'
-import { Text, StyleSheet, View, ActivityIndicator, Image } from 'react-native';
+import React, { useEffect, useState } from 'react'
+import { Text, StyleSheet, View, ActivityIndicator, Image, TouchableOpacity } from 'react-native';
 import FloatingMenu from '../Home/MenuFlotante';
 import Header from '../Home/Header';
 import useGetFoodOnCart from '../../hooks/useGetFoodOnCart';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import useDeleteFoodOnCartById from '../../hooks/useDeleteFoodOnCartById';
+import useDeleteAllFoodOnCart from '../../hooks/useDeleteAllCartOnFood';
+import SeguimientoPedido from './SeguimientoPedido';
 
 export default function PaginaPedidos() {
-    const { foodOnCart, getFoodOnCartLoading, getFoodOnCartError } = useGetFoodOnCart();
+    const { foodOnCart, getFoodOnCartLoading, getFoodOnCartError, refetch } = useGetFoodOnCart();
+    const { deleteFoodOnCartById, deleteFoodOnCartLoading, deleteFoodOnCartError } = useDeleteFoodOnCartById();
+    const { deleteAllFoodOnCart, deleteAllFoodOnCartLoading, deleteAllFoodOnCartError } = useDeleteAllFoodOnCart();
+    const [total, setTotal] = useState(0)
+    const [pedidoConfirmado, setPedidoConfirmado] = useState(false);
+
+    const handleDelete = async (foodOnCartId) => {
+        try {
+            await deleteFoodOnCartById(foodOnCartId);
+            console.log("Success", "Food item deleted successfully");
+            refetch();
+        } catch (err) {
+            console.log("Error", "Failed to delete food item");
+        }
+    };
+
+    const handleConfirmarPedido = async () => {
+        try {
+            // Llamar al hook para eliminar todos los elementos del carrito
+            await deleteAllFoodOnCart();
+            console.log("Success", "All food items deleted successfully");
+            setPedidoConfirmado(true); // Activar visualización de SeguimientoPedido después de eliminar
+        } catch (err) {
+            console.log("Error", "Failed to delete all food items on cart");
+        }
+    };
+
+    // Callback para manejar la finalización del proceso en SeguimientoPedido
+    const handleSeguimientoCompletion = () => {
+        refetch(); // Refetch para limpiar el componente
+        setPedidoConfirmado(false); // Ocultar SeguimientoPedido
+    };
+
+    // Calcula el total acumulado al cargar o al cambiar foodOnCart
+    useEffect(() => {
+        let newTotal = 0;
+        foodOnCart.forEach(food => {
+            newTotal += food.food.price * food.amount;
+        });
+        setTotal(newTotal);
+    }, [foodOnCart]);
 
     return (
         <>
             <View style={styles.container}>
                 <Header />
                 {getFoodOnCartLoading && <ActivityIndicator size="large" color="#0000ff" />}
-                {getFoodOnCartError && <Text>Error: {getFoodOnCartError}</Text>}
+                {getFoodOnCartError && <Text>Error: {getFoodOnCartError.toString()}</Text>}
+                {deleteFoodOnCartLoading && <ActivityIndicator size="small" color="#0000ff" />}
+                {deleteFoodOnCartError && <Text>Error: {deleteFoodOnCartError.message || deleteFoodOnCartError.toString()}</Text>}
+                {deleteAllFoodOnCartLoading && <ActivityIndicator size="small" color="#0000ff" />}
+                {deleteAllFoodOnCartError && <Text>Error: {deleteAllFoodOnCartError.message || deleteAllFoodOnCartError.toString()}</Text>}
 
                 {!getFoodOnCartLoading && !getFoodOnCartError && foodOnCart.length > 0 ? (
                     foodOnCart.map((food, index) => (
                         <View style={styles.cardContainer}>
-                            <View key={index} style={styles.foodDataContainer}>
-                                <View style={styles.imageContainer}>
-                                    <Image source={{ uri: food.food.image }} style={styles.foodImg} />
-                                </View>
-                                <View style={styles.textContainer}>
-                                    <Text style={styles.foodText}>{food.food.description}</Text>
-                                    <Text style={styles.priceText}>$ {food.food.price}</Text>
-                                    <Text style={styles.foodText}>Porcion: {food.amount}</Text>
-                                </View>
-
+                            <View>
+                                <View key={index} style={styles.foodDataContainer}>
+                                    <View style={styles.imageContainer}>
+                                        <Image source={{ uri: food.food.image }} style={styles.foodImg} />
+                                    </View>
+                                    <View style={styles.textContainer}>
+                                        <Text style={styles.foodText}>{food.food.description}</Text>
+                                        <Text style={styles.priceText}>$ {food.food.price}</Text>
+                                        <Text style={styles.foodText}>Porcion: {food.amount}</Text>
+                                        <TouchableOpacity>
+                                            <Text style={styles.deleteText} onPress={() => handleDelete(food.foodOnCartId)}>Eliminar</Text>
+                                        </TouchableOpacity>
+                                    </View>
+                                </View>                                
                             </View>
                             <View>
-                                <Text style={styles.totalText}>Total: ${food.food.price} </Text>
+                                <Text style={styles.totalText}>Total: ${total} </Text>
                             </View>
-                            <TouchableOpacity style={styles.btnConfirm}>
-                                <Text style={styles.textConfirm}>Confirmar Pedido </Text>
-                            </TouchableOpacity>
-                        </View>
-
-
-
+                            <TouchableOpacity style={styles.btnConfirm} onPress={handleConfirmarPedido}>
+                                    <Text style={styles.textConfirm}>Confirmar Pedido </Text>
+                                </TouchableOpacity>
+                                {pedidoConfirmado && <SeguimientoPedido />}
+                        </View>                        
                     ))
                 ) : (
-                    !getFoodOnCartLoading && <Text>No hay elementos en el carrito.</Text>
+                    !getFoodOnCartLoading && <Text style={styles.noDataText}>No hay elementos en el carrito.</Text>
                 )}
+                 {/* Mostrar SeguimientoPedido si el pedido ha sido confirmado */}
+                {pedidoConfirmado && <SeguimientoPedido onCompletion={handleSeguimientoCompletion} />}
                 <FloatingMenu />
             </View>
         </>
@@ -131,7 +181,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'red',
         alignItems: 'center',
         justifyContent: 'center',
-        
+
     },
 
     textConfirm: {
@@ -144,5 +194,18 @@ const styles = StyleSheet.create({
         fontWeight: '500',
         color: 'green',
         marginVertical: '5%'
+    },
+
+    deleteText: {
+        fontSize: 12,
+        marginRight: 12,
+        color: 'red'
+    },
+
+    noDataText: {
+        fontSize: 16,
+        fontWeight: '500',
+        marginTop: 50,
+        color: 'red'
     }
 })

@@ -36,7 +36,11 @@ function useGetFoodOnCart() {
         getFoodOnCart();
     }, [getFoodOnCart]);
 
-    return { foodOnCart, getFoodOnCartLoading, getFoodOnCartError };
+    const refetch = () => {
+        getFoodOnCart();
+    };
+
+    return { foodOnCart, getFoodOnCartLoading, getFoodOnCartError, refetch };
 }
 
 export default useGetFoodOnCart;
