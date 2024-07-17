@@ -23,7 +23,7 @@ function useDeleteAllFoodOnCart() {
                 return { success: true }; // Puedes devolver un indicador de éxito si lo necesitas
             }
 
-            const data = await response.json();
+            const data = await response.text();
             if (!response.ok) {
                 throw new Error(data.message || 'Failed to delete all food on cart');
             }

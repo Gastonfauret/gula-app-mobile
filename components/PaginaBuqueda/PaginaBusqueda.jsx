@@ -34,7 +34,7 @@ export default function PaginaBusqueda() {
                     <ScrollView contentContainerStyle={styles.scrollViewContent}>
                         {foodByQueryLoading && <ActivityIndicator size="large" color="#0000ff" />}
                         {foodByQueryError && <Text style={styles.errorText}>{foodByQueryError}</Text>}
-                        {!foodByQueryLoading && foodsByQuery.length === 0 && <Text>No se encontraron resultados.</Text>}
+                        {!foodByQueryLoading && foodsByQuery.length === 0 && <Text style={styles.noDataText}>No se encontraron resultados.</Text>}
                         {!foodByQueryLoading && foodsByQuery.length > 0 && foodsByQuery.map((food, index) => (
                             <FoodBannerByPlaces key={index} foodData={food} />
                         ))}
@@ -101,5 +101,12 @@ const styles = StyleSheet.create({
     scrollViewContent:{
         width: '100%',        
         alignItems: 'center'
-    }
+    },
+    
+    noDataText: {
+        fontSize: 16,
+        fontWeight: '500',
+        marginTop: 30,
+        color: 'red',
+    },
 });

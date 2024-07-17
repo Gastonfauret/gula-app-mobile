@@ -11,7 +11,7 @@ export default function PaginaModal({ visible, onClose, message = '', food }) {
       if (visible && food && food.trim() !== '') {
           handleChangeFoodByFilter(food);
       }
-  }, [visible, handleChangeFoodByFilter, food]);
+  }, [visible, food, handleChangeFoodByFilter]);
 
   if (foodByQueryLoading) {
       return <ActivityIndicator size="large" color="#0000ff" />;

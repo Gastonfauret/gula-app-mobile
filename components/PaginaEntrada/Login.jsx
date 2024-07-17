@@ -25,6 +25,8 @@ function Login() {
             if (token) {
                 console.log('Token saved successfully', token);
                 navigation.navigate('Protected', { screen: 'PaginaHome' });
+                handleChangeLogin('email', '');  // Limpiar email
+                handleChangeLogin('password', '');  // Limpiar contraseña
             } else {
                 console.log('Login failed');
                 alert('Usuario no encontrado')

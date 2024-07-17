@@ -25,6 +25,7 @@ export default function Register() {
     } = useRegister();
 
     const navigation = useNavigation();
+    
 
     return (
         <View style={styles.container}

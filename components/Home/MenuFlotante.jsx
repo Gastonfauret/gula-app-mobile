@@ -10,11 +10,11 @@ export default function MenuFlotante() {
 
     const [pendingOrders, setPendingOrders] = useState(1);
 
-    const [activeButton, setActiveButton] = useState('PaginaHome');    
+    //const [activeButton, setActiveButton] = useState('PaginaHome');    
 
     const handlePress = (buttonName) => {
         navigation.navigate(buttonName);
-        setActiveButton(buttonName);        
+        //setActiveButton(buttonName);        
     };
 
     //Función para simular la confirmación de un pedido
@@ -27,29 +27,29 @@ export default function MenuFlotante() {
 
             <View style={styles.menuItem} >
                 <TouchableOpacity onPress={() => handlePress('PaginaHome')}>
-                    <Icon name="home" style={[styles.icon, activeButton === 'PaginaHome' ? styles.activeIcon : styles.icon]} />
+                    <Icon name="home" style={[styles.icon === 'PaginaHome' ? styles.activeIcon : styles.icon]} />
                 </TouchableOpacity>
             </View>
 
             <View style={styles.menuItem} >
                 <TouchableOpacity onPress={() => handlePress('PaginaBusqueda')}>
-                    <Icon2 name="hamburger" style={[styles.icon, activeButton === 'PaginaBusqueda' ? styles.activeIcon : styles.icon]} />
+                    <Icon2 name="hamburger" style={[styles.icon === 'PaginaBusqueda' ? styles.activeIcon : styles.icon]} />
                 </TouchableOpacity>
             </View>
 
 
             <View style={styles.menuItem} >
                 <TouchableOpacity onPress={() => handlePress('PaginaPedidos')}>
-                    <Icon name="list-alt" style={[styles.icon, activeButton === 'PaginaPedidos' ? styles.activeIcon : styles.icon]} />
+                    <Icon name="list-alt" style={[styles.icon === 'PaginaPedidos' ? styles.activeIcon : styles.icon]} />
                 </TouchableOpacity>
-                <View style={styles.nroOrder}>
+                {/* <View style={styles.nroOrder}>
                     <Text style={styles.nroOrderText}>{pendingOrders}</Text>
-                </View>
+                </View> */}
             </View>
 
             <View style={styles.menuItem} >
                 <TouchableOpacity onPress={() => handlePress('PaginaPerfil')}>
-                    <Icon name="user" style={[styles.icon, activeButton === 'PaginaPerfil' ? styles.activeIcon : styles.icon]} />
+                    <Icon name="user" style={[styles.icon === 'PaginaPerfil' ? styles.activeIcon : styles.icon]} />
                 </TouchableOpacity>                
             </View>
 
