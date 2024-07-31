@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigation } from '@react-navigation/native';
+import { ipAddress } from "../ipconfig/ipconfig";
 
 function useRegister() {
   const [isRegisterLoading, setIsRegisterLoading] = useState(false);
@@ -34,7 +35,7 @@ function useRegister() {
 
     try {
       setIsRegisterLoading(true);
-      const response = await fetch("http://192.168.12.101:3070/auth/register", {      
+      const response = await fetch(`http://${ipAddress}:3070/auth/register`, {      
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -1,4 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { ipAddress } from '../ipconfig/ipconfig';
 
 export default async function useProfileData() {    
     
@@ -10,7 +11,7 @@ export default async function useProfileData() {
     }
     
     // Aquí se asume que tienes un endpoint para obtener la información del usuario basado en el token
-    const response = await fetch('http://192.168.12.101:3070/user/profile', {
+    const response = await fetch(`http://${ipAddress}:3070/user/profile`, {
         method: 'GET',
         headers: {
             Authorization: `Bearer ${token}`

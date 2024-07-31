@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { ipAddress } from '../ipconfig/ipconfig';
 
 const useGetFoodsByPlaces = (shopId) => {
     const [foods, setFoods] = useState([]);
@@ -17,7 +18,7 @@ const useGetFoodsByPlaces = (shopId) => {
                 throw new Error('Token not found');
             }         
 
-            const response = await fetch(`http://192.168.12.101:3070/food/by-shop/${shopId}`, {
+            const response = await fetch(`http://${ipAddress}:3070/food/by-shop/${shopId}`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",

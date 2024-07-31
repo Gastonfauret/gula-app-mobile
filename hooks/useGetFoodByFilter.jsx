@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { ipAddress } from "../ipconfig/ipconfig";
 
 export default function useGetFoodByFilter() {
 
@@ -26,7 +27,7 @@ export default function useGetFoodByFilter() {
     try {
       setFoodByQueryLoading(true);
       const response = await fetch(
-        `http://192.168.12.101:3070/food/filter?food=${food}`,
+        `http://${ipAddress}:3070/food/filter?food=${food}`,
         {
           method: "GET",
           headers: {

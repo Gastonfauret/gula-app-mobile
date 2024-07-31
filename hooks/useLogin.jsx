@@ -1,6 +1,7 @@
 //Este hook maneja la logica de inicio de sesion, devolviendo un error en caso que la clave y/o contraseña sean incorrectos, o un token en caso que las credenciales sean correctas.
 import { useState } from "react";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { ipAddress } from "../ipconfig/ipconfig";
 
 export default function useLogin() {
   const [userCredentials, setUserCredentials] = useState({
@@ -17,8 +18,8 @@ export default function useLogin() {
 
     try {
       setLoginLoading(true);
-      const response = await fetch("http://192.168.12.101:3070/auth/login", {
-        method: "POST", //192.168.1.123
+      const response = await fetch('http://192.168.12.101:3070/auth/login', {
+        method: "POST", 
         headers: {
           "Content-Type": "application/json",
         },

@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         borderWidth: 2,
         borderColor: 'red',
-        marginVertical: '5%'
+        marginVertical: '1%'
     },
 
     foodDataContainer: {

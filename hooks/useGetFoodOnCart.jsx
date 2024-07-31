@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { ipAddress } from "../ipconfig/ipconfig";
+
 
 function useGetFoodOnCart() {
     const [foodOnCart, setFoodOnCart] = useState([]);
@@ -11,7 +13,7 @@ function useGetFoodOnCart() {
         setGetFoodOnCartError(null);
         try {
             const token = await AsyncStorage.getItem('accessToken');
-            const response = await fetch(`http://192.168.12.101:3070/food-on-cart`, {
+            const response = await fetch(`http://${ipAddress}:3070/food-on-cart`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",

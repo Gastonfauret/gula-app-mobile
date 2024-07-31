@@ -3,17 +3,16 @@ import { View, StyleSheet, TextInput, Text, ActivityIndicator, ScrollView } from
 import FloatingMenu from '../Home/MenuFlotante';
 import Header from '../Home/Header';
 import useGetFoodsByFilter from '../../hooks/useGetFoodByFilter';
-//import Contador from '../../components/Home/Contador'; // Asegúrate de importar el componente Contador
 import FoodBannerByPlaces from '../Home/SliderLugares/FoodBannerByPlaces';
 
 export default function PaginaBusqueda() {
-    const {
-        foodsByQuery,
-        foodByQueryLoading,
-        foodByQueryError,
-        handleChangeFoodByFilter,
-        filterInput,
-    } = useGetFoodsByFilter();
+     const {
+         foodsByQuery,
+         foodByQueryLoading,
+         foodByQueryError,
+         handleChangeFoodByFilter,
+    //     filterInput,
+     } = useGetFoodsByFilter();
 
     const anadeACarrito = () => {
         // Implementa la lógica para agregar al carrito
@@ -24,10 +23,9 @@ export default function PaginaBusqueda() {
         <>
             <View style={styles.container}>
                 <Header />
-                <View>
+                <View style={styles.content}>
                     <TextInput
-                        placeholder="Ingrese su búsqueda..."
-                        value={filterInput}
+                        placeholder="Ingrese su búsqueda..."                        
                         onChangeText={handleChangeFoodByFilter}
                         style={styles.searchInput}
                     />
@@ -36,7 +34,7 @@ export default function PaginaBusqueda() {
                         {foodByQueryError && <Text style={styles.errorText}>{foodByQueryError}</Text>}
                         {!foodByQueryLoading && foodsByQuery.length === 0 && <Text style={styles.noDataText}>No se encontraron resultados.</Text>}
                         {!foodByQueryLoading && foodsByQuery.length > 0 && foodsByQuery.map((food, index) => (
-                            <FoodBannerByPlaces key={index} foodData={food} />
+                            <FoodBannerByPlaces key={index} foodData={food} /> 
                         ))}
                     </ScrollView>
                 </View>
@@ -53,15 +51,22 @@ const styles = StyleSheet.create({
         justifyContent: 'start',
         marginBottom: 10,
     },
+
+    content: {
+        flex: 1,
+        width: '100%',
+        alignItems: 'center',
+    },
+    
     searchInput: {
-        width: 395,
+        width: 375,
         borderRadius: 3,
         height: 60,
         borderWidth: 1,
         borderColor: 'gray',
         padding: 10,
         marginBottom: 15,
-        marginTop: '3%',
+        marginTop: 10,
     },
     errorText: {
         color: 'red',
@@ -99,8 +104,11 @@ const styles = StyleSheet.create({
     },
 
     scrollViewContent:{
-        width: '100%',        
-        alignItems: 'center'
+        width: '100%',               
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        flexGrow: 1,
+        paddingBottom: 70
     },
     
     noDataText: {

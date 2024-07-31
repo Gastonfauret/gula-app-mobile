@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { ipAddress } from "../ipconfig/ipconfig";
 
 function useDeleteFoodOnCartById() {
     const [deleteFoodOnCartLoading, setDeleteFoodOnCartLoading] = useState(false);
@@ -9,7 +10,7 @@ function useDeleteFoodOnCartById() {
         try {
             setDeleteFoodOnCartLoading(true);
             const token = await AsyncStorage.getItem('accessToken');
-            const response = await fetch(`http://192.168.12.101:3070/food-on-cart/${foodOnCartId}`, {
+            const response = await fetch(`http://${ipAddress}:3070/food-on-cart/${foodOnCartId}`, {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",

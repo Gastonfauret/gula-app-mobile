@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { ipAddress } from '../ipconfig/ipconfig';
 
 export default function useGetShops() {
   const [shops, setShops] = useState([]);
@@ -11,7 +12,7 @@ export default function useGetShops() {
       try {
         setShopsByQueryLoading(true);
         const token = await AsyncStorage.getItem('accessToken');
-        const response = await fetch('http://192.168.12.101:3070/shop', {
+        const response = await fetch(`http://${ipAddress}:3070/shop`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
