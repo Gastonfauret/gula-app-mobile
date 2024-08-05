@@ -7,6 +7,7 @@ export default function FoodBannerByCategory({ foodData }) {
     const [contador, setContador] = useState(1); 
 
     const { addFoodOnCart, addFoodOnCartLoading, addFoodOnCartError } = useAddFoodOnCart();
+    console.log('Modal:', addFoodOnCart)
 
     const handleAddToCart = () => {
         addFoodOnCart(foodData.foodId, contador);

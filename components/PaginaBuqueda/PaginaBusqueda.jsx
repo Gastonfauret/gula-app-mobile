@@ -6,18 +6,12 @@ import useGetFoodsByFilter from '../../hooks/useGetFoodByFilter';
 import FoodBannerByPlaces from '../Home/SliderLugares/FoodBannerByPlaces';
 
 export default function PaginaBusqueda() {
-     const {
-         foodsByQuery,
-         foodByQueryLoading,
-         foodByQueryError,
-         handleChangeFoodByFilter,
-    //     filterInput,
-     } = useGetFoodsByFilter();
-
-    const anadeACarrito = () => {
-        // Implementa la lógica para agregar al carrito
-        console.log('Añadir al carrito');
-    };
+    const {
+        foodsByQuery,
+        foodByQueryLoading,
+        foodByQueryError,
+        handleChangeFoodByFilter,
+    } = useGetFoodsByFilter();
 
     return (
         <>
@@ -25,7 +19,7 @@ export default function PaginaBusqueda() {
                 <Header />
                 <View style={styles.content}>
                     <TextInput
-                        placeholder="Ingrese su búsqueda..."                        
+                        placeholder="Ingrese su búsqueda..."
                         onChangeText={handleChangeFoodByFilter}
                         style={styles.searchInput}
                     />
@@ -34,7 +28,7 @@ export default function PaginaBusqueda() {
                         {foodByQueryError && <Text style={styles.errorText}>{foodByQueryError}</Text>}
                         {!foodByQueryLoading && foodsByQuery.length === 0 && <Text style={styles.noDataText}>No se encontraron resultados.</Text>}
                         {!foodByQueryLoading && foodsByQuery.length > 0 && foodsByQuery.map((food, index) => (
-                            <FoodBannerByPlaces key={index} foodData={food} /> 
+                            <FoodBannerByPlaces key={index} foodData={food} />
                         ))}
                     </ScrollView>
                 </View>
@@ -57,7 +51,7 @@ const styles = StyleSheet.create({
         width: '100%',
         alignItems: 'center',
     },
-    
+
     searchInput: {
         width: 375,
         borderRadius: 3,
@@ -103,14 +97,14 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
 
-    scrollViewContent:{
-        width: '100%',               
+    scrollViewContent: {
+        width: '100%',
         alignItems: 'center',
         justifyContent: 'flex-start',
         flexGrow: 1,
         paddingBottom: 70
     },
-    
+
     noDataText: {
         fontSize: 16,
         fontWeight: '500',

@@ -33,7 +33,7 @@ export default function SelectorCiudad({ value, onValueChange }) {
 
 const styles = StyleSheet.create({
     cityPickerContainer: {
-        width: '78%',
+        width: '81%',
         height: 50,
         backgroundColor: 'white',
         alignContent: 'center'

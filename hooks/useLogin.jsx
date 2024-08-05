@@ -18,7 +18,7 @@ export default function useLogin() {
 
     try {
       setLoginLoading(true);
-      const response = await fetch('http://192.168.12.101:3070/auth/login', {
+      const response = await fetch(`http://${ipAddress}:3070/auth/login`, {
         method: "POST", 
         headers: {
           "Content-Type": "application/json",

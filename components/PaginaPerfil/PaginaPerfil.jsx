@@ -50,7 +50,8 @@ export default function PaginaPerfil() {
 
                 <View style={styles.profileContainer}>
                     <View>
-                        <Image style={styles.profilePhoto} source={require('../../assets/Profile Image.png')}></Image>
+                    <Image style={styles.profilePhoto} source={{ uri: profileData.profilePicture }} />
+
                     </View>
                     <View style={styles.textContainer}>
                         <Text style={styles.textProfileName}>{userData.name}</Text>
