@@ -2,14 +2,14 @@ import React, { useState } from 'react'
 import { View, StyleSheet, ScrollView, Text, Image, ActivityIndicator } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import ModalSliderComidas from './ModalSliderComidas';
-import useGetFoodsByCategory from '../../../hooks/useGetFoodsByCategory'
+import useGetAllCategories from '../../../hooks/useGetAllCategories';
 
-export default function SliderComidas(categoryId) {
+export default function SliderComidas({ categoryId }) {
     const [modalVisible, setModalVisible] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
-    //const [selectedCategoryId, setSelectedCategoryId] = useState(null);
+    const [selectedCategoryId, setSelectedCategoryId] = useState(null);
 
-    const { foods, loading, error } = useGetFoodsByCategory(categoryId);
+    const { categories, loading, error } = useGetAllCategories();   
 
     if (loading) {
         return <ActivityIndicator size="large" color="#0000ff" />;
@@ -21,7 +21,7 @@ export default function SliderComidas(categoryId) {
 
     const handleOpenModal = (message, categoryId) => {
         setModalMessage(message);
-        //setSelectedCategoryId(categoryId);
+        setSelectedCategoryId(categoryId);
         setModalVisible(true);
     };
 
@@ -32,61 +32,27 @@ export default function SliderComidas(categoryId) {
     return (
         <View style={styles.container}>
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-
-                {foods.length > 0 ? (
-                    foods.map((food, index) => (
-                        <TouchableOpacity style={styles.menuItemCenter} onPress={() => handleOpenModal({ uri: food.description}, { uri: food.categoryId})}>
-                            <Image style={styles.IconStyle} source={{ uri: food.profilePicture }} />                            
+                {categories.length > 0 ? (
+                    categories.map((category, index) => (
+                        <TouchableOpacity 
+                            key={index} 
+                            style={styles.menuItemCenter} 
+                            onPress={() => handleOpenModal(category.description, category.categoryId)}
+                        >
+                            <Image style={styles.IconStyle} source={{ uri: category.icon }} />
                         </TouchableOpacity>
                     ))
                 ) : (
                     <Text>Slider: No data available</Text>
                 )}
-
-
-                {/* <TouchableOpacity style={styles.menuItemCenter} onPress={() => handleOpenModal('Milanesas', 1)}>
-                    <Image source={require('../../../assets/Icon/milanesa.png')} style={styles.IconStyle} />
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles.menuItemCenter} onPress={() => handleOpenModal('Pizzas', 2)}>
-                    <Icon2 name="pizza-slice" size={30} color="#17202A" />
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles.menuItemCenter} onPress={() => handleOpenModal('Pastas', 3)}>
-                    <Icon3 name="pasta" size={35} color="#17202A" />
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles.menuItemCenter} onPress={() => handleOpenModal('Verduras', 4)}>
-                    <Icon2 name="carrot" size={30} color="#17202A" />
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles.menuItemCenter} onPress={() => handleOpenModal('Hambuguesas', 5)}>
-                    <Icon2 name="hamburger" size={30} color="#17202A" />
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles.menuItemCenter} onPress={() => handleOpenModal('Asado', 6)}>
-                    <Icon3 name="food-steak" size={30} color="#17202A" />
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles.menuItemCenter} onPress={() => handleOpenModal('Empanadas', 7)}>
-                    <Image source={require('../../../assets/Icon/icono empanada.png')} style={styles.IconStyle} />
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles.menuItemCenter} onPress={() => handleOpenModal('Pescado', 8)}>
-                    <Icon2 name="fish" size={30} color="#17202A" />
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles.menuItemCenter} onPress={() => handleOpenModal('Pollo', 9)}>
-                    <Icon3 name="food-drumstick" size={30} color="#17202A" />
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles.menuItemCenter} onPress={() => handleOpenModal('Papas Fritas', 10)}>
-                    <Icon3 name="french-fries" size={34} color="#17202A" />
-                </TouchableOpacity> */}
-
                 {modalVisible && (
-                     <ModalSliderComidas message={modalMessage} categoryId={selectedCategoryId} visible={modalVisible} onClose={handleCloseModal} />)}
-
+                    <ModalSliderComidas 
+                        message={modalMessage} 
+                        categoryId={selectedCategoryId} 
+                        visible={modalVisible} 
+                        onClose={handleCloseModal} 
+                    />
+                )}
             </ScrollView>
         </View>
     )
@@ -115,7 +81,5 @@ const styles = StyleSheet.create({
     IconStyle: {
         height: '65%',
         width: '65%'
-
     }
-})
-
+});
