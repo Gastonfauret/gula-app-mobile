@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `cart`;
 CREATE TABLE `cart` (
   `cartId` int NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`cartId`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -34,7 +34,7 @@ CREATE TABLE `cart` (
 
 LOCK TABLES `cart` WRITE;
 /*!40000 ALTER TABLE `cart` DISABLE KEYS */;
-INSERT INTO `cart` VALUES (1),(2),(3),(4),(5),(6),(7),(8),(9),(10),(11);
+INSERT INTO `cart` VALUES (1),(2),(3),(4),(5),(6),(7),(8),(9),(10),(11),(12),(13);
 /*!40000 ALTER TABLE `cart` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -48,6 +48,7 @@ DROP TABLE IF EXISTS `category`;
 CREATE TABLE `category` (
   `categoryId` int NOT NULL AUTO_INCREMENT,
   `description` varchar(255) NOT NULL,
+  `icon` varchar(255) NOT NULL DEFAULT 'https://iili.io/d5tLpMx.png',
   PRIMARY KEY (`categoryId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -58,7 +59,7 @@ CREATE TABLE `category` (
 
 LOCK TABLES `category` WRITE;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` VALUES (1,'Milanesas'),(2,'Pizzas'),(3,'Pastas'),(4,'Verduras'),(5,'Hamburguesas'),(6,'Asado'),(7,'Empanadas'),(8,'Pescados'),(9,'Pollo'),(10,'Papas Fritas');
+INSERT INTO `category` VALUES (1,'Milanesas','https://iili.io/d5tLrG4.png'),(2,'Pizzas','https://iili.io/d5tLs87.png'),(3,'Pastas','https://iili.io/d5tLy6Q.pngusp=sharing'),(4,'Verduras','https://iili.io/d5tQ391.png'),(5,'Hamburguesas','https://iili.io/d5tLtwu.png'),(6,'Asado','https://iili.io/d5tLiaS.png'),(7,'Empanadas','https://iili.io/d5tL46l.png'),(8,'Pescados','https://iili.io/d5tQJcB.png'),(9,'Pollo','https://iili.io/d5tQd8P.png'),(10,'Papas Fritas','https://iili.io/d5tLpMx.png');
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -92,7 +93,7 @@ CREATE TABLE `food` (
 
 LOCK TABLES `food` WRITE;
 /*!40000 ALTER TABLE `food` DISABLE KEYS */;
-INSERT INTO `food` VALUES (1,'Filete de Merluza con Pure',3500,10,'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiaMmYa-zrIzm8VUiICrotSgQ5I_Dsl6n2X6fdVfZOv1miApqdu3TcOILzYKKoJ6U1J7Y','1',1,8),(3,'Pollo al Verdeo con Papas Españolas',5000,10,'https://img-global.cpcdn.com/recipes/a13772f9eb6d35ef/680x482cq70/pollo-con-crema-de-verdeo-y-papas-espanolas-de-bigote-cocina-foto-principal.jpg','1',1,9),(4,'Tarta de Verdura',5000,10,'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxrisDOwPPOyoBYb4ZhWd8iSfa-0FrxrOYAx00Bpw20SvCioXV1c8gAfL0vf1wQEz0j3I','2',2,4),(5,'Tarta de Pollo',6000,10,'https://media.ambito.com/p/8a496ca35a52045bd384e88e9bad8af3/adjuntos/239/imagenes/040/540/0040540568/tarta-pollojpg.jpg','2',2,9),(6,'Ensalada Cesar',3000,10,'https://cdn.recetasderechupete.com/wp-content/uploads/2020/10/Ensalada-Cesar-final_.jpg','2',2,4),(7,'Pizza Napolitana',4500,10,'https://img-global.cpcdn.com/recipes/5fb5d55852fa8d06/680x482cq70/pizza-napolitana-foto-principal.jpg','3',3,2),(8,'Pizza 4 Quesos',5000,10,'https://www.comedera.com/wp-content/uploads/2022/04/Pizza-cuatro-quesos-shutterstock_1514858234.jpg','3',3,2),(9,'Pizza de Roquefort',5500,10,'https://img-global.cpcdn.com/recipes/d53d5968c0b16951/1200x630cq70/photo.jpg','3',3,2),(10,'Hamburguesa Completa',4000,10,'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT63mmdDwPxhfALYzzOQpBWrxtrWmyZYVqQuVu289TgNK25itfE1c7T0oOELMLIj_W1Gs8','4',4,5),(11,'Hamburguesa Simple',3500,10,'https://thumbs.dreamstime.com/b/cheeseburger-simple-727548.jpg','4',4,5),(12,'Hamburguesa Vegetariana',4000,10,'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDox77oqAC_Ry_D72ho4V70wXY4V4oaiye7aslaWUA8qrtskoEZoYCzsbKNxIzmlZG4pM','4',4,5),(13,'Papas con Cheddar',2500,10,'https://assets.unileversolutions.com/recipes-v2/217281.jpg','5',5,10),(14,'Papas con Verdeo',3000,10,'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqIaM_Qt1Md2XsKyjhvrvZnnactCkFI_EvzrDsAr4eDZu0gZSdv-GhRhFMeGQcGSBbqPc','5',5,10),(15,'Papas con Panceta',3000,10,'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVgexh1XUwaODgiraYZ6XwRhoookg5Tdo8MS_HrxmkG564iGRL7WCvn0JuRCEnFBny-zA','5',5,10),(16,'Ravioles de Verdura con Salsa',6000,10,'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4Eocl5nUPQmUYO-V8qkv_E5pV5ROIwn3azqJmyaGjariBGBdEy7fyaaEVp-kGhrtQt4E','6',6,3),(17,'Empanadas de Carne Cortada.',8000,10,'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSln8MZYHxrCcZ9M5ut7TYHC9krAVG-0urZTSe6h9yt3Q5Gec8GWnlZ6spC18Jgy4YjXFk','6',6,7),(18,'Porcion de Asado',12000,10,'https://canalc.com.ar/wp-content/uploads/2022/11/asadito.jpg','6',6,6),(19,'Milanesas Simple con papas fritas',4500,10,'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjdPjsnM5W8Je6iF2AltmX-W0pX27-HLZQCMK-UpLT0yA1VgT3VBK0p9lkG-hnYka8USo','1',1,1),(20,'Milanesa Napolitana con Pure',7000,10,'https://www.recetasnestle.com.ar/sites/default/files/srh_recipes/92ac87f27b9888bd44bea61a76e981af.jpg','1',1,1);
+INSERT INTO `food` VALUES (1,'Filete de Merluza con Pure',3500,10,'https://iili.io/d5t1yRs.webp','1',1,8),(3,'Pollo al Verdeo con Papas Españolas',5000,10,'https://iili.io/d5tEHbf.webp','1',1,9),(4,'Tarta de Verdura',5000,10,'https://iili.io/d5tE2Wl.webp','2',2,4),(5,'Tarta de Pollo',6000,10,'https://iili.io/d5tE9OG.webp','2',2,9),(6,'Ensalada Cesar',3000,10,'https://iili.io/d5tEKfS.webp','2',2,4),(7,'Pizza Napolitana',4500,10,'https://iili.io/d5tEf07.webp','3',3,2),(8,'Pizza 4 Quesos',5000,10,'https://iili.io/d5tEqg9.webp','3',3,2),(9,'Pizza de Roquefort',5500,10,'https://iili.io/d5tEoOb.webp','3',3,2),(10,'Hamburguesa Completa',4000,10,'https://iili.io/d5tEn5u.webp','4',4,5),(11,'Hamburguesa Simple',3500,10,'https://iili.io/d5tExbj.webp','4',4,5),(12,'Hamburguesa Vegetariana',4000,10,'https://iili.io/d5tEIzx.webp','4',4,5),(13,'Papas con Cheddar',2500,10,'https://iili.io/d5tERqB.webp','5',5,10),(14,'Papas con Verdeo',3000,10,'https://iili.io/d5tETWQ.webp','5',5,10),(15,'Papas con Panceta',3000,10,'https://iili.io/d5tEusV.webp','5',5,10),(16,'Ravioles de Verdura con Salsa',6000,10,'https://iili.io/d5tE50P.webp','6',6,3),(17,'Empanadas de Carne Cortada.',8000,10,'https://iili.io/d5tE7g1.webp','6',6,7),(18,'Porcion de Asado',12000,10,'https://iili.io/d5tEc5g.webp','6',6,6),(19,'Milanesas Simple con papas fritas',4500,10,'https://iili.io/d5tEadF.webp','1',1,1),(20,'Milanesa Napolitana con Pure',7000,10,'https://iili.io/d5tElea.webp','1',1,1);
 /*!40000 ALTER TABLE `food` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -113,7 +114,7 @@ CREATE TABLE `food_on_cart` (
   KEY `FK_9c3cbaf197f314f7e61550a90b8` (`food`),
   CONSTRAINT `FK_1a043d92005388729171ed57dbb` FOREIGN KEY (`cart`) REFERENCES `cart` (`cartId`) ON DELETE CASCADE,
   CONSTRAINT `FK_9c3cbaf197f314f7e61550a90b8` FOREIGN KEY (`food`) REFERENCES `food` (`foodId`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -122,7 +123,6 @@ CREATE TABLE `food_on_cart` (
 
 LOCK TABLES `food_on_cart` WRITE;
 /*!40000 ALTER TABLE `food_on_cart` DISABLE KEYS */;
-INSERT INTO `food_on_cart` VALUES (1,1,9,19);
 /*!40000 ALTER TABLE `food_on_cart` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -198,13 +198,13 @@ DROP TABLE IF EXISTS `profile`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `profile` (
   `profileId` int NOT NULL AUTO_INCREMENT,
-  `profilePicture` varchar(255) NOT NULL DEFAULT 'default-profile_gula.jpg',
+  `profilePicture` varchar(255) NOT NULL DEFAULT 'https://iili.io/d5DJhYJ.webp',
   `profileName` varchar(255) NOT NULL,
   `coverPhoto` varchar(255) NOT NULL DEFAULT '0',
   `location` varchar(255) NOT NULL,
   `birthDate` varchar(255) NOT NULL,
   PRIMARY KEY (`profileId`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -213,7 +213,7 @@ CREATE TABLE `profile` (
 
 LOCK TABLES `profile` WRITE;
 /*!40000 ALTER TABLE `profile` DISABLE KEYS */;
-INSERT INTO `profile` VALUES (1,'default-profile_gula.jpg','perez@gula.com','0','Lomas del Toor','17/02/1980'),(2,'default-profile_gula.jpg','gonzales@gula.com','0','Loma del Toor','17/10/1999'),(3,'default-profile_gula.jpg','garcia@gula.com','0','Tedin Uribiru','12/12/1980'),(4,'default-profile_gula.jpg','peralta@gula.com','0','Benito Juarez','2000/12/12'),(5,'default-profile_gula.jpg','pereyra@gula.com','0','Benito Juarez','12-03-2000'),(6,'default-profile_gula.jpg','cperez@gula.com','0','Tedin Uriburu','31/05/2000'),(7,'default-profile_gula.jpg','cardorna@gula.com','0','Estacion Lopez','12/02/1988'),(8,'default-profile_gula.jpg','benedetto@gula.com','0','Estacion Lopez','12/12/1988'),(9,'default-profile_gula.jpg','herrera@gula.com','0','Tedin Uriburu','09/12/1990'),(10,'default-profile_gula.jpg','marciello@gula.com','0','Barker','17/03/1980'),(11,'default-profile_gula.jpg','cadorna@gula.com','0','Estacion Lopez','25/07/1990');
+INSERT INTO `profile` VALUES (1,'https://iili.io/d5DJ5db.webp','perez@gula.com','0','Lomas del Toor','17/02/1980'),(2,'https://iili.io/d5DJ77j.webp','gonzales@gula.com','0','Loma del Toor','17/10/1999'),(3,'https://iili.io/d5DJAru.webp','garcia@gula.com','0','Tedin Uribiru','12/12/1980'),(4,'https://iili.io/d5DJu1e.webp','peralta@gula.com','0','Benito Juarez','2000/12/12'),(5,'https://iili.io/d5DJYkx.webp','pereyra@gula.com','0','Benito Juarez','12-03-2000'),(6,'https://iili.io/d5DJamQ.webp','cperez@gula.com','0','Tedin Uriburu','31/05/2000'),(7,'https://iili.io/d5DJlIV.webp','cardorna@gula.com','0','Estacion Lopez','12/02/1988'),(8,'https://iili.io/d5DJ0hB.webp','benedetto@gula.com','0','Estacion Lopez','12/12/1988'),(9,'https://iili.io/d5DJ1LP.webp','herrera@gula.com','0','Tedin Uriburu','09/12/1990'),(10,'https://iili.io/d5DJGB1.webp','marciello@gula.com','0','Barker','17/03/1980'),(11,'https://iili.io/d5DJMEF.webp','cadorna@gula.com','0','Estacion Lopez','25/07/1990'),(12,'https://iili.io/d5DJVrg.webp','lopez@gula.com','0','Benito Juarez','12/03/1980'),(13,'https://iili.io/d5DJX2a.webp','martinez@gula.com','0','Villa Cacique','03/05/1992');
 /*!40000 ALTER TABLE `profile` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -230,7 +230,7 @@ CREATE TABLE `shop` (
   `location` varchar(255) NOT NULL,
   `phone` varchar(255) NOT NULL,
   `profilename` varchar(255) NOT NULL,
-  `picture` varchar(255) NOT NULL DEFAULT 'https://pubimg.band.uol.com.br/files/cb1fe227a30b77daa9cb.webp',
+  `picture` varchar(255) NOT NULL DEFAULT 'https://iili.io/d7pH8Xt.webp',
   `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `user` int DEFAULT NULL,
   PRIMARY KEY (`shopId`),
@@ -247,7 +247,7 @@ CREATE TABLE `shop` (
 
 LOCK TABLES `shop` WRITE;
 /*!40000 ALTER TABLE `shop` DISABLE KEYS */;
-INSERT INTO `shop` VALUES (1,'Rotiseria Pablo','Benito Juarez','02281111111','Rotiseria Pablo','https://pubimg.band.uol.com.br/files/cb1fe227a30b77daa9cb.webp','2024-06-09 16:27:23',1),(2,'Lo de Chairo','Benito Juarez','02281222222','Rotiseria Lo de Chairo','https://pubimg.band.uol.com.br/files/cb1fe227a30b77daa9cb.webp','2024-06-09 16:28:38',2),(3,'Aka Pizzas','Benito Juarez','02281333333','Pizzeria Aka Pizzas','https://pubimg.band.uol.com.br/files/cb1fe227a30b77daa9cb.webp','2024-06-09 16:29:22',3),(4,'Jooks','Benito Juarez','02281444444','Cerveceria Jooks','https://pubimg.band.uol.com.br/files/cb1fe227a30b77daa9cb.webp','2024-06-09 16:30:12',4),(5,'La Paperia','Benito Juarez','02281555555','La Paperia','https://pubimg.band.uol.com.br/files/cb1fe227a30b77daa9cb.webp','2024-06-09 16:30:41',5),(6,'Sabores Al Paso','Benito Juarez','02281666666','Sabores Al Paso','https://pubimg.band.uol.com.br/files/cb1fe227a30b77daa9cb.webp','2024-06-09 16:31:15',6);
+INSERT INTO `shop` VALUES (1,'Rotiseria Pablo','Benito Juarez','02281111111','Rotiseria Pablo','https://iili.io/d7pHX1a.webp','2024-06-09 16:27:23',1),(2,'Lo de Chairo','Benito Juarez','02281222222','Rotiseria Lo de Chairo','https://iili.io/d7pHEzP.webp','2024-06-09 16:28:38',2),(3,'Aka Pizzas','Benito Juarez','02281333333','Pizzeria Aka Pizzas','https://iili.io/d7pHGX1.webp','2024-06-09 16:29:22',3),(4,'Jooks','Benito Juarez','02281444444','Cerveceria Jooks','https://iili.io/d7pHMLF.webp','2024-06-09 16:30:12',4),(5,'La Paperia','Benito Juarez','02281555555','La Paperia','https://iili.io/d7pHN7R.webp','2024-06-09 16:30:41',5),(6,'Sabores Al Paso','Benito Juarez','02281666666','Sabores Al Paso','https://iili.io/d7pHvII.webp','2024-06-09 16:31:15',6);
 /*!40000 ALTER TABLE `shop` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -272,7 +272,7 @@ CREATE TABLE `user` (
   UNIQUE KEY `REL_3536716a8b146aece3c6155af0` (`profile`),
   CONSTRAINT `FK_3536716a8b146aece3c6155af04` FOREIGN KEY (`profile`) REFERENCES `profile` (`profileId`) ON DELETE CASCADE,
   CONSTRAINT `FK_5d040d256035ba8f6882515978f` FOREIGN KEY (`cart`) REFERENCES `cart` (`cartId`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -281,7 +281,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'perez@gula.com','Jose Perez','$2a$10$/Px8X0ynrnreckkgF30lLeDB4gcpyL28EWZjmu1eYaAEqTrwNBLiW','2024-05-28 18:20:50',1,1),(2,'gonzales@gula.com','Marcela Gonzales','$2a$10$X0livswj90vPxHJlDCCVJOppm0zxPmTVz4eC0a2UZgC.s933ojVcW','2024-06-02 15:26:47',2,2),(3,'garcia@gula.com','Carla Garcia','$2a$10$EndKX.kw1R6MutBmt8LOiux4ZyNMxHMxdylHWWGuTdMSakXojOCba','2024-06-02 15:40:34',3,3),(4,'peralta@gula.com','Pablo Peralta','$2a$10$ySZXOPbc2gFl0WxLjLXt9umFbIzzorteDFUq.6DZ1Hv0rQip2j1dm','2024-06-07 21:18:36',4,4),(5,'pereyra@gula.com','Manuel Pereyra','$2a$10$7vj4Uo6/QzDzyuKKuKOFOu46J/O/SyPSLulX7KE/OCir6gNeFQq3G','2024-06-09 15:11:37',5,5),(6,'cperez@gula.com','Carlos Perez','$2a$10$Z30wv7gvMJbqSt.3KwAPw.0emCLO6uriMuAekYU4nJl.PzLNFdIUe','2024-06-09 15:18:29',6,6),(7,'cardorna@gula.com','Analia Cadorna','$2a$10$qN1S5QscgoS1aNipB1OcM.r/F6RQryakMGWxwpJe1ZSd2e9xH4WO.','2024-06-09 15:58:22',7,7),(8,'benedetto@gula.com','Dario Benedetto','$2a$10$sajd/rJddrg.Y/NJDiiGB.cg4k4nKsZU/F7xEEI0snR5OVTkrN5fi','2024-06-15 15:12:07',8,8),(9,'herrera@gula.com','Jose Maria Perez','$2a$10$1OGwsYPxJ1z6DjFLG0ux7.QstGjFF8KGr7/EYMvl7M8sX3qW.dUtS','2024-06-15 15:48:26',9,9),(10,'marciello@gula.com','Claudia Marciello','$2a$10$GPEyZMXHLIPHOh6f2Ayzp.YcMEsba08ze3hN64IOfirsqWO123M52','2024-06-16 19:25:42',10,10),(11,'cadorna@gula.com','Alberto Cadorna','$2a$10$6kiq6lYbKVvqGI32H5Ml7u5T5OYOJTIX2EYDxRmqZXAEetU3FYJFK','2024-06-20 16:18:39',11,11);
+INSERT INTO `user` VALUES (1,'perez@gula.com','Jose Perez','$2a$10$/Px8X0ynrnreckkgF30lLeDB4gcpyL28EWZjmu1eYaAEqTrwNBLiW','2024-05-28 18:20:50',1,1),(2,'gonzales@gula.com','Marcela Gonzales','$2a$10$X0livswj90vPxHJlDCCVJOppm0zxPmTVz4eC0a2UZgC.s933ojVcW','2024-06-02 15:26:47',2,2),(3,'garcia@gula.com','Carla Garcia','$2a$10$EndKX.kw1R6MutBmt8LOiux4ZyNMxHMxdylHWWGuTdMSakXojOCba','2024-06-02 15:40:34',3,3),(4,'peralta@gula.com','Pablo Peralta','$2a$10$ySZXOPbc2gFl0WxLjLXt9umFbIzzorteDFUq.6DZ1Hv0rQip2j1dm','2024-06-07 21:18:36',4,4),(5,'pereyra@gula.com','Manuel Pereyra','$2a$10$7vj4Uo6/QzDzyuKKuKOFOu46J/O/SyPSLulX7KE/OCir6gNeFQq3G','2024-06-09 15:11:37',5,5),(6,'cperez@gula.com','Carlos Perez','$2a$10$Z30wv7gvMJbqSt.3KwAPw.0emCLO6uriMuAekYU4nJl.PzLNFdIUe','2024-06-09 15:18:29',6,6),(7,'cardorna@gula.com','Analia Cadorna','$2a$10$qN1S5QscgoS1aNipB1OcM.r/F6RQryakMGWxwpJe1ZSd2e9xH4WO.','2024-06-09 15:58:22',7,7),(8,'benedetto@gula.com','Dario Benedetto','$2a$10$sajd/rJddrg.Y/NJDiiGB.cg4k4nKsZU/F7xEEI0snR5OVTkrN5fi','2024-06-15 15:12:07',8,8),(9,'herrera@gula.com','Jose Maria Perez','$2a$10$1OGwsYPxJ1z6DjFLG0ux7.QstGjFF8KGr7/EYMvl7M8sX3qW.dUtS','2024-06-15 15:48:26',9,9),(10,'marciello@gula.com','Claudia Marciello','$2a$10$GPEyZMXHLIPHOh6f2Ayzp.YcMEsba08ze3hN64IOfirsqWO123M52','2024-06-16 19:25:42',10,10),(11,'cadorna@gula.com','Alberto Cadorna','$2a$10$6kiq6lYbKVvqGI32H5Ml7u5T5OYOJTIX2EYDxRmqZXAEetU3FYJFK','2024-06-20 16:18:39',11,11),(12,'lopez@gula.com','Juana Lopez','$2a$10$bVLTQ72lDAjVx/W4aPwwsukZgB/5pFY8uDdaZLU.G9mlL8F9lrvji','2024-07-05 16:13:16',12,12),(13,'martinez@gula.com','Emiliano Martinez','$2a$10$wbMN1O.qtZWFs3xTphQV0O4OqqMED1IVUq2ZAJTQipARF06P5j4n2','2024-07-05 20:46:26',13,13);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -294,4 +294,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-01 12:33:04
+-- Dump completed on 2024-08-06 11:40:14
