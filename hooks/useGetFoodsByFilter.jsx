@@ -33,15 +33,6 @@ export default function useGetFoodsByFilter() {
         }
     }
 
-    // const handleChangeFoodByFilter = (text) => {
-    //     setFilterInput(text);
-    //     if (text.length > 5) {
-    //         getFoodsByQuery(text);
-    //     } else {
-    //         setFoodsByQuery([]);
-    //     }
-    // };
-
     function cleanInput() {
         setFilterInput("");
     }

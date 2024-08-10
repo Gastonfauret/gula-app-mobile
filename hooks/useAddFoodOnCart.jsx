@@ -21,12 +21,12 @@ function useAddFoodOnCart() {
             });
 
             const data = await response.json();
-            console.log("Hook: Response data:", data);
+            
             if (data.error) {
                 throw new Error(data.message);
             }
         } catch (err) {
-            console.error("Hook: Error adding food to cart:", err);
+            //console.error("Hook: Error adding food to cart:", err);
             setAddFoodOnCartError(err);
         } finally {
             setAddFoodOnCartLoading(false);

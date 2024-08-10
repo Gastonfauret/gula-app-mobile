@@ -3,8 +3,7 @@ import { ipAddress } from '../ipconfig/ipconfig';
 
 export default async function useProfileData() {    
     
-    const token = await AsyncStorage.getItem('accessToken'); // Recupera el token
-    console.log('Retrieved token Profile:', token);
+    const token = await AsyncStorage.getItem('accessToken'); // Recupera el token   
 
     if (!token) {
         throw new Error('No token found');

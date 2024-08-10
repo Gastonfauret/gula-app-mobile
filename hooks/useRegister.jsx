@@ -29,9 +29,7 @@ function useRegister() {
     e.preventDefault();
     if (userInputsError) {
       return;
-    }   
-    
-    console.log('Submitting user data:', userData);
+    }      
 
     try {
       setIsRegisterLoading(true);
@@ -42,8 +40,7 @@ function useRegister() {
         },
         body: JSON.stringify(userData),
       }); 
-      
-      console.log('Server response user data:', userData);
+          
 
       const data = await response.json();      
 

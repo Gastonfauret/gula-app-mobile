@@ -111,6 +111,7 @@ export default function Register() {
                 <SelectorCiudad       
                     value={userData.location}
                     onValueChange={(text) => handleChangeRegister({ target: { name: 'location', value: text } })}
+                    style={styles.locationInput}
                 />
                 <View style={styles.errorTextContainer}>
                     {locationError && (
@@ -220,5 +221,5 @@ const styles = StyleSheet.create({
         fontSize: 12,
         fontWeight: '700',
         //marginVertical: 6,
-    }
+    }    
 })

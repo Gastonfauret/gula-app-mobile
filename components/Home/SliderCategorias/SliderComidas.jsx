@@ -3,6 +3,7 @@ import { View, StyleSheet, ScrollView, Text, Image, ActivityIndicator } from 're
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import ModalSliderComidas from './ModalSliderComidas';
 import useGetAllCategories from '../../../hooks/useGetAllCategories';
+import { ipAddress } from '../../../ipconfig/ipconfig';
 
 export default function SliderComidas({ categoryId }) {
     const [modalVisible, setModalVisible] = useState(false);
@@ -39,7 +40,7 @@ export default function SliderComidas({ categoryId }) {
                             style={styles.menuItemCenter} 
                             onPress={() => handleOpenModal(category.description, category.categoryId)}
                         >
-                            <Image style={styles.IconStyle} source={{ uri: category.icon }} />
+                            <Image style={styles.IconStyle} source={{ uri: `http://${ipAddress}:3070/assets/uploads/shop/category/${category.icon}` }} />
                         </TouchableOpacity>
                     ))
                 ) : (

@@ -25,68 +25,68 @@ export default function MenusSemanales() {
             <Text style={styles.title}>Menús Semanales</Text>
 
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                <TouchableOpacity onPress={() => handleOpenModal('Martes', 'Filete de Merluza con Pure')}>                    
+                <TouchableOpacity onPress={() => handleOpenModal('Martes', 'Milanesa a la napolitana c/ papas')}>                    
                     <View style={styles.subContainer}>
                         <Image source={require('../../../assets/Food/Merluza con Pure.jpg')} style={styles.fondoLocal} />
                         <View style={styles.textContainer}>
                             <Text style={styles.textoDia}>Martes</Text>
-                            <Text style={styles.textoMenu}>Filete de Merluza con Pure</Text>
-                            <Text style={styles.textoLocal}>Rotiseria Pablo</Text>
+                            <Text style={styles.textoMenu}>Milanesa a la napolitana c/ papas</Text>
+                            <Text style={styles.textoLocal}>Cerveceria Jooks</Text>
                         </View>
                     </View>
                 </TouchableOpacity>                
 
-                <TouchableOpacity onPress={() => handleOpenModal('Miercoles', 'Milanesas Simple con papas fritas')}>
+                <TouchableOpacity onPress={() => handleOpenModal('Miercoles', 'Hamburguesa doble cheddar')}>
                     <View style={styles.subContainer}>
                         <Image source={require('../../../assets/Food/Mila con Fritas.jpg')} style={styles.fondoLocal} />
                         <View style={styles.textContainer}>
                             <Text style={styles.textoDia}>Miercoles</Text>
-                            <Text style={styles.textoMenu}>Milanesas con Papas</Text>
-                            <Text style={styles.textoLocal}>Lo de Chairo</Text>
+                            <Text style={styles.textoMenu}>Hamburguesa doble cheddar</Text>
+                            <Text style={styles.textoLocal}>Cerveceria Jooks</Text>
                         </View>
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={() => handleOpenModal('Jueves', 'Pollo al Verdeo con Papas Españolas')}>
+                <TouchableOpacity onPress={() => handleOpenModal('Jueves', 'Empanadas de jyq x 12U')}>
                     <View style={styles.subContainer}>
                         <Image source={require('../../../assets/Food/Pollo al Verdeo con Papas Esp.jpg')} style={styles.fondoLocal} />
                         <View style={styles.textContainer}>
                             <Text style={styles.textoDia}>Jueves</Text>
                             <Text style={styles.textoMenu}>Pollo al Verdeo con Papas Españolas</Text>
-                            <Text style={styles.textoLocal}>Jooks</Text>
+                            <Text style={styles.textoLocal}>Lo de Chairo</Text>
                         </View>
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={() => handleOpenModal('Viernes', 'Milanesa Napolitana con Pure')}>
+                <TouchableOpacity onPress={() => handleOpenModal('Viernes', 'Choripan a la pomarola')}>
                     <View style={styles.subContainer}>
                         <Image source={require('../../../assets/Food/Napo con Pure.jpg')} style={styles.fondoLocal} />
                         <View style={styles.textContainer}>
                             <Text style={styles.textoDia}>Viernes</Text>
-                            <Text style={styles.textoMenu}>Milanesa Napolitana con Pure</Text>
+                            <Text style={styles.textoMenu}>Choripan a la pomarola</Text>
                             <Text style={styles.textoLocal}>La Paperia</Text>
                         </View>
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={() => handleOpenModal('Sabado', 'Pizza Napolitana')}>
+                <TouchableOpacity onPress={() => handleOpenModal('Sabado', 'Pizza a la calabresa x 8 porciones')}>
                     <View style={styles.subContainer}>
                         <Image source={require('../../../assets/Food/Pizza.jpg')} style={styles.fondoLocal} />
                         <View style={styles.textContainer}>
                             <Text style={styles.textoDia}>Sabado</Text>
-                            <Text style={styles.textoMenu}>Pizza Napolitana</Text>
-                            <Text style={styles.textoLocal}>Aka Pizzas</Text>
+                            <Text style={styles.textoMenu}>Pizza a la calabresa</Text>
+                            <Text style={styles.textoLocal}>Palelo Buffet</Text>
                         </View>
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={() => handleOpenModal('Domingo', 'Ravioles de Verdura con Salsa')}>
+                <TouchableOpacity onPress={() => handleOpenModal('Domingo', 'Pizza muzzarella x 8 porciones')}>
                     <View style={styles.subContainer}>
                         <Image source={require('../../../assets/Food/Ravioles.jpg')} style={styles.fondoLocal} />
                         <View style={styles.textContainer}>
                             <Text style={styles.textoDia}>Domingo</Text>
-                            <Text style={styles.textoMenu}>Ravioles de Verdura con Salsa a eleccion</Text>
-                            <Text style={styles.textoLocal}>Sabores al Paso</Text>
+                            <Text style={styles.textoMenu}>Pizza muzzarella</Text>
+                            <Text style={styles.textoLocal}>Palelo Buffet</Text>
                         </View>
                     </View>
                 </TouchableOpacity>

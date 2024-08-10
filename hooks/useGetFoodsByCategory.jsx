@@ -30,8 +30,7 @@ const useGetFoodsByCategory = (categoryId) => {
             }
 
             const data = await response.json();
-            setFoods(data);
-            console.log(`Hook:`, foods)
+            setFoods(data);            
         } catch (err) {
             setError(err.message);
         } finally {

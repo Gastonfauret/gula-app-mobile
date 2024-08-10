@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         width: '96%',
         height: 90,
-        marginTop: 30,
+        marginTop: 45,
         borderRadius: 5,
         borderWidth: 1,
         borderColor: '#D5DBDB', 

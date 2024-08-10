@@ -6,6 +6,7 @@ import ExpandableItem from './ItemsExpandibles';
 import ExpandableItemSalir from './ItemsExpandiblesSalir';
 import useGetUserData from '../../hooks/useGetUserData'
 import useGetProfileData from '../../hooks/useGetProfileData';
+import { ipAddress } from '../../ipconfig/ipconfig';
 
 
 
@@ -50,7 +51,7 @@ export default function PaginaPerfil() {
 
                 <View style={styles.profileContainer}>
                     <View>
-                    <Image style={styles.profilePhoto} source={{ uri: profileData.profilePicture }} />
+                    <Image style={styles.profilePhoto} source={{ uri: `http://${ipAddress}:3070/assets/uploads/profile/${profileData.profilePicture}` }} />
 
                     </View>
                     <View style={styles.textContainer}>

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { View, Text, Image, StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native';
 import Contador from '../Contador';
 import useAddFoodOnCart from "../../../hooks/useAddFoodOnCart";
+import { ipAddress } from '../../../ipconfig/ipconfig';
 
 export default function FoodBannerMenusSemanales({ foodData }) {
     const [contador, setContador] = useState(1); 
@@ -19,7 +20,7 @@ export default function FoodBannerMenusSemanales({ foodData }) {
 
                     <View style={styles.foodDataContainer}>
                         <View style={styles.imageContainer}>
-                            <Image source={{ uri: foodData.image }} style={styles.foodImg} />
+                            <Image source={{ uri: `http://${ipAddress}:3070/assets/uploads/shop/food/${foodData.image}` }} style={styles.foodImg} />
                         </View>
 
                         <View style={styles.textContainer}>

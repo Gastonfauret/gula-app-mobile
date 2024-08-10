@@ -17,8 +17,7 @@ export default function useLogOut() {
         navigation.navigate('Login')
       })
       .catch(error => {
-        setLogOutLoading(false);
-        console.log("Error al borrar el token", error)
+        setLogOutLoading(false);        
       })      
     }, 1000);
   }

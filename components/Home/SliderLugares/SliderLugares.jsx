@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, Text, ScrollView, Image, TouchableOpacity, ActivityIndicator } from 'react-native';
 import ModalSliderLugares from '../../Home/SliderLugares/ModalSliderLugares';
 import useGetAllShops from '../../../hooks/useGetAllShops';
+import { ipAddress } from "../../../ipconfig/ipconfig";
 
 export default function SliderLugares() {
     const [modalVisible, setModalVisible] = useState(false);
@@ -28,9 +29,12 @@ export default function SliderLugares() {
         setModalVisible(false);
     };
 
+
     return (
         <View style={styles.container}>
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+
+
 
                 {shops.length > 0 ? (
                     shops.map((shop, index) => (
@@ -40,7 +44,7 @@ export default function SliderLugares() {
                             onPress={() => handleOpenModal(shop.name, shop.shopId)}
                         >
                             <View style={styles.subContainer}>
-                                <Image style={styles.fondoLocal} source={{ uri: shop.picture }} />
+                                <Image style={styles.fondoLocal} source={{ uri: `http://${ipAddress}:3070/assets/uploads/shop/profile/${shop.picture}` }} />
                                 <Text style={styles.textoLocales}>{shop.name}</Text>
                             </View>
                         </TouchableOpacity>

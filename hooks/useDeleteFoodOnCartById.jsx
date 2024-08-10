@@ -20,8 +20,7 @@ function useDeleteFoodOnCartById() {
 
             if (response.ok) {
                 const text = await response.text();
-                const data = text ? JSON.parse(text) : {};
-                console.log("Hook: Response data:", data);
+                const data = text ? JSON.parse(text) : {};                
                 if (data.error) {
                     throw new Error(data.message);
                 }
