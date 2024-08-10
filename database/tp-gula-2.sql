@@ -114,7 +114,7 @@ CREATE TABLE `food_on_cart` (
   KEY `FK_9c3cbaf197f314f7e61550a90b8` (`food`),
   CONSTRAINT `FK_1a043d92005388729171ed57dbb` FOREIGN KEY (`cart`) REFERENCES `cart` (`cartId`) ON DELETE CASCADE,
   CONSTRAINT `FK_9c3cbaf197f314f7e61550a90b8` FOREIGN KEY (`food`) REFERENCES `food` (`foodId`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -123,7 +123,6 @@ CREATE TABLE `food_on_cart` (
 
 LOCK TABLES `food_on_cart` WRITE;
 /*!40000 ALTER TABLE `food_on_cart` DISABLE KEYS */;
-INSERT INTO `food_on_cart` VALUES (39,6,1,4),(40,4,1,7),(41,1,2,1),(42,2,1,3),(43,1,1,1);
 /*!40000 ALTER TABLE `food_on_cart` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -216,7 +215,7 @@ CREATE TABLE `profile` (
 
 LOCK TABLES `profile` WRITE;
 /*!40000 ALTER TABLE `profile` DISABLE KEYS */;
-INSERT INTO `profile` VALUES (1,'default-profile_gula.jpg','tomicardenas','0','Benito Juarez','1996-01-24'),(2,'default-profile_gula.jpg','gastonfauret@gmail.com','0','Benito Juarez','1980-05-02'),(3,'default-profile_gula.jpg','adriancalo@gmail.com','0','Benito Juarez','1992-08-11'),(4,'79318767-gente-adulta-cara-retrato-de-estudio-de-expresiÃ³n-de-sonrisa.jpg-1720224802538-506487602.jpg','marcelo@gmail.com','0','Tandil','1999-11-02'),(5,'default-profile_gula.jpg','juanbenitez@gmail.com','0','Benito Juarez','1990-01-01'),(6,'default-profile_gula.jpg','paulwalker@gmail.com','0','Benito Juarez','1990-01-01'),(7,'https://iili.io/d5DJhYJ.webp','argento@gula.com','0','Benito Juarez','1990-12-12'),(8,'default-profile_gula.jpg','perez@gula.com','0','Lomas del Toor','1989-03-13');
+INSERT INTO `profile` VALUES (1,'default-profile_gula.jpg','tomicardenas','0','Benito Juarez','1996-01-24'),(2,'default-profile_gula.jpg','gastonfauret@gmail.com','0','Benito Juarez','1980-05-02'),(3,'default-profile_gula.jpg','adriancalo@gmail.com','0','Benito Juarez','1992-08-11'),(4,'79318767-gente-adulta-cara-retrato-de-estudio-de-expresiÃ³n-de-sonrisa.jpg-1720224802538-506487602.jpg','marcelo@gmail.com','0','Tandil','1999-11-02'),(5,'default-profile_gula.jpg','juanbenitez@gmail.com','0','Benito Juarez','1990-01-01'),(6,'default-profile_gula.jpg','paulwalker@gmail.com','0','Benito Juarez','1990-01-01'),(7,'tomascardenas.jpg','argento@gula.com','0','Benito Juarez','1990-12-12'),(8,'perez.jpg','perez@gula.com','0','Lomas del Toor','1989-03-13');
 /*!40000 ALTER TABLE `profile` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -297,4 +296,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-08-09 21:14:15
+-- Dump completed on 2024-08-10  0:08:07

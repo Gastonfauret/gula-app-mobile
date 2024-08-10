@@ -8,7 +8,7 @@ export default function PaginaModal({ visible, onClose, message = '', food }) {
   const { foodsByQuery, foodByQueryLoading, foodByQueryError, handleChangeFoodByFilter } = useGetFoodByFilter();
 
   useEffect(() => {
-      if (visible && food && food.trim() !== '') {
+      if (visible) {
           handleChangeFoodByFilter(food);
       }
   }, [visible, food, handleChangeFoodByFilter]);
@@ -28,6 +28,7 @@ export default function PaginaModal({ visible, onClose, message = '', food }) {
         transparent={true}
         visible={visible}
         onRequestClose={onClose}>
+
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <Text style={styles.modalText}>{message}</Text>

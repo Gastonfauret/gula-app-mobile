@@ -27,7 +27,7 @@ export default function MenusSemanales() {
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                 <TouchableOpacity onPress={() => handleOpenModal('Martes', 'Milanesa a la napolitana c/ papas')}>                    
                     <View style={styles.subContainer}>
-                        <Image source={require('../../../assets/Food/Merluza con Pure.jpg')} style={styles.fondoLocal} />
+                        <Image source={require('../../../assets/Food/napo con fritas.jpeg')} style={styles.fondoLocal} />
                         <View style={styles.textContainer}>
                             <Text style={styles.textoDia}>Martes</Text>
                             <Text style={styles.textoMenu}>Milanesa a la napolitana c/ papas</Text>
@@ -38,7 +38,7 @@ export default function MenusSemanales() {
 
                 <TouchableOpacity onPress={() => handleOpenModal('Miercoles', 'Hamburguesa doble cheddar')}>
                     <View style={styles.subContainer}>
-                        <Image source={require('../../../assets/Food/Mila con Fritas.jpg')} style={styles.fondoLocal} />
+                        <Image source={require('../../../assets/Food/cheddar.jpg')} style={styles.fondoLocal} />
                         <View style={styles.textContainer}>
                             <Text style={styles.textoDia}>Miercoles</Text>
                             <Text style={styles.textoMenu}>Hamburguesa doble cheddar</Text>
@@ -60,7 +60,7 @@ export default function MenusSemanales() {
 
                 <TouchableOpacity onPress={() => handleOpenModal('Viernes', 'Choripan a la pomarola')}>
                     <View style={styles.subContainer}>
-                        <Image source={require('../../../assets/Food/Napo con Pure.jpg')} style={styles.fondoLocal} />
+                        <Image source={require('../../../assets/Food/Chori a la pomarola.jpg')} style={styles.fondoLocal} />
                         <View style={styles.textContainer}>
                             <Text style={styles.textoDia}>Viernes</Text>
                             <Text style={styles.textoMenu}>Choripan a la pomarola</Text>
@@ -71,7 +71,7 @@ export default function MenusSemanales() {
 
                 <TouchableOpacity onPress={() => handleOpenModal('Sabado', 'Pizza a la calabresa x 8 porciones')}>
                     <View style={styles.subContainer}>
-                        <Image source={require('../../../assets/Food/Pizza.jpg')} style={styles.fondoLocal} />
+                        <Image source={require('../../../assets/Food/pizza calabreza.webp')} style={styles.fondoLocal} />
                         <View style={styles.textContainer}>
                             <Text style={styles.textoDia}>Sabado</Text>
                             <Text style={styles.textoMenu}>Pizza a la calabresa</Text>
@@ -82,7 +82,7 @@ export default function MenusSemanales() {
 
                 <TouchableOpacity onPress={() => handleOpenModal('Domingo', 'Pizza muzzarella x 8 porciones')}>
                     <View style={styles.subContainer}>
-                        <Image source={require('../../../assets/Food/Ravioles.jpg')} style={styles.fondoLocal} />
+                        <Image source={require('../../../assets/Food/muzzarella.jpeg')} style={styles.fondoLocal} />
                         <View style={styles.textContainer}>
                             <Text style={styles.textoDia}>Domingo</Text>
                             <Text style={styles.textoMenu}>Pizza muzzarella</Text>

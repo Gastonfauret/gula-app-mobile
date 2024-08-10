@@ -6,6 +6,7 @@ import useGetFoodOnCart from '../../hooks/useGetFoodOnCart';
 import useDeleteFoodOnCartById from '../../hooks/useDeleteFoodOnCartById';
 import useDeleteAllFoodOnCart from '../../hooks/useDeleteAllCartOnFood';
 import SeguimientoPedido from './SeguimientoPedido';
+import { ipAddress } from '../../ipconfig/ipconfig';
 
 export default function PaginaPedidos() {
     const { foodOnCart, getFoodOnCartLoading, getFoodOnCartError, refetch } = useGetFoodOnCart();
@@ -64,7 +65,7 @@ export default function PaginaPedidos() {
                             <View key={food.foodOnCartId} style={styles.cardContainer}>
                                 <View style={styles.foodDataContainer}>
                                     <View style={styles.imageContainer}>
-                                        <Image source={{ uri: food.food.image }} style={styles.foodImg} />
+                                        <Image source={{ uri: `http://${ipAddress}:3070/assets/uploads/shop/food/${food.food.image}` }} style={styles.foodImg} />
                                     </View>
                                     <View style={styles.textContainer}>
                                         <Text style={styles.foodText}>{food.food.description}</Text>
