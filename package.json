@@ -9,7 +9,7 @@
     "web": "expo start --web"
   },
   "dependencies": {
-    "@expo/metro-runtime": "~3.2.1",
+    "@expo/metro-runtime": "^3.2.3",
     "@react-native-async-storage/async-storage": "^1.23.1",
     "@react-native-community/masked-view": "^0.1.11",
     "@react-navigation/bottom-tabs": "^6.5.20",
@@ -18,7 +18,7 @@
     "@react-navigation/stack": "^6.3.29",
     "@types/react": "~18.2.45",
     "axios": "^1.7.2",
-    "expo": "^51.0.26",
+    "expo": "^51.0.31",
     "expo-constants": "^16.0.2",
     "expo-status-bar": "^1.12.1",
     "prop-types": "^15.8.1",

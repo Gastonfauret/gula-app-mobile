@@ -18,6 +18,7 @@
     "android": {
       "adaptiveIcon": {}
     },
-    "web": {}
+    "web": {},    
+    "platforms": ["ios", "android", "web"]
   }
 }
