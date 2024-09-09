@@ -26,7 +26,8 @@ function useRegister() {
   });
 
   async function handleSubmitRegister(e) {
-    e.preventDefault();
+    console.log("Datos en el Hook:", userData);
+    //e.preventDefault();
     if (userInputsError) {
       return;
     }      

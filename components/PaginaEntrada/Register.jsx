@@ -4,10 +4,13 @@ import { useNavigation } from '@react-navigation/native';
 import useRegister from '../../hooks/useRegister';
 import useShowHidePassword from '../../hooks/useShowHidePassword';
 import SelectorCiudad from './SelectorCiudad';
+import DateTimePicker from '@react-native-community/datetimepicker';
 
-export default function Register() {   
+export default function Register() {
 
     const { togglePasswordVisibility, showPassword } = useShowHidePassword();
+    const [showDatePicker, setShowDatePicker] = useState(false);
+
     const {
         handleSubmitRegister,
         handleChangeRegister,
@@ -25,7 +28,22 @@ export default function Register() {
     } = useRegister();
 
     const navigation = useNavigation();
-    
+
+    const formatDate = (date) => {
+         const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0'); // Asegurarse de que haya 2 dígitos
+  const day = String(date.getDate()).padStart(2, '0');
+        return `${day}/${month}/${year}`;
+    };
+
+    const handleDateChange = (event, selectedDate) => {
+        setShowDatePicker(false); // Cierra el picker después de seleccionar la fecha
+        if (selectedDate) {
+            // Actualiza el estado con la fecha formateada
+            const formattedDate = formatDate(selectedDate);
+            setUserData({ ...userData, birthDate: formattedDate });
+        }
+    };
 
     return (
         <View style={styles.container}
@@ -108,7 +126,7 @@ export default function Register() {
                 </View>
 
                 {/* Input Location */}
-                <SelectorCiudad       
+                <SelectorCiudad
                     value={userData.location}
                     onValueChange={(text) => handleChangeRegister({ target: { name: 'location', value: text } })}
                     style={styles.locationInput}
@@ -121,13 +139,31 @@ export default function Register() {
 
                 {/* Input Fecha Nacimiento */}
 
-                <TextInput
+                {/* <TextInput
                     style={styles.textInputs}
                     placeholder="Fecha de nacimiento"
                     value={userData.birthDate}                    
                     onChangeText={(text) => handleChangeRegister({ target: { name: 'birthDate', value: text } })}                               
+                /> */}
+
+                <TextInput
+                    style={styles.textInputs}
+                    placeholder="Fecha de nacimiento"
+                    value={userData.birthDate}
+                    onTouchStart={() => setShowDatePicker(true)} // Mostrar el date picker cuando se toque el input
+                    editable={true} // Deshabilitar la edición directa del input
                 />
-                
+
+                {showDatePicker && (
+                    <DateTimePicker
+                        testID="dateTimePicker"
+                        value={new Date()} // Valor inicial del date picker
+                        mode="date"
+                        display="spinner" // Puedes cambiar el modo de visualización según tus preferencias
+                        onChange={handleDateChange}
+                    />
+                )}
+
                 <View style={styles.errorTextContainer}>
                     {birthDateError && (
                         <Text style={styles.errorsText}>{birthDateError}</Text>
@@ -174,13 +210,13 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '5%',
         alignItems: 'center',
-        justifyContent: 'center'        
+        justifyContent: 'center'
     },
 
     inputsContainer: {
         alignItems: 'center',
         width: '100%',
-        height: 500        
+        height: 500
     },
 
     textInputs: {
@@ -221,5 +257,5 @@ const styles = StyleSheet.create({
         fontSize: 12,
         fontWeight: '700',
         //marginVertical: 6,
-    }    
+    }
 })
