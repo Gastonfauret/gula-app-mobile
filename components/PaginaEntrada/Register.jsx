@@ -5,6 +5,7 @@ import useRegister from '../../hooks/useRegister';
 import useShowHidePassword from '../../hooks/useShowHidePassword';
 import SelectorCiudad from './SelectorCiudad';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import { string } from 'prop-types';
 
 export default function Register() {
 
@@ -33,7 +34,7 @@ export default function Register() {
          const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, '0'); // Asegurarse de que haya 2 dígitos
   const day = String(date.getDate()).padStart(2, '0');
-        return `${day}/${month}/${year}`;
+        return `${year}-${month}-${day}`;
     };
 
     const handleDateChange = (event, selectedDate) => {
@@ -42,6 +43,7 @@ export default function Register() {
             // Actualiza el estado con la fecha formateada
             const formattedDate = formatDate(selectedDate);
             setUserData({ ...userData, birthDate: formattedDate });
+            handleChangeRegister("birthDate", formattedDate); // Envía la fecha al hook de registro
         }
     };
 
@@ -58,9 +60,9 @@ export default function Register() {
                     type="text"
                     style={styles.textInputs}
                     placeholder="Nombre Completo"
-                    name="name"
+                    //name="name"
                     value={userData.name}
-                    onChangeText={(text) => handleChangeRegister({ target: { name: 'name', value: text } })}
+                    onChangeText={(text) => handleChangeRegister("name", text)}
                 />
 
                 <View style={styles.errorTextContainer}>
@@ -74,9 +76,9 @@ export default function Register() {
                     style={styles.textInputs}
                     placeholder="Email"
                     value={userData.email}
-                    name="email"
+                    //name="email"
                     type="text"
-                    onChangeText={(text) => handleChangeRegister({ target: { name: 'email', value: text } })}
+                    onChangeText={(text) => handleChangeRegister("email", text)}
                     keyboardType="email-address"
                     autoCapitalize="none"
                 />
@@ -94,7 +96,7 @@ export default function Register() {
                     type={showPassword ? "text" : "password"}
                     name="password"
                     value={userData.password}
-                    onChangeText={(text) => handleChangeRegister({ target: { name: 'password', value: text } })}
+                    onChangeText={(text) => handleChangeRegister("password", text)}
                     secureTextEntry
                 />
                 <View
@@ -115,7 +117,7 @@ export default function Register() {
                     placeholder="Confirmar contraseña"
                     type={showPassword ? "text" : "password"}
                     name="confirm-password"
-                    onChangeText={(text) => handleChangeRegister({ target: { name: 'confirm-password', value: text } })}
+                    onChangeText={(text) => handleChangeRegister('confirm-password', text)}
                     secureTextEntry
                 />
                 <View style={styles.errorTextContainer}>
@@ -128,7 +130,7 @@ export default function Register() {
                 {/* Input Location */}
                 <SelectorCiudad
                     value={userData.location}
-                    onValueChange={(text) => handleChangeRegister({ target: { name: 'location', value: text } })}
+                    onValueChange={(text) => handleChangeRegister('location', text)}
                     style={styles.locationInput}
                 />
                 <View style={styles.errorTextContainer}>
@@ -159,7 +161,7 @@ export default function Register() {
                         testID="dateTimePicker"
                         value={new Date()} // Valor inicial del date picker
                         mode="date"
-                        display="spinner" // Puedes cambiar el modo de visualización según tus preferencias
+                        //display="spinner" // Puedes cambiar el modo de visualización según tus preferencias
                         onChange={handleDateChange}
                     />
                 )}

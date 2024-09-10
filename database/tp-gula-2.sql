@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `cart`;
 CREATE TABLE `cart` (
   `cartId` int NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`cartId`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -34,7 +34,7 @@ CREATE TABLE `cart` (
 
 LOCK TABLES `cart` WRITE;
 /*!40000 ALTER TABLE `cart` DISABLE KEYS */;
-INSERT INTO `cart` VALUES (1),(2),(3),(4),(5),(6),(7),(8);
+INSERT INTO `cart` VALUES (1),(2),(3),(4),(5),(6),(7),(8),(9),(10),(11);
 /*!40000 ALTER TABLE `cart` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -206,7 +206,7 @@ CREATE TABLE `profile` (
   `location` varchar(255) NOT NULL,
   `birthDate` varchar(255) NOT NULL,
   PRIMARY KEY (`profileId`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -215,7 +215,7 @@ CREATE TABLE `profile` (
 
 LOCK TABLES `profile` WRITE;
 /*!40000 ALTER TABLE `profile` DISABLE KEYS */;
-INSERT INTO `profile` VALUES (1,'default-profile_gula.jpg','tomicardenas','0','Benito Juarez','1996-01-24'),(2,'default-profile_gula.jpg','gastonfauret@gmail.com','0','Benito Juarez','1980-05-02'),(3,'default-profile_gula.jpg','adriancalo@gmail.com','0','Benito Juarez','1992-08-11'),(4,'79318767-gente-adulta-cara-retrato-de-estudio-de-expresiÃ³n-de-sonrisa.jpg-1720224802538-506487602.jpg','marcelo@gmail.com','0','Tandil','1999-11-02'),(5,'default-profile_gula.jpg','juanbenitez@gmail.com','0','Benito Juarez','1990-01-01'),(6,'default-profile_gula.jpg','paulwalker@gmail.com','0','Benito Juarez','1990-01-01'),(7,'tomascardenas.jpg','argento@gula.com','0','Benito Juarez','1990-12-12'),(8,'perez.jpg','perez@gula.com','0','Lomas del Toor','1989-03-13');
+INSERT INTO `profile` VALUES (1,'default-profile_gula.jpg','tomicardenas','0','Benito Juarez','1996-01-24'),(2,'default-profile_gula.jpg','gastonfauret@gmail.com','0','Benito Juarez','1980-05-02'),(3,'default-profile_gula.jpg','adriancalo@gmail.com','0','Benito Juarez','1992-08-11'),(4,'79318767-gente-adulta-cara-retrato-de-estudio-de-expresiÃ³n-de-sonrisa.jpg-1720224802538-506487602.jpg','marcelo@gmail.com','0','Tandil','1999-11-02'),(5,'default-profile_gula.jpg','juanbenitez@gmail.com','0','Benito Juarez','1990-01-01'),(6,'default-profile_gula.jpg','paulwalker@gmail.com','0','Benito Juarez','1990-01-01'),(7,'tomascardenas.jpg','argento@gula.com','0','Benito Juarez','1990-12-12'),(8,'perez.jpg','perez@gula.com','0','Lomas del Toor','1989-03-13'),(9,'default-profile_gula.jpg','lemoine@gula.com','0','Benito Juarez','1978-07-02'),(10,'default-profile_gula.jpg','mondino@gula.com','0','Benito Juarez','1978-07-31'),(11,'default-profile_gula.jpg','rivero@gula.com','0','Benito Juarez','1986-04-10');
 /*!40000 ALTER TABLE `profile` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -235,6 +235,7 @@ CREATE TABLE `shop` (
   `picture` varchar(255) NOT NULL DEFAULT 'https://iili.io/d7pH8Xt.webp',
   `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `user` int DEFAULT NULL,
+  `shippingCost` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`shopId`),
   UNIQUE KEY `IDX_f0640e30fef1d175426d80dbc1` (`name`),
   UNIQUE KEY `IDX_270141acb2960da882c1306da7` (`profilename`),
@@ -249,7 +250,7 @@ CREATE TABLE `shop` (
 
 LOCK TABLES `shop` WRITE;
 /*!40000 ALTER TABLE `shop` DISABLE KEYS */;
-INSERT INTO `shop` VALUES (1,'Jooks cerveceria','Benito Juarez','2281303030','jookscerveceria','jooks.jpg','2024-07-02 18:36:52',1),(2,'Lo de chairo','Benito Juarez','2281404040','lodechairo','chairo.jpg','2024-07-02 18:36:52',2),(3,'Palelo buffet','Benito Juarez','2281505050','palelobuffet','palelo.jpg','2024-07-02 18:36:52',3),(4,'La paperia','Benito Juarez','2281505050','lapaperiabj','paperia.jpg','2024-07-02 18:36:52',2);
+INSERT INTO `shop` VALUES (1,'Jooks cerveceria','Benito Juarez','2281303030','jookscerveceria','jooks.jpg','2024-07-02 18:36:52',1,0),(2,'Lo de chairo','Benito Juarez','2281404040','lodechairo','chairo.jpg','2024-07-02 18:36:52',2,0),(3,'Palelo buffet','Benito Juarez','2281505050','palelobuffet','palelo.jpg','2024-07-02 18:36:52',3,0),(4,'La paperia','Benito Juarez','2281505050','lapaperiabj','paperia.jpg','2024-07-02 18:36:52',2,0);
 /*!40000 ALTER TABLE `shop` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -274,7 +275,7 @@ CREATE TABLE `user` (
   UNIQUE KEY `REL_3536716a8b146aece3c6155af0` (`profile`),
   CONSTRAINT `FK_3536716a8b146aece3c6155af04` FOREIGN KEY (`profile`) REFERENCES `profile` (`profileId`) ON DELETE CASCADE,
   CONSTRAINT `FK_5d040d256035ba8f6882515978f` FOREIGN KEY (`cart`) REFERENCES `cart` (`cartId`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -283,7 +284,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'tomascardenas@gmail.com','Tomas Cardenas','$2a$10$Bw8A9aoAx3HBDkNSNVfsDuwuPaNaFA8z0l7GlfbxAjbA0kwLp04u6','2024-07-02 18:35:33',1,1),(2,'gastonfauret@gmail.com','Gaston Fauret','$2a$10$kYG7xxK7bx09FSZ3D9q92um1gKEITyIOEvD7R9.yxTHduvOi9X5oW','2024-07-02 18:35:59',2,2),(3,'adriancalo@gmail.com','Adrian Calo','$2a$10$WKCZEhlc83f4aHwqmQ91qOaX9pgWM6pKiRuKypdYfXjSu3nM5IKxa','2024-07-02 18:36:25',3,3),(4,'marcelo@gmail.com','Marcelo Bettini','$2a$10$ANUJKRJZSIB0hkFNCoxboeOtC88jwCc.cFYI/WvJ9W7ZghFNfJV1S','2024-07-05 21:12:07',4,4),(5,'juanbenitez@gmail.com','Juan Benitez','$2a$10$cA2meCVR8rp36ZrNwjAS0.rCP4I9xwkGeA5CnR0mqPTFlxQSlWkWG','2024-07-23 14:28:53',5,5),(6,'paulwalker@gmail.com','Paul Walker','$2a$10$5i24zwtFp.jlJ03rtwGac.03iQFFOoJ.6kMnpvEkZUqIzuoomZ82u','2024-07-23 14:30:58',6,6),(7,'argento@gula.com','Pepe Argento','$2a$10$sjTIiOVfMdeDS6Z85kjtoOen2iXQxlvgv7ZLLQEc2NXBAn63kFmja','2024-08-09 14:59:53',7,7),(8,'perez@gula.com','Juan Perez','$2a$10$fLI2Q4PRvpdyZXw12l6RVuwqu/OjXmTAFBnKzAA4ro8ii2tcu9p/.','2024-08-09 15:02:06',8,8);
+INSERT INTO `user` VALUES (1,'tomascardenas@gmail.com','Tomas Cardenas','$2a$10$Bw8A9aoAx3HBDkNSNVfsDuwuPaNaFA8z0l7GlfbxAjbA0kwLp04u6','2024-07-02 18:35:33',1,1),(2,'gastonfauret@gmail.com','Gaston Fauret','$2a$10$kYG7xxK7bx09FSZ3D9q92um1gKEITyIOEvD7R9.yxTHduvOi9X5oW','2024-07-02 18:35:59',2,2),(3,'adriancalo@gmail.com','Adrian Calo','$2a$10$WKCZEhlc83f4aHwqmQ91qOaX9pgWM6pKiRuKypdYfXjSu3nM5IKxa','2024-07-02 18:36:25',3,3),(4,'marcelo@gmail.com','Marcelo Bettini','$2a$10$ANUJKRJZSIB0hkFNCoxboeOtC88jwCc.cFYI/WvJ9W7ZghFNfJV1S','2024-07-05 21:12:07',4,4),(5,'juanbenitez@gmail.com','Juan Benitez','$2a$10$cA2meCVR8rp36ZrNwjAS0.rCP4I9xwkGeA5CnR0mqPTFlxQSlWkWG','2024-07-23 14:28:53',5,5),(6,'paulwalker@gmail.com','Paul Walker','$2a$10$5i24zwtFp.jlJ03rtwGac.03iQFFOoJ.6kMnpvEkZUqIzuoomZ82u','2024-07-23 14:30:58',6,6),(7,'argento@gula.com','Pepe Argento','$2a$10$sjTIiOVfMdeDS6Z85kjtoOen2iXQxlvgv7ZLLQEc2NXBAn63kFmja','2024-08-09 14:59:53',7,7),(8,'perez@gula.com','Juan Perez','$2a$10$fLI2Q4PRvpdyZXw12l6RVuwqu/OjXmTAFBnKzAA4ro8ii2tcu9p/.','2024-08-09 15:02:06',8,8),(9,'lemoine@gula.com','Lila Lemoine','$2a$10$OOtUxjR3v0gYHQr9ykM9TevWIPqJOR4NVVO6az/AEEwbz9lVGy1B2','2024-09-10 09:48:20',9,9),(10,'mondino@gula.com','Diana Mondino','$2a$10$aNaiwEPYk.01GkVZgS4Uw.8TD3SBeFDe5vWW/oTWuc5sf.G3p2ytS','2024-09-10 09:51:59',10,10),(11,'rivero@gula.com','Rivero Guillermo','$2a$10$v4uI2HzZ4z/A6aARhP28Luaoqk5M8n99QnONr2QpXNgH2MzzbpbzW','2024-09-10 10:28:57',11,11);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -296,4 +297,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-08-10  0:08:07
+-- Dump completed on 2024-09-10 11:02:32

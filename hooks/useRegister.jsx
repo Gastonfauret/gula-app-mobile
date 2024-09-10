@@ -155,13 +155,13 @@ function useRegister() {
     }
   }
 
-  const handleChangeRegister = (e) => {
-    const { name, value } = e.target;
+  const handleChangeRegister = (name, value) => {
+    //const { name, value } = e.target;
     if (name !== "confirm-password") {
-      setUserData({ ...userData, [name]: value });
+      setUserData((prevData) => ({ ...userData, [name]: value }));
     }
     fieldsValidation(value, name);
-    console.log('Updated user data:', userData);
+    console.log('Updated user data:', { ...userData, [name]: value });
   };
 
   const validateEmail = (email) => {
