@@ -89,18 +89,24 @@ function Login() {
                         <Text style={styles.btnText}>Inicia Sesion</Text>
                     )}
                 </TouchableOpacity>
-                    
-                    <Text style={styles.textAcount}>O ingrese con cuentas registradas:</Text>                
 
-                    <View style={styles.acountContainer}>
-                        <TouchableOpacity style={styles.btnSlider} onPress={() => {console.log('Boton Registro con Google Anda!')}}>
+                <Text style={styles.textAcount}>O ingrese con cuentas registradas:</Text>
+
+                <View style={styles.acountContainer}>
+                    <TouchableOpacity style={styles.btnSlider} onPress={() => { console.log('Boton Registro con Google Anda!') }}>
+                        <View style={styles.logoAccountContainer}>
+                            <Image source={require('../../assets/google.png')} style={styles.logoAccounts} />
                             <Text >Ingresa con Google</Text>
-                        </TouchableOpacity>
+                        </View>
+                    </TouchableOpacity>
 
-                        <TouchableOpacity style={styles.btnSlider} onPress={() => {console.log('Boton Registro con Facebook Anda!')}}>
+                    <TouchableOpacity style={styles.btnSlider} onPress={() => { console.log('Boton Registro con Facebook Anda!') }}>
+                        <View style={styles.logoAccountContainer}>
+                            <Image source={require('../../assets/face.png')} style={styles.logoAccounts} />
                             <Text >Ingresa con Facebook</Text>
-                        </TouchableOpacity>
-                    </View>
+                        </View>
+                    </TouchableOpacity>
+                </View>
 
                 <View style={styles.backBtnContainer}>
                     <TouchableOpacity>
@@ -191,24 +197,39 @@ const styles = StyleSheet.create({
         //backgroundColor: 'gray'
     },
 
-    acountContainer: {          
-        width: '100%',        
+    acountContainer: {
+        width: '100%',
         height: '50%',
         justifyContent: 'center',
         alignItems: 'center',
-        marginVertical: 10,        
+        marginVertical: 10,
         //backgroundColor: 'pink'                
-    },  
+    },
 
-    btnSlider: {         
+    btnSlider: {
         justifyContent: 'center',
-        alignItems: 'center',       
-        backgroundColor: '#D5DBDB',
+        alignItems: 'center',
+        backgroundColor: '#f2f4f4',
         width: '76%',
         height: '40%',
         borderRadius: 30,
-        marginVertical: 10 
+        marginVertical: 10
     },
+
+    logoAccountContainer: {
+        width: '100%',
+        height: '100%',
+        justifyContent: 'center',
+        gap: 15,
+        alignItems: 'center',
+        flexDirection: 'row',
+    },
+
+    logoAccounts: {
+        resizeMode: 'center',
+        width: '10%',
+        height: '70%'
+    }
 })
 
 
