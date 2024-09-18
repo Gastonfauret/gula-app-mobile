@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, TextInput, Text, Image, TouchableOpacity, StyleSheet, ActivityIndicator } from 'react-native';
+import { View, TextInput, Text, Image, TouchableOpacity, StyleSheet, ActivityIndicator, Pressable } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import useLogin from '../../hooks/useLogin';
 
@@ -89,6 +89,18 @@ function Login() {
                         <Text style={styles.btnText}>Inicia Sesion</Text>
                     )}
                 </TouchableOpacity>
+                    
+                    <Text style={styles.textAcount}>O ingrese con cuentas registradas:</Text>                
+
+                    <View style={styles.acountContainer}>
+                        <TouchableOpacity style={styles.btnSlider} onPress={() => {console.log('Boton Registro con Google Anda!')}}>
+                            <Text >Ingresa con Google</Text>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity style={styles.btnSlider} onPress={() => {console.log('Boton Registro con Facebook Anda!')}}>
+                            <Text >Ingresa con Facebook</Text>
+                        </TouchableOpacity>
+                    </View>
 
                 <View style={styles.backBtnContainer}>
                     <TouchableOpacity>
@@ -108,9 +120,9 @@ const styles = StyleSheet.create({
         width: '100%',
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'center',
+        //justifyContent: 'center',
         paddingHorizontal: 36,
-        paddingVertical: 20,
+        paddingVertical: '30%',
         backgroundColor: 'red'
     },
 
@@ -141,7 +153,8 @@ const styles = StyleSheet.create({
     inputsContainer: {
         alignItems: 'center',
         width: '130%',
-        height: 230
+        height: 230,
+        //backgroundColor: 'green'
     },
 
     btnLogin: {
@@ -163,8 +176,39 @@ const styles = StyleSheet.create({
     backBtnContainer: {
         alignItems: 'center',
         justifyContent: 'center',
-        height: '7%',
-    }
+        height: '20%',
+        //backgroundColor: 'black'
+    },
+
+    textAcount: {
+        width: 320,
+        height: 48,
+        textAlign: 'center',
+        alignItems: 'center',
+        fontWeight: 'bold',
+        color: 'white',
+        paddingVertical: 15,
+        //backgroundColor: 'gray'
+    },
+
+    acountContainer: {          
+        width: '100%',        
+        height: '50%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginVertical: 10,        
+        //backgroundColor: 'pink'                
+    },  
+
+    btnSlider: {         
+        justifyContent: 'center',
+        alignItems: 'center',       
+        backgroundColor: '#D5DBDB',
+        width: '76%',
+        height: '40%',
+        borderRadius: 30,
+        marginVertical: 10 
+    },
 })
 
 
