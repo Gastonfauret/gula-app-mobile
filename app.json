@@ -3,9 +3,9 @@
     "name": "gula-app-mobile",
     "slug": "gula-app-mobile",
     "version": "1.0.0",
-    "orientation": "portrait",    
+    "orientation": "portrait",
     "userInterfaceStyle": "light",
-    "splash": {      
+    "splash": {
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -16,9 +16,19 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.gastonfauret.gulamobile",
       "adaptiveIcon": {}
     },
-    "web": {},    
-    "platforms": ["ios", "android", "web"]
+    "web": {},
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "d78e2a96-1823-4abe-8443-0f88a42fbe13"
+      }
+    }
   }
 }
