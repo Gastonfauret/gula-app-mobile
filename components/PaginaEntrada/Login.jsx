@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import useLogin from '../../hooks/useLogin';
 
 function Login() {
-    const [isLoading, setIsLoading] = useState(false);
+    //const [isLoading, setIsLoading] = useState(false);
     const [loginLoading, setLoginLoading] = useState(false);
 
     const navigation = useNavigation();
@@ -13,9 +13,11 @@ function Login() {
         userCredentials,
         handleChangeLogin,
         handleSubmitLogin,
+        handleGoogleLogin,
         isWrongEmail,
-        isWrongPassword
-    } = useLogin();
+        isWrongPassword,
+        loginLoading: googleLoginLoading,
+      } = useLogin();
 
 
     const handleLogin = async () => {
@@ -61,11 +63,11 @@ function Login() {
                     required
                 />
 
-                {/* {isWrongEmail && (
+                {isWrongEmail && (
                     <>
                         <Text>Usuario no encontrado</Text>
                     </>
-                )} */}
+                )}
 
                 <TextInput
                     style={styles.textInputs}
@@ -75,12 +77,12 @@ function Login() {
                     secureTextEntry
                     required
                 />
-                {/* 
+                
                 {isWrongPassword && (
                     <>
                         <Text>Contraseña incorrecta</Text>
                     </>
-                )} */}
+                )}
 
                 <TouchableOpacity style={styles.btnLogin} onPress={handleLogin}>
                     {loginLoading ? (
@@ -93,7 +95,7 @@ function Login() {
                 <Text style={styles.textAcount}>O ingrese con cuentas registradas:</Text>
 
                 <View style={styles.acountContainer}>
-                    <TouchableOpacity style={styles.btnSlider} onPress={() => { console.log('Boton Registro con Google Anda!') }}>
+                    <TouchableOpacity style={styles.btnSlider} onPress={handleGoogleLogin}>
                         <View style={styles.logoAccountContainer}>
                             <Image source={require('../../assets/google.png')} style={styles.logoAccounts} />
                             <Text >Ingresa con Google</Text>

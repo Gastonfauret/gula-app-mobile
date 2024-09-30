@@ -3,6 +3,7 @@
     "name": "gula-app-mobile",
     "slug": "gula-app-mobile",
     "version": "1.0.0",
+    "scheme": "gula-app-mobile",
     "orientation": "portrait",
     "userInterfaceStyle": "light",
     "splash": {
@@ -16,7 +17,7 @@
       "supportsTablet": true
     },
     "android": {
-      "package": "com.gastonfauret.gulamobile",
+      "package": "gula-app-mobile",
       "adaptiveIcon": {}
     },
     "web": {},
