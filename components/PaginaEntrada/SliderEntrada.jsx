@@ -1,4 +1,4 @@
-import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, Image, StyleSheet, Pressable } from 'react-native';
 import Swiper from 'react-native-swiper';
 import { useNavigation } from '@react-navigation/native';
 
@@ -11,6 +11,7 @@ export default function SliderEntrada() {
             <View style={styles.container}>
                 <Image
                     source={require('../../assets/Slider Entrada/Pantalla Papas.png')}
+                    resizeMode='cover'
                     style={styles.sliderImg}
                 />
             </View>
@@ -18,6 +19,7 @@ export default function SliderEntrada() {
             <View style={styles.container}>
                 <Image
                     source={require('../../assets/Slider Entrada/Pantalla Coca.png')}
+                    resizeMode='cover'
                     style={styles.sliderImg}
                 />
             </View>
@@ -25,18 +27,19 @@ export default function SliderEntrada() {
             <View style={styles.container}>
                 <Image
                     source={require('../../assets/Slider Entrada/Pantalla Hamburguesa.png')}
+                    resizeMode='cover'
                     style={styles.sliderImg}
                 />
 
                 <View style={styles.TercerSlide}>
                     <View style={styles.bottonContainer}>
-                        <TouchableOpacity style={styles.btnSlider} onPress={() => navigation.navigate('Login')}>
+                        <Pressable style={styles.btnSlider} onPress={() => navigation.navigate('Login')}>
                             <Text >Ingresa</Text>
-                        </TouchableOpacity>
+                        </Pressable>
 
-                        <TouchableOpacity style={styles.btnSlider} onPress={() => navigation.navigate('Register')}>
+                        <Pressable style={styles.btnSlider} onPress={() => navigation.navigate('Register')}>
                             <Text>Registrate Gratis</Text>
-                        </TouchableOpacity>
+                        </Pressable>
                     </View>
                 </View>
 
@@ -55,7 +58,7 @@ const styles = StyleSheet.create({
 
     sliderImg: {
         flex: 1,
-        resizeMode: 'cover',
+        //resizeMode: 'cover',
         width: '100%',
         height: '100%'
     },
@@ -112,7 +115,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#D5DBDB',
         width: '90%',
         height: '40%',
-        borderRadius: 30
+        borderRadius: 30,
+        //boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
     },
 
     textContainer: {

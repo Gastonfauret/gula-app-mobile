@@ -84,36 +84,36 @@ function Login() {
                     </>
                 )}
 
-                <TouchableOpacity style={styles.btnLogin} onPress={handleLogin}>
+                <Pressable style={styles.btnLogin} onPress={handleLogin}>
                     {loginLoading ? (
                         <ActivityIndicator size="small" color="#0000ff" />
                     ) : (
                         <Text style={styles.btnText}>Inicia Sesion</Text>
                     )}
-                </TouchableOpacity>
+                </Pressable>
 
                 <Text style={styles.textAcount}>O ingrese con cuentas registradas:</Text>
 
                 <View style={styles.acountContainer}>
-                    <TouchableOpacity style={styles.btnSlider} onPress={handleGoogleLogin}>
+                    <Pressable style={styles.btnSlider} onPress={handleGoogleLogin}>
                         <View style={styles.logoAccountContainer}>
                             <Image source={require('../../assets/google.png')} style={styles.logoAccounts} />
                             <Text >Ingresa con Google</Text>
                         </View>
-                    </TouchableOpacity>
+                    </Pressable>
 
-                    <TouchableOpacity style={styles.btnSlider} onPress={() => { console.log('Boton Registro con Facebook Anda!') }}>
+                    <Pressable style={styles.btnSlider} onPress={() => { console.log('Boton Registro con Facebook Anda!') }}>
                         <View style={styles.logoAccountContainer}>
                             <Image source={require('../../assets/face.png')} style={styles.logoAccounts} />
                             <Text >Ingresa con Facebook</Text>
                         </View>
-                    </TouchableOpacity>
+                    </Pressable>
                 </View>
 
                 <View style={styles.backBtnContainer}>
-                    <TouchableOpacity>
+                    <Pressable>
                         <Text style={styles.volverText} onPress={() => navigation.navigate('SliderEntrada')}>Volver</Text>
-                    </TouchableOpacity>
+                    </Pressable>
                 </View>
             </View>
         </View>

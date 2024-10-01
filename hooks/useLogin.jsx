@@ -20,8 +20,7 @@ export default function useLogin() {
   const [loginLoading, setLoginLoading] = useState(false);
 
   const [request, response, promptAsync] = Google.useAuthRequest({
-    androidClientId: '619886900615-qkv3mc7pd7h4k19n3i4ur34tgfiiuqe5.apps.googleusercontent.com',
-    expoClientId: '794547605500-rn1q40825tlr3bkbl6oblo0sop1krs2p.apps.googleusercontent.com',
+    clientId: '48566843235-eilq4kufdji04auhbh0e528b6pbbp9hn.apps.googleusercontent.com',
     scopes: ['profile', 'email'], 
     useProxy: true,  // Agregar esta propiedad
     redirectUri: AuthSession.makeRedirectUri({ useProxy: true }),
@@ -99,12 +98,6 @@ export default function useLogin() {
     }
   };
 
-  // const handleGoogleLogin = async () => {
-  //   const redirectUri = `http://${ipAddress}:3070/auth/google`;
-  //   Linking.openURL(redirectUri);
-  // };
-
-
   // Maneja el cambio en los inputs de email y password
   const handleChangeLogin = (name, value) => {
     setUserCredentials((prevCredentials) => ({
@@ -133,4 +126,4 @@ export default function useLogin() {
   };
 }
 
-//619886900615-qkv3mc7pd7h4k19n3i4ur34tgfiiuqe5.apps.googleusercontent.com
+
